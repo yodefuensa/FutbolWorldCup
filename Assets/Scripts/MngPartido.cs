@@ -100,7 +100,7 @@ public class MngPartido : MonoBehaviour {
     private void saqueInicial()
     {
         //meter opciones de tiempo
-        if (quienSaca)
+        if (!quienSaca)
         {
             colocarPersonajesSaque();
             balon.setPosicion(new Vector3(0f, 0f));
