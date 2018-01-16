@@ -57,6 +57,7 @@
      <Compile Include="Assets\Scripts\MngCamera.cs" />
      <Compile Include="Assets\Scripts\MngPartido.cs" />
      <Compile Include="Assets\Scripts\MngRival.cs" />
+     <Compile Include="Assets\Scripts\MngScenes.cs" />
      <Compile Include="Assets\Scripts\Palo.cs" />
      <Compile Include="Assets\Scripts\PorteroV2.cs" />
      <Compile Include="Assets\Scripts\PorteroV2Rival.cs" />
