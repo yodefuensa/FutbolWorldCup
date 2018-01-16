@@ -15,8 +15,27 @@ public class MngScenes : MonoBehaviour {
 	void Update () {
 		
 	}
-	public void Jugar()
+
+    
+
+
+	public void Escenas()
 	{
-		SceneManager.LoadScene("SelectorSeleccion");
-	}
+
+        switch (SceneManager.GetActiveScene().name)
+        {
+            case "menu":
+                SceneManager.LoadScene("SelectSeleccion");
+                break;
+            case "SelectSeleccion":
+                SceneManager.LoadScene("SelectAlineacion");
+                break;
+            default:
+                SceneManager.LoadScene("menu");
+                break;
+        }
+
+
+
+    }
 }

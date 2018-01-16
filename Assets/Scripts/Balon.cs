@@ -61,11 +61,12 @@ public class Balon : MonoBehaviour
 	}
 
 
-	public void golpeoV2 (){
-		Debug.Log ("golpeoV2 primera fase");
-		if (!interceptado) {
-			Debug.Log ("golpeoV2 segunda fase");
-			if (tiempo) {
+	public void golpeoV2 ()
+    {
+		if (!interceptado)
+        {
+			if (tiempo)
+            {
 				Debug.Log ("golpeoV2 tercera fase");
 				transform.position += direccion * Time.deltaTime * fuerzaL;
 				interceptado = false;
@@ -73,31 +74,7 @@ public class Balon : MonoBehaviour
 		}
 	}
 
-	public IEnumerator Golpeo(int fuerza)
-	{
-		Vector3 direccionGolpeo = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-		int n = 0;
-		interceptado = false;
-		while (!interceptado && (n<150))
-		{
-			transform.position += direccionGolpeo * Time.deltaTime * fuerza;
-			n++;
-			yield return new WaitForSeconds(.07f);
-		}
 
-	}
-
-	public IEnumerator GolpeoPortero(int fuerza,Vector3 direccion)
-	{
-		int n = 0;
-		interceptado = false;
-		while (!interceptado && (n < 150))
-		{ 
-			transform.position += direccion * Time.deltaTime * fuerza;
-			n++;
-			yield return new WaitForSeconds(.07f);
-		}
-	}
 	public IEnumerator setBalonTiempoFalse()
 	{//para no tocar el balon al golpearlo
 		for (int n = 0; n < 50; n++)

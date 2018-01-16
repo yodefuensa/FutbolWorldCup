@@ -10,12 +10,21 @@ public class Jugador : MonoBehaviour {
 	public bool selector = false;
 	private int vel = 8;
 	public int fuerzaGolpeo = 20;
-	//magnitud se usa en el manager partido, para saber que jugadores estaran mas cerca al salir la pelota
+    //robo es para saber si podremos robar la pelota
+    public bool robo;
+    //cuando se pulse LefAlt bloqueamos el movimiento y le damos la direccion de la falta
+    public bool tRobo;
+    //zasca te han hecho falta te caes al suelo no te puedes mover durante X tiempo
+    public bool falta;
+    //magnitud se usa en el manager partido, para saber que jugadores estaran mas cerca al salir la pelota
+    public Vector3 dirFalta;
 	public float magnitud = 0;
     public Vector2 posicionInicial;
 	public GameObject posicion;
 
 	void Start () {
+        falta = false;
+        tRobo = false;
 	}
 
 	void Update () {
@@ -24,22 +33,34 @@ public class Jugador : MonoBehaviour {
 			foreach (Collider2D hit in hits) {
 				if (hit.name == "balon") {
 					balonPies = true;
-					//nota balonPies anadido en GolpeoV2 quitar si no es necesario
-					//balon.balonPies = true;
 					selector = true;
 					if (!balonGolpeado) {
 						balon.interceptado = true;
 					}
-
-				}
+                    robo = true;
+                }
+                else
+                {
+                    robo = false;
+                }
 			}
 		}
 
 	}
+    public IEnumerator setFaltaFalse()
+    {//si te hacen falta poner bloqueo
+        yield return new WaitForSeconds(2f);
+        falta = false;
+    }
+    public IEnumerator setTRoboFalse()
+    {//tiempo de robo, momento que haces falta y se te bloquea la direcion
+        yield return new WaitForSeconds(0.7f);
+        tRobo = false;
+    }
 
-	private void movimiento()
+    private void movimiento()
 	{
-		if (selector)
+		if ((selector)&& (!falta) && (!tRobo))
 		{
 			if (Input.GetAxisRaw("Vertical") > 0)
 			{
@@ -96,16 +117,30 @@ public class Jugador : MonoBehaviour {
 		}
 	}
 
+    public void movimientoFalta()
+    {//pa Entrada
+        if ((tRobo)&&(selector))
+        {
+            Debug.Log("ME CAGO EN DIOS 2");
+            transform.position += dirFalta * Time.deltaTime * vel;
+        }
+    }
+
     public void Entrada()
-    {
-       if (Input.GetKey(KeyCode.LeftAlt))
+    {//pal Fixed
+       if (Input.GetKey(KeyCode.C))
        {
-            /*
+            Debug.Log("ME CAGO EN DIOS");
+            dirFalta = new Vector3(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+            tRobo = true;
+            //movimiento falta en el puto fixed surprise madafaka
+            //movimientoFalta();
+            StartCoroutine(setTRoboFalse());
             //animacion 
-            if ((!balon.ultimoTocado) && (balon.interceptado))
+            if (robo)
             {
-                if ()
-            }*/
+                
+            }
        }
 
     }
@@ -115,8 +150,10 @@ public class Jugador : MonoBehaviour {
 
 	void FixedUpdate()
 	{
+        Entrada();
 		movimiento();
 		conducirBalon();
+        movimientoFalta();
 	}
 
 }
