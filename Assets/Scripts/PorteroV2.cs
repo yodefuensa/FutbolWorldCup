@@ -10,7 +10,7 @@ public class PorteroV2 : MonoBehaviour {
 	public bool selector = false;
 	private int vel = 8;
 	public int fuerzaGolpeo = 20;
-	//magnitud se usa en el manager partido, para saber que jugadores estaran mas cerca al salir la pelota
+
 	public GameObject posicion;
 
 	void Start () {

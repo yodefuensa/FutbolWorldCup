@@ -1,6 +1,7 @@
-﻿﻿using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Animations;
 
 public class Jugador : MonoBehaviour {
 
@@ -12,7 +13,7 @@ public class Jugador : MonoBehaviour {
 	public int fuerzaGolpeo = 20;
     //robo es para saber si podremos robar la pelota
     public bool robo;
-    //cuando se pulse LefAlt bloqueamos el movimiento y le damos la direccion de la falta
+    //cuando se pulse C bloqueamos el movimiento y le damos la direccion de la falta
     public bool tRobo;
     //zasca te han hecho falta te caes al suelo no te puedes mover durante X tiempo
     public bool falta;
@@ -21,10 +22,14 @@ public class Jugador : MonoBehaviour {
 	public float magnitud = 0;
     public Vector2 posicionInicial;
 	public GameObject posicion;
+	private Animator ar;
+	public bool flipY = false;
+
 
 	void Start () {
         falta = false;
         tRobo = false;
+		ar = GetComponent<Animator>();
 	}
 
 	void Update () {
@@ -56,45 +61,54 @@ public class Jugador : MonoBehaviour {
     {//tiempo de robo, momento que haces falta y se te bloquea la direcion
         yield return new WaitForSeconds(0.7f);
         tRobo = false;
+		ar.SetBool ("falta", false);
     }
 
     private void movimiento()
 	{
-		if ((selector)&& (!falta) && (!tRobo))
-		{
-			if (Input.GetAxisRaw("Vertical") > 0)
-			{
+		if ((selector) && (!falta) && (!tRobo)) {
+			if (Input.GetAxisRaw ("Vertical") > 0) {
 				transform.position += Vector3.up * Time.deltaTime * vel;
-			}
-			else if (Input.GetAxisRaw("Vertical") < 0)
-			{
+				ar.SetBool ("corriendo", true);
+				if (flipY)
+				{
+					transform.localScale = new Vector3(transform.localScale.x, -transform.localScale.y);
+					flipY = false;
+				}
+			} else if (Input.GetAxisRaw ("Vertical") < 0) {
 				transform.position += Vector3.down * Time.deltaTime * vel;
+				ar.SetBool ("corriendo", true);
+				if (!flipY)
+				{
+					transform.localScale = new Vector3(transform.localScale.x, -transform.localScale.y);
+					flipY = true;
+				}
 			}
 
-			if (Input.GetAxisRaw("Horizontal") > 0)
-			{
-				transform.position += new Vector3(1, 0) * Time.deltaTime * vel;
+			if (Input.GetAxisRaw ("Horizontal") > 0) {
+				transform.position += new Vector3 (1, 0) * Time.deltaTime * vel;
+			} else if (Input.GetAxisRaw ("Horizontal") < 0) {
+				transform.position -= new Vector3 (1, 0) * Time.deltaTime * vel;
 			}
-			else if (Input.GetAxisRaw("Horizontal") < 0)
-			{
-				transform.position -= new Vector3(1, 0) * Time.deltaTime * vel;
-			}
-			if (Input.GetKey(KeyCode.Space) && balonPies && !balonGolpeado)
-			{
-				balon.ultimoTocado=true;
+			if (Input.GetKey (KeyCode.Space) && balonPies && !balonGolpeado) {
+				balon.ultimoTocado = true;
 				balonPies = false;
 				balonGolpeado = true;
 				balon.interceptado = false;
 				balon.tiempo = true;
 				balon.fuerzaL = fuerzaGolpeo;
-                balon.fuerzaL = fuerzaGolpeo;
+				balon.fuerzaL = fuerzaGolpeo;
 				balon.direccion = new Vector2 (Input.GetAxisRaw ("Horizontal"), Input.GetAxisRaw ("Vertical"));
 				balon.golpeoV2 ();
 				//StartCoroutine(balon.Golpeo(fuerzaGolpeo));
-				StartCoroutine(setBalonGolpeadoFalse());
-				StartCoroutine(balon.setBalonTiempoFalse());
+				StartCoroutine (setBalonGolpeadoFalse ());
+				StartCoroutine (balon.setBalonTiempoFalse ());
 
 			}
+		} else 
+		{
+			ar.SetBool ("corriendo", false);
+			ar.SetBool ("parado", true);
 		}
 	}
 
@@ -130,9 +144,9 @@ public class Jugador : MonoBehaviour {
     {//pal Fixed
        if (Input.GetKey(KeyCode.C))
        {
-            Debug.Log("ME CAGO EN DIOS");
             dirFalta = new Vector3(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
             tRobo = true;
+			ar.SetBool ("falta", true);
             //movimiento falta en el puto fixed surprise madafaka
             //movimientoFalta();
             StartCoroutine(setTRoboFalse());
@@ -144,9 +158,7 @@ public class Jugador : MonoBehaviour {
        }
 
     }
-
-
-
+		
 
 	void FixedUpdate()
 	{

@@ -12,22 +12,23 @@ public class Rival : MonoBehaviour {
     public int fuerzaGolpeo = 10;
     public GameObject porteriaRival;
     public Vector2 posInicial;
+
     void Start () {
-		
 	}
-	
 	// Update is called once per frame
 	void Update () {
-		
 	}
+
     public Vector3 getPosicion()
     {
         return transform.position;
     }
+
     public void setPosicion(Vector3 pos)
     {
         transform.position = pos;
     }
+
     public void perseguir()
     {
         if (!balonPies)
@@ -54,6 +55,7 @@ public class Rival : MonoBehaviour {
             }
         }
     }
+
     public void conducirBalon()
     {
         if (balonPies && !balonGolpeado)
@@ -62,7 +64,6 @@ public class Rival : MonoBehaviour {
             ball.setPosicion(posbal);
         }
     }
-
 
     public void balonEnPies()
     {

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MngPartido : MonoBehaviour {
     public Balon balon;
@@ -16,6 +17,7 @@ public class MngPartido : MonoBehaviour {
     private bool quienSaca;
     private int ObGol;
     private int ObGol2;
+	public Text marcador;
 
 
     void Start () {
@@ -187,7 +189,14 @@ public class MngPartido : MonoBehaviour {
        
     }
 
-
+	private void actualizarMarcador()
+	{
+		if (marcador.text != gol + " - " + golesRivales) 
+		{
+			marcador.text = gol + " - " + golesRivales;
+		}	
+	
+	}
 
 
     private void FixedUpdate()
@@ -196,6 +205,7 @@ public class MngPartido : MonoBehaviour {
         golesRivales = golesRivales + palo3.Marcar();
 		saquesBanda ();
         observador();
+		actualizarMarcador ();
     }
 
 }

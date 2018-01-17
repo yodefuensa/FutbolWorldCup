@@ -1,10 +1,9 @@
-﻿﻿using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Balon : MonoBehaviour
 { 
-	//bool enPies = false;
 	Collider2D[] hits;
 	Vector3 posicion = new Vector3(0, 0);
 	public bool ultimoTocado; 

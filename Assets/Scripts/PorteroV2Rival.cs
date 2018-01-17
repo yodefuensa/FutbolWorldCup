@@ -11,8 +11,6 @@ public class PorteroV2Rival : MonoBehaviour {
 	public bool selector = false;
 	private int vel = 0;
 	public int fuerzaGolpeo = 20;
-	//magnitud se usa en el manager partido, para saber que jugadores estaran mas cerca al salir la pelota
-
 	public bool inputFalsoEspacio;
 	public GameObject posicion;
 
@@ -37,7 +35,8 @@ public class PorteroV2Rival : MonoBehaviour {
 		mngPortero ();
 	}
 
-	public IEnumerator inputFalsoEspacioTrue (){
+	public IEnumerator inputFalsoEspacioTrue ()
+	{
 		yield return new WaitForSeconds(.5f);
 		inputFalsoEspacio = true;
 	}

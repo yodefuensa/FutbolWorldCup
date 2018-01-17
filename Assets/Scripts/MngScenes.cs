@@ -8,16 +8,11 @@ public class MngScenes : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		
 	}
-
-    
-
 
 	public void Escenas()
 	{
@@ -30,6 +25,9 @@ public class MngScenes : MonoBehaviour {
             case "SelectSeleccion":
                 SceneManager.LoadScene("SelectAlineacion");
                 break;
+		case "SelectAlineacion":
+			SceneManager.LoadScene("pruebas");
+			break;
             default:
                 SceneManager.LoadScene("menu");
                 break;
