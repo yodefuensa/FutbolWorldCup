@@ -299,6 +299,7 @@
     <Compile Include="Assets\Scripts\PorteroV2.cs" />
     <Compile Include="Assets\Scripts\PorteroV2Rival.cs" />
     <Compile Include="Assets\Scripts\Rival.cs" />
+    <Compile Include="Assets\Scripts\Selector.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

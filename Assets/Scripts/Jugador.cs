@@ -10,7 +10,7 @@ public class Jugador : MonoBehaviour {
 	public bool balonPies = false;
 	public bool selector = false;
 	private int vel = 8;
-	public int fuerzaGolpeo = 20;
+	public int fuerzaGolpeo = 10;
     //robo es para saber si podremos robar la pelota
     public bool robo;
     //cuando se pulse C bloqueamos el movimiento y le damos la direccion de la falta
@@ -25,32 +25,38 @@ public class Jugador : MonoBehaviour {
 	private Animator ar;
 	public bool flipY = false;
 	public Selector seguidor;
+    public MngRival equipoRival;
 
 
 	void Start () {
         falta = false;
         tRobo = false;
-		ar = GetComponent<Animator>();
+        ar = GetComponent<Animator>();
 	}
 
 	void Update () {
 		Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, 1f);
-		if (hits.Length > 1) {
-			foreach (Collider2D hit in hits) {
-				if (hit.name == "balon") {
-					balonPies = true;
-					selector = true;
-					if (!balonGolpeado) {
-						balon.interceptado = true;
-					}
+        robo = false;
+        if (!falta)
+        {
+            foreach (Collider2D hit in hits)
+            {
+                if ((hit.name == "balon") && (!balon.interceptado))
+                {
+                    balonPies = true;
+                    selector = true;
+                    if (!balonGolpeado)
+                    {
+                        balon.interceptado = true;
+                    }
+
+                }
+                if (hit.tag == "balonPies")
+                {
                     robo = true;
                 }
-                else
-                {
-                    robo = false;
-                }
-			}
-		}
+            }
+        }
 
 	}
     public IEnumerator setFaltaFalse()
@@ -101,8 +107,10 @@ public class Jugador : MonoBehaviour {
 				balon.fuerzaL = fuerzaGolpeo;
 				balon.direccion = new Vector2 (Input.GetAxisRaw ("Horizontal"), Input.GetAxisRaw ("Vertical"));
 				balon.golpeoV2 ();
-				//StartCoroutine(balon.Golpeo(fuerzaGolpeo));
-				StartCoroutine (setBalonGolpeadoFalse ());
+
+
+                //StartCoroutine(balon.Golpeo(fuerzaGolpeo));
+                StartCoroutine (setBalonGolpeadoFalse ());
 				StartCoroutine (balon.setBalonTiempoFalse ());
 
 			}
@@ -136,7 +144,6 @@ public class Jugador : MonoBehaviour {
     {//pa Entrada
         if ((tRobo)&&(selector))
         {
-            Debug.Log("ME CAGO EN DIOS 2");
             transform.position += dirFalta * Time.deltaTime * vel;
         }
     }
@@ -154,7 +161,13 @@ public class Jugador : MonoBehaviour {
             //animacion 
             if (robo)
             {
-                
+                equipoRival.limpiarBalonPies();
+                //equipoRival.rivalCercano();
+                equipoRival.Rival[equipoRival.rivalCercano()].falta = true;
+                StartCoroutine (equipoRival.Rival[equipoRival.rivalCercano()].setFaltaFalse());
+                balonPies = true;
+
+
             }
        }
 
@@ -175,6 +188,14 @@ public class Jugador : MonoBehaviour {
 		conducirBalon();
         movimientoFalta();
 		marcar ();
-	}
+        if (!balonPies)
+        {
+            this.tag = "Jugador";
+        }
+        else
+        {
+            this.tag = "balonPies";
+        }
+    }
 
 }

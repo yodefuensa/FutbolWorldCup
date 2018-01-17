@@ -9,6 +9,7 @@ TagManager:
   - Jugador
   - ZonaCaliente
   - palo
+  - balonPies
   layers:
   - Default
   - TransparentFX

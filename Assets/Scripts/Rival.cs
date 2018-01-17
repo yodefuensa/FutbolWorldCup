@@ -8,12 +8,23 @@ public class Rival : MonoBehaviour {
     public Balon ball;
     public bool balonGolpeado = false;
     public bool balonPies = false;
-    private int vel = 0;
+    private int vel = 6;
     public int fuerzaGolpeo = 10;
     public GameObject porteriaRival;
     public Vector2 posInicial;
+    public ManagerPersonajes eqContra;
+    public Vector3 dirFalta;
+    //zasca te han hecho falta te caes al suelo no te puedes mover durante X tiempo
+    public bool falta;
+    //zasca te han hecho falta te caes al suelo no te puedes mover durante X tiempo
+    public bool robo;
+    //cuando se pulse C bloqueamos el movimiento y le damos la direccion de la falta
+    public bool tRobo;
+    public bool fakeInputC;
 
     void Start () {
+        fakeInputC = false;
+        falta = false;
 	}
 	// Update is called once per frame
 	void Update () {
@@ -27,6 +38,24 @@ public class Rival : MonoBehaviour {
     public void setPosicion(Vector3 pos)
     {
         transform.position = pos;
+    }
+
+    public IEnumerator setFaltaFalse()
+    {//si te hacen falta poner bloqueo
+        yield return new WaitForSeconds(2f);
+        falta = false;
+    }
+
+    public IEnumerator setFakeInputCFalse()
+    {//si te hacen falta poner bloqueo
+        yield return new WaitForSeconds(2f);
+        fakeInputC = false;
+    }
+
+    public IEnumerator setTRoboFalse()
+    {//tiempo de robo, momento que haces falta y se te bloquea la direcion
+        yield return new WaitForSeconds(0.7f);
+        tRobo = false;
     }
 
     public void perseguir()
@@ -55,6 +84,41 @@ public class Rival : MonoBehaviour {
             }
         }
     }
+    public void movimientoFalta()
+    {//pa Entrada
+        if ((tRobo) && (fakeInputC))
+        {
+            transform.position += dirFalta * Time.deltaTime * vel;
+        }
+    }
+
+    public void hacerFalta()
+    {
+        if ((ball.interceptado) && (ball.ultimoTocado))
+        {
+            Vector3 distancia = new Vector3(3, 3);
+            distancia = ball.transform.position - transform.position;
+            if (distancia.magnitude < 4f)
+            {
+                fakeInputC = true;
+                StartCoroutine(setFakeInputCFalse());
+                if (fakeInputC)
+                {
+                    tRobo = true;
+                    StartCoroutine(setTRoboFalse());
+                    dirFalta = distancia.normalized;
+                    if (robo)
+                    {
+                        eqContra.limpiarBalonPies();
+                        StartCoroutine(eqContra.jugadores[eqContra.jugadorCercano()].setFaltaFalse());
+                        balonPies = true;
+                        
+                    }
+                }
+            }
+        }
+    }
+
 
     public void conducirBalon()
     {
@@ -89,14 +153,16 @@ public class Rival : MonoBehaviour {
         
     }
 
+
     public void FixedUpdate()
     {
         Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, 1f);
-        if (hits.Length > 1)
+        if (!falta)
         {
+            robo = false;
             foreach (Collider2D hit in hits)
             {
-                if (hit.name == "balon")
+                if ((hit.name == "balon")&&(!ball.interceptado))
                 {
                     balonPies = true;
                     if (!balonGolpeado)
@@ -105,11 +171,21 @@ public class Rival : MonoBehaviour {
                     }
 
                 }
+                if (balonPies)
+                    ball.ultimoTocado = false;
+                if (hit.tag == "balonPies")
+                    robo = true;
             }
+            
         }
         conducirBalon();
         balonEnPies();
+        hacerFalta();
+        movimientoFalta();
+        if (!balonPies)
+            this.tag = "Rival";
+        else
+            this.tag = "balonPies";
     }
-
 
 }

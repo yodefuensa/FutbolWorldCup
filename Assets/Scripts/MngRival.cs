@@ -17,7 +17,8 @@ public class MngRival : MonoBehaviour {
 	void Update () {
 	}
 
-    private int rivalCercano()
+
+    public int rivalCercano()
     {//devuelve la posicion del array del jugador mas cercano
         int posicion = 0;
         Vector3 distancia = new Vector3(3, 3);
@@ -89,6 +90,14 @@ public class MngRival : MonoBehaviour {
         }
     } 
      */
+
+    public void limpiarBalonPies()
+    {
+        for (int n = 0; n < Rival.Length; n++)
+        {
+            Rival[n].balonPies = false;
+        }
+    }
 
 
     private void FixedUpdate()

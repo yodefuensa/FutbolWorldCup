@@ -17,10 +17,12 @@ public class Balon : MonoBehaviour
 	// Use this for initialization
 
 	void Start(){
-	}
+        interceptado = false;
+    }
 
 	void awake(){
-		balonFuera = false;	
+		balonFuera = false;
+
 	}	
 
 	void Update(){
@@ -62,15 +64,12 @@ public class Balon : MonoBehaviour
 
 	public void golpeoV2 ()
     {
-		if (!interceptado)
+		if ((!interceptado) && (tiempo))
         {
-			if (tiempo)
-            {
-				Debug.Log ("golpeoV2 tercera fase");
-				transform.position += direccion * Time.deltaTime * fuerzaL;
-				interceptado = false;
-			}
-		}
+			transform.position += direccion * Time.deltaTime * fuerzaL;
+			interceptado = false;
+	    }
+		
 	}
 
 

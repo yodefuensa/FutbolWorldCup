@@ -20,7 +20,7 @@ public class ManagerPersonajes : MonoBehaviour {
         //FUCK ESTABLECE LA ZONA DE ACCION Y POSICION INICAL
     }
 
-    private int jugadorCercano()
+    public int jugadorCercano()
     {//devuelve la posicion del array del jugador mas cercano
         int posicion = 0;
         Vector3 distancia = new Vector3(3, 3);
@@ -76,6 +76,12 @@ public class ManagerPersonajes : MonoBehaviour {
 		}
 	}
     
+    public void limpiarBalonPies()
+    {
+        for (int n = 0; n < jugadores.Length; n++)
+            jugadores[n].balonPies = false;
+    }
+
 	private void limpiarSelector()
     {
         for (int n = 0; n < jugadores.Length; n++)
