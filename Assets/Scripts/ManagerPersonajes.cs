@@ -8,6 +8,7 @@ public class ManagerPersonajes : MonoBehaviour {
     public PorteroV2 benji;
     public Balon balon;
 
+
     void Start(){
     }
 
@@ -92,6 +93,7 @@ public class ManagerPersonajes : MonoBehaviour {
             jugadores[pos].selector = true;
         }
     }
+
 
 
     private void LateUpdate()

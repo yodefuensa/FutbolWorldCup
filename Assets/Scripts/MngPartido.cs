@@ -20,6 +20,7 @@ public class MngPartido : MonoBehaviour {
 	public Text marcador;
 
 
+
     void Start () {
         gol = 0;
         golesRivales = 0;

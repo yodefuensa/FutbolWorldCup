@@ -24,6 +24,7 @@ public class Jugador : MonoBehaviour {
 	public GameObject posicion;
 	private Animator ar;
 	public bool flipY = false;
+	public Selector seguidor;
 
 
 	void Start () {
@@ -108,7 +109,7 @@ public class Jugador : MonoBehaviour {
 		} else 
 		{
 			ar.SetBool ("corriendo", false);
-			ar.SetBool ("parado", true);
+			ar.SetBool ("falta", false);
 		}
 	}
 
@@ -158,6 +159,13 @@ public class Jugador : MonoBehaviour {
        }
 
     }
+
+	private void marcar() {
+		if (selector){
+			Vector3 posicionNuestra = new Vector3(transform.position.x, transform.position.y);
+			seguidor.setPosicion(posicionNuestra);
+		}
+	}
 		
 
 	void FixedUpdate()
@@ -166,6 +174,7 @@ public class Jugador : MonoBehaviour {
 		movimiento();
 		conducirBalon();
         movimientoFalta();
+		marcar ();
 	}
 
 }

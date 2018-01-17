@@ -42,7 +42,9 @@ public class MngRival : MonoBehaviour {
         }
         return posicion;
     }
-	public IEnumerator inputFalsoEspacioTrue (){
+	public IEnumerator inputFalsoEspacioTrue ()
+	{//mientras se ejecuta falso espacio esta a false, lo pone a true al final
+// no tengo claro que coño hace aqui, sirve para implementar un golpeo igual que en portero
 		yield return new WaitForSeconds(.5f);
 		inputFalsoEspacio = true;
 	}

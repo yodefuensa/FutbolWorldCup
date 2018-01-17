@@ -1,0 +1,253 @@
+yeah documentacion en texto plano
+
+JUGADOR
+variables:
+  public Balon balon;
+  public bool balonGolpeado = false;
+  public bool balonPies = false;
+  public bool selector = false;
+  private int vel = 8;
+  public int fuerzaGolpeo = 20;
+  //robo es para saber si podremos robar la pelota
+  public bool robo;
+  //cuando se pulse C bloqueamos el movimiento y le damos la direccion de la falta
+  public bool tRobo;
+  //zasca te han hecho falta te caes al suelo no te puedes mover durante X tiempo
+  public bool falta;
+  //magnitud se usa en el manager partido, para saber que jugadores estaran mas cerca al salir la pelota
+  public Vector3 dirFalta;
+  public float magnitud = 0;
+  public Vector2 posicionInicial;
+  public GameObject posicion;
+  private Animator ar;
+  public bool flipY = false;
+
+funciones:
+
+  public IEnumerator setFaltaFalse()
+  {//si te hacen falta poner bloqueo
+
+  public IEnumerator setTRoboFalse()
+    {//tiempo de robo, momento que haces falta y se te bloquea la direcion
+
+  private void movimiento()
+	{//movimiento del jugador, flip del sprite, contiene animaciones, y al pulsar espacio llama a todo lo necesario para golpear balon
+
+  public IEnumerator setBalonGolpeadoFalse()
+  {//para no tocar el balon al golpearlo
+
+  public void conducirBalon()
+	{//si el balon esta en nuestros pies, establece su posicion +0.5f de la nuestra
+
+  public void movimientoFalta()
+  {//direccion en la que nos movemos al mover la falta, bloquea cambiar la direccion del movimiento
+
+  update(){
+  //comprobamos las colisiones, si el balon esta en los pies o tenemos opciones de robo
+
+BALON
+variables:
+  Collider2D[] hits;
+  Vector3 posicion = new Vector3(0, 0);
+  //true tu equipo, false equipo rival para ultimo tocado
+  public bool ultimoTocado;
+  //interceptado nos dice si el balon esta en el campo o en los pies de alguien
+  public bool interceptado = false;
+  public bool balonFuera;
+  //creo que fuerzaL podria quitarla,
+  public int fuerzaL = 4;
+  public bool tiempo = false;
+  public Vector3 direccion = new Vector3(0,0);
+
+funciones:
+
+  public void setDireccion(Vector3 direccion,int fuerza)
+  {//la uso para el golpeo, obviamente deberia darle un repaso
+
+  public void setPosicion(Vector3 pos)
+  {//la uso?
+
+  public Vector3 getPosicion()
+  {//por dios si posicion es publico en que cojones pensaba
+
+  public IEnumerator setBalonTiempoFalse()
+  {//para no tocar el balon al golpearlo... PERO SI ESTA EN JUGADOR AHI MI MADRE
+
+  public void golpeoV2 ()
+  {//metodo de golpeo que funciona, va en el fixed, le da la direcion al golpeo
+
+  public Collider2D[] GolpeoBalon()
+  {//palfixed, ver si algo TOCA balon
+  //ni en el fixed ni hostias, no es una funcion, no lo llamo en ningun lado. REVISAR
+
+RIVALES
+variables:
+
+  public Balon ball;
+  public bool balonGolpeado = false;
+  public bool balonPies = false;
+  private int vel = 0;
+  public int fuerzaGolpeo = 10;
+  public GameObject porteriaRival;
+  public Vector2 posInicial;
+
+funciones:
+  public Vector3 getPosicion()
+  {//NO COMENTS
+
+  public void setPosicion(Vector3 pos)
+  {//NO COMENTS
+
+  public void perseguir()
+  {//Si no tenemos el balon en los pies va a por el
+
+  public void conducirBalon()
+  {// si tenemos el balon nos lo coloca cerca de nosotros
+
+  public void balonEnPies()
+  {//por ahora esta funcion de mierda nos conduce el jugador a la porteria.
+
+  fixed{
+  //collider chequeando colisiones y balon en pies y lals funciones conducir y balon en pies
+
+PORTERO V2 (sacado de jugador)
+variables:
+
+  public Balon balon;
+  public bool balonGolpeado = false;
+  public bool balonPies = false;
+  public bool selector = false;
+  private int vel = 8;
+  public int fuerzaGolpeo = 20;
+
+funciones
+  private void movimiento()
+  {//mas simple persigue la pelota hasta el infinito
+
+  public IEnumerator setBalonGolpeadoFalse()
+  {//para no tocar el balon al golpearlo
+
+  public void conducirBalon()
+  {pff se puede borrar deberia usarla mas adelante
+
+PORTERO V2 RIVAL
+variables
+  public Balon balon;
+  public bool balonGolpeado = false;
+  public bool balonPies = false;
+  public bool selector = false;
+  private int vel = 0;
+  public int fuerzaGolpeo = 20;
+  //ja como se golpea la pelota pulsando espacio hemos creado una variable que se ponga a true automaticamente para golpear
+  public bool inputFalsoEspacio;
+  public GameObject posicion;
+
+funciones:
+  public IEnumerator inputFalsoEspacioTrue ()
+  {//esoeramos y ponemos espacio a true en .5f asi el portero retine la pelota unos momentos, manera cutre de crear animacion
+
+  private void movimiento()
+  {//mas simple persigue la pelota hasta el infinito
+
+  private void mngPortero()
+  {//golpeamos el balon al cabo de X segundos y todo lo que consellva golpeoV2
+
+  public IEnumerator setBalonGolpeadoFalse()
+  {//para no tocar el balon al golpearlo
+
+  public void conducirBalon()
+  {pff se puede borrar deberia usarla mas adelante
+
+MANAGERPERSONAJES
+variables:
+  public Jugador[] jugadores;
+  public PorteroV2 benji;
+  public Balon balon;
+
+funciones:
+  private void setPosInicial()
+  {//FUCK ESTABLECE LA ZONA DE ACCION Y POSICION INICAL
+  //puesto ene el manager partido, se puede borrar o traer la funcion aqui.
+
+  private int jugadorCercano()
+  {//devuelve la posicion del array del jugador mas cercano
+
+  private void escanerSelector(){
+  //impide que haya mas de un jugador seleccionado
+  //implementado limpiador balonPies (y mas de un balon en los pies)
+
+  private void limpiarSelector()
+  {//pone todos los select a false, normalmente despues de esto ponemos uno a inputFalsoEspacioTrue
+
+  public void cambiarJugador()
+  {//si pulsas la tecla "control" selecciona el jugador mas cercano
+
+MNGRIVAL
+variables:
+
+  public Rival[] Rival;
+  public PorteroV2Rival benji;
+  public Balon balon;
+  public GameObject porteria;
+  public GameObject porteriaRival;
+  public bool inputFalsoEspacio;
+
+funciones:
+private int rivalCercano()
+{//devuelve la posicion del array del jugador mas cercano
+
+  public IEnumerator inputFalsoEspacioTrue ()
+  {//mientras se ejecuta falso espacio esta a false, lo pone a true al final
+  // no tengo claro que coño hace aqui, sirve para implementar un golpeo igual que en portero
+
+MNGPARTIDO
+variables:
+  public Balon balon;
+  public Vector3 balonPosicionSaque;
+  public GameObject esquina1;
+  public GameObject esquina4;
+  public Palo palo1;
+  public Palo palo3;
+  public ManagerPersonajes mngEqui;
+  public MngRival mngRiv;
+  public int gol;
+  public int golesRivales;
+  private bool quienSaca;
+  private int ObGol;
+  private int ObGol2;
+  public Text marcador;
+
+funciones:
+    public void ordeanar()
+  	{//ordenado la propiedad jugadores de mngEqui, en base a la propiedad magnitud de los jugadores,
+
+    private void colocarPersonajesSaque()
+    {//establecen la posicion inicial
+
+    private void colocarPersonajesSaqueRival()
+    {//establecen la posicion inicial si el saque le hcen ellos
+
+    private void saqueInicial()
+    {utiliza las dos funciones de arriba para colocar los jugadores y el balonPies
+
+    private void saquesBanda()
+    {//aun sin implementar el saque rival
+
+    public void observador()
+    {//comprueba si ha habiado un gol y llama al saque inicial
+
+    private void actualizarMarcador()
+    {//actualiza el marcador
+
+PALO
+variables:
+
+  //evita que se marque muchas veces por una pasada
+  public bool pausa;
+
+funciones:
+  public IEnumerator setPausaFalse()
+  {//utiliza la variable de arriba
+
+  public int Marcar()
+  {//devuelve 1 que sirve para en mng partido sume gol +1

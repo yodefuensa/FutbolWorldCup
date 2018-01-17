@@ -96,7 +96,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11c84fdbbaaa6f74187c088e39b8363d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  balon: {fileID: 0}
+  balon: {fileID: 114223492644720566, guid: 628d2039e27238b44baa7145a1983a29, type: 2}
   balonGolpeado: 0
   balonPies: 0
   selector: 0
@@ -109,6 +109,7 @@ MonoBehaviour:
   posicionInicial: {x: 0, y: 0}
   posicion: {fileID: 0}
   flipY: 0
+  seguidor: {fileID: 0}
 --- !u!212 &212309096447218028
 SpriteRenderer:
   m_ObjectHideFlags: 1
