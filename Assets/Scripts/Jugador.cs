@@ -149,7 +149,7 @@ public class Jugador : MonoBehaviour {
 
     public void Entrada()
     {//pal Fixed
-       if (Input.GetKey(KeyCode.C))
+		if ((Input.GetKey(KeyCode.C))&&(selector))
        {
             dirFalta = new Vector3(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
             tRobo = true;
@@ -183,19 +183,22 @@ public class Jugador : MonoBehaviour {
 
 	void FixedUpdate()
 	{
-        Entrada();
+
 		movimiento();
 		conducirBalon();
-        movimientoFalta();
 		marcar ();
+		movimientoFalta();
         if (!balonPies)
         {
+			Entrada();
             this.tag = "Jugador";
         }
         else
         {
             this.tag = "balonPies";
-        }
+			balon.ultimoTocado = true;
+
+		}
     }
 
 }

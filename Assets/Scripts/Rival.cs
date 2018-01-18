@@ -86,7 +86,7 @@ public class Rival : MonoBehaviour {
     }
     public void movimientoFalta()
     {//pa Entrada
-        if ((tRobo) && (fakeInputC))
+		if ((tRobo) && (fakeInputC))
         {
             transform.position += dirFalta * Time.deltaTime * vel;
         }
@@ -94,27 +94,27 @@ public class Rival : MonoBehaviour {
 
     public void hacerFalta()
     {
-        if ((ball.interceptado) && (ball.ultimoTocado))
+		if ((ball.interceptado) && (ball.ultimoTocado))
         {
             Vector3 distancia = new Vector3(3, 3);
             distancia = ball.transform.position - this.transform.position;
-            if (distancia.magnitude < 4)
+			if (distancia.magnitude < 4)
             {
-                Debug.Log("FASE 2");
-                fakeInputC = true;
-                StartCoroutine(setFakeInputCFalse());
-                if (fakeInputC)
-                {
-                    tRobo = true;
-                    StartCoroutine(setTRoboFalse());
-                    dirFalta = distancia.normalized;
-                    if (robo)
-                    {
-                        eqContra.limpiarBalonPies();
-                        eqContra.jugadores[eqContra.jugadorCercano()].falta = true;
-                        StartCoroutine(eqContra.jugadores[eqContra.jugadorCercano()].setFaltaFalse());
-                        balonPies = true;
-                        
+				if (!falta){
+	                fakeInputC = true;
+	                StartCoroutine(setFakeInputCFalse());
+					if (fakeInputC)
+	                {
+	                    tRobo = true;
+	                    StartCoroutine(setTRoboFalse());
+	                    dirFalta = distancia.normalized;
+						if (robo)
+						{
+							eqContra.limpiarBalonPies ();
+							eqContra.jugadores [eqContra.jugadorCercano ()].falta = true;
+							StartCoroutine (eqContra.jugadores [eqContra.jugadorCercano ()].setFaltaFalse ());
+							balonPies = true;
+						}  
                     }
                 }
             }
