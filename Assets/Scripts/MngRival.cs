@@ -45,51 +45,10 @@ public class MngRival : MonoBehaviour {
     }
 	public IEnumerator inputFalsoEspacioTrue ()
 	{//mientras se ejecuta falso espacio esta a false, lo pone a true al final
-// no tengo claro que coño hace aqui, sirve para implementar un golpeo igual que en portero
+    // no tengo claro que coño hace aqui, sirve para implementar un golpeo igual que en portero
 		yield return new WaitForSeconds(.5f);
 		inputFalsoEspacio = true;
 	}
-
-    /*
-     	private void escanerSelector(){
-	//impide que haya mas de un jugador seleccionado
-	//implementado limpiador balonPies 
-		int count = 0;
-		for (int n = 0; n<jugadores.Length; n++){
-			if (jugadores[n].selector ==true)
-				count++;
-			if (count > 1) {
-				Debug.Log ("count mayor de uno");
-				limpiarSelector ();
-				int pos = jugadorCercano();
-				jugadores[pos].selector = true;
-			}
-		}
-		int count2 = 0;
-		for (int n = 0; n<jugadores.Length; n++){
-			if (jugadores[n].balonPies ==true)
-				count2++;
-			if (count2 > 1) {
-				Debug.Log ("count2 mayor de uno");
-				for (int m = 0; m < jugadores.Length; m++)
-				{	
-					jugadores[m].balonPies = false;
-				}
-				int pos = jugadorCercano();
-				jugadores[pos].selector = true;
-				jugadores [pos].balonPies = true;
-			}
-		}
-	}
-    
-	private void limpiarSelector()
-    {
-        for (int n = 0; n < jugadores.Length; n++)
-        {	
-            jugadores[n].selector = false;
-        }
-    } 
-     */
 
     public void limpiarBalonPies()
     {
@@ -104,8 +63,6 @@ public class MngRival : MonoBehaviour {
     {
         int cercano = rivalCercano();
         Rival[cercano].perseguir(); 
-
-
 
     }
 }

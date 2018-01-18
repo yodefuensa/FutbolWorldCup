@@ -104,7 +104,6 @@ public class Jugador : MonoBehaviour {
 				balon.interceptado = false;
 				balon.tiempo = true;
 				balon.fuerzaL = fuerzaGolpeo;
-				balon.fuerzaL = fuerzaGolpeo;
 				balon.direccion = new Vector2 (Input.GetAxisRaw ("Horizontal"), Input.GetAxisRaw ("Vertical"));
 				balon.golpeoV2 ();
 
@@ -166,6 +165,7 @@ public class Jugador : MonoBehaviour {
                 equipoRival.Rival[equipoRival.rivalCercano()].falta = true;
                 StartCoroutine (equipoRival.Rival[equipoRival.rivalCercano()].setFaltaFalse());
                 balonPies = true;
+                //balon.ultimoTocado = true;
 
 
             }

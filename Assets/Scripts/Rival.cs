@@ -8,7 +8,7 @@ public class Rival : MonoBehaviour {
     public Balon ball;
     public bool balonGolpeado = false;
     public bool balonPies = false;
-    private int vel = 6;
+    private int vel = 4;
     public int fuerzaGolpeo = 10;
     public GameObject porteriaRival;
     public Vector2 posInicial;
@@ -97,9 +97,10 @@ public class Rival : MonoBehaviour {
         if ((ball.interceptado) && (ball.ultimoTocado))
         {
             Vector3 distancia = new Vector3(3, 3);
-            distancia = ball.transform.position - transform.position;
-            if (distancia.magnitude < 4f)
+            distancia = ball.transform.position - this.transform.position;
+            if (distancia.magnitude < 4)
             {
+                Debug.Log("FASE 2");
                 fakeInputC = true;
                 StartCoroutine(setFakeInputCFalse());
                 if (fakeInputC)
@@ -110,6 +111,7 @@ public class Rival : MonoBehaviour {
                     if (robo)
                     {
                         eqContra.limpiarBalonPies();
+                        eqContra.jugadores[eqContra.jugadorCercano()].falta = true;
                         StartCoroutine(eqContra.jugadores[eqContra.jugadorCercano()].setFaltaFalse());
                         balonPies = true;
                         

@@ -496,6 +496,11 @@ Prefab:
       propertyPath: porteriaRival
       value: 
       objectReference: {fileID: 1201831225}
+    - target: {fileID: 114741572423761460, guid: 19cd0b78f7e1823428a0105c08b5705e,
+        type: 2}
+      propertyPath: eqContra
+      value: 
+      objectReference: {fileID: 736067491}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 19cd0b78f7e1823428a0105c08b5705e, type: 2}
   m_IsPrefabParent: 0
@@ -624,6 +629,11 @@ Prefab:
       propertyPath: porteriaRival
       value: 
       objectReference: {fileID: 1201831225}
+    - target: {fileID: 114741572423761460, guid: 19cd0b78f7e1823428a0105c08b5705e,
+        type: 2}
+      propertyPath: eqContra
+      value: 
+      objectReference: {fileID: 736067491}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 19cd0b78f7e1823428a0105c08b5705e, type: 2}
   m_IsPrefabParent: 0
@@ -831,6 +841,11 @@ Prefab:
       propertyPath: porteriaRival
       value: 
       objectReference: {fileID: 1201831225}
+    - target: {fileID: 114741572423761460, guid: 19cd0b78f7e1823428a0105c08b5705e,
+        type: 2}
+      propertyPath: eqContra
+      value: 
+      objectReference: {fileID: 736067491}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 19cd0b78f7e1823428a0105c08b5705e, type: 2}
   m_IsPrefabParent: 0
@@ -1233,6 +1248,11 @@ Prefab:
       propertyPath: porteriaRival
       value: 
       objectReference: {fileID: 1201831225}
+    - target: {fileID: 114741572423761460, guid: 19cd0b78f7e1823428a0105c08b5705e,
+        type: 2}
+      propertyPath: eqContra
+      value: 
+      objectReference: {fileID: 736067491}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 19cd0b78f7e1823428a0105c08b5705e, type: 2}
   m_IsPrefabParent: 0
@@ -1439,6 +1459,11 @@ Prefab:
       propertyPath: porteriaRival
       value: 
       objectReference: {fileID: 1201831225}
+    - target: {fileID: 114741572423761460, guid: 19cd0b78f7e1823428a0105c08b5705e,
+        type: 2}
+      propertyPath: eqContra
+      value: 
+      objectReference: {fileID: 736067491}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 19cd0b78f7e1823428a0105c08b5705e, type: 2}
   m_IsPrefabParent: 0
@@ -1710,6 +1735,11 @@ Prefab:
       propertyPath: porteriaRival
       value: 
       objectReference: {fileID: 1201831225}
+    - target: {fileID: 114741572423761460, guid: 19cd0b78f7e1823428a0105c08b5705e,
+        type: 2}
+      propertyPath: eqContra
+      value: 
+      objectReference: {fileID: 736067491}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 19cd0b78f7e1823428a0105c08b5705e, type: 2}
   m_IsPrefabParent: 0
@@ -1890,6 +1920,11 @@ Prefab:
       propertyPath: porteriaRival
       value: 
       objectReference: {fileID: 1201831225}
+    - target: {fileID: 114741572423761460, guid: 19cd0b78f7e1823428a0105c08b5705e,
+        type: 2}
+      propertyPath: eqContra
+      value: 
+      objectReference: {fileID: 736067491}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 19cd0b78f7e1823428a0105c08b5705e, type: 2}
   m_IsPrefabParent: 0
@@ -2223,6 +2258,11 @@ Prefab:
       propertyPath: porteriaRival
       value: 
       objectReference: {fileID: 1201831225}
+    - target: {fileID: 114741572423761460, guid: 19cd0b78f7e1823428a0105c08b5705e,
+        type: 2}
+      propertyPath: eqContra
+      value: 
+      objectReference: {fileID: 736067491}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 19cd0b78f7e1823428a0105c08b5705e, type: 2}
   m_IsPrefabParent: 0
@@ -2410,6 +2450,11 @@ Prefab:
       propertyPath: porteriaRival
       value: 
       objectReference: {fileID: 1201831225}
+    - target: {fileID: 114741572423761460, guid: 19cd0b78f7e1823428a0105c08b5705e,
+        type: 2}
+      propertyPath: eqContra
+      value: 
+      objectReference: {fileID: 736067491}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 19cd0b78f7e1823428a0105c08b5705e, type: 2}
   m_IsPrefabParent: 0
@@ -2946,6 +2991,11 @@ Prefab:
       propertyPath: porteriaRival
       value: 
       objectReference: {fileID: 1201831225}
+    - target: {fileID: 114741572423761460, guid: 19cd0b78f7e1823428a0105c08b5705e,
+        type: 2}
+      propertyPath: eqContra
+      value: 
+      objectReference: {fileID: 736067491}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 19cd0b78f7e1823428a0105c08b5705e, type: 2}
   m_IsPrefabParent: 0
