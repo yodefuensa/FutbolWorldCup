@@ -97,7 +97,7 @@ public class Jugador : MonoBehaviour {
 			} else if (Input.GetAxisRaw ("Horizontal") < 0) {
 				transform.position -= new Vector3 (1, 0) * Time.deltaTime * vel;
 			}
-			if (Input.GetKey (KeyCode.Space) && balonPies && !balonGolpeado) {
+			if ((Input.GetKey (KeyCode.Space) && balonPies && !balonGolpeado)) {
 				balon.ultimoTocado = true;
 				balonPies = false;
 				balonGolpeado = true;
