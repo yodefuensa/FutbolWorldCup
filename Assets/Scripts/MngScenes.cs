@@ -6,8 +6,11 @@ using UnityEngine.UI;
 
 public class MngScenes : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
+    public static string pais;
+    public static string alineacion;
+
+    // Use this for initialization
+    void Start () {
 	}
 	
 	// Update is called once per frame
@@ -25,15 +28,54 @@ public class MngScenes : MonoBehaviour {
             case "SelectSeleccion":
                 SceneManager.LoadScene("SelectAlineacion");
                 break;
-		case "SelectAlineacion":
-			SceneManager.LoadScene("pruebas");
+		    case "SelectAlineacion":
+			    SceneManager.LoadScene("pruebas");
 			break;
             default:
                 SceneManager.LoadScene("menu");
                 break;
         }
 
-
-
     }
+    public void rusia()
+    {
+        pais = "rusia";
+    }
+    public void spain()
+    {
+        pais = "spain";
+    }
+    public void argentina()
+    {
+        pais = "argentina";
+    }
+    public void brasil()
+    {
+        pais = "brasil";
+    }
+    public void china()
+    {
+        pais = "china";
+    }
+    public void japon()
+    {
+        pais = "japon";
+    }
+    public void alemania()
+    {
+        pais = "alemania";
+    }
+    public void usa()
+    {
+        pais = "usa";
+    }
+    public void aliA()
+    {
+        alineacion = "A";
+    }
+    public void aliB()
+    {
+        alineacion = "B";
+    }
+
 }

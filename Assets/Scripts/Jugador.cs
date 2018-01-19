@@ -9,8 +9,8 @@ public class Jugador : MonoBehaviour {
 	public bool balonGolpeado = false;
 	public bool balonPies = false;
 	public bool selector = false;
-	private int vel = 6;
-	private int fuerzaGolpeo = 10;
+	private int vel = 9;
+	private int fuerzaGolpeo = 15;
     //robo es para saber si podremos robar la pelota
     public bool robo;
     //cuando se pulse C bloqueamos el movimiento y le damos la direccion de la falta
@@ -25,10 +25,15 @@ public class Jugador : MonoBehaviour {
 	private Animator ar;
 	public bool flipY = false;
 	public Selector seguidor;
+    public GameObject equipoRivalGO;
     public MngRival equipoRival;
 
+    private void Awake()
+    {
+        equipoRival = equipoRivalGO.GetComponent<MngRival>();
+    }
 
-	void Start () {
+    void Start () {
         falta = false;
         tRobo = false;
         ar = GetComponent<Animator>();
@@ -72,74 +77,110 @@ public class Jugador : MonoBehaviour {
     }
 
     private void movimiento()
-	{
-		if ((selector) && (!falta) && (!tRobo)) {
-			if (Input.GetAxisRaw ("Vertical") > 0) {
-				transform.position += Vector3.up * Time.deltaTime * vel;
-				ar.SetBool ("corriendo", true);
-				if (flipY)
-				{
-					transform.localScale = new Vector3(transform.localScale.x, -transform.localScale.y);
-					flipY = false;
-				}
-			} else if (Input.GetAxisRaw ("Vertical") < 0) {
-				transform.position += Vector3.down * Time.deltaTime * vel;
-				ar.SetBool ("corriendo", true);
-				if (!flipY)
-				{
-					transform.localScale = new Vector3(transform.localScale.x, -transform.localScale.y);
-					flipY = true;
-				}
-			}
+    {
+        if ((selector) && (!falta) && (!tRobo))
+        {
+            if (Input.GetAxisRaw("Vertical") > 0)
+            {
+                transform.position += Vector3.up * Time.deltaTime * vel;
+                ar.SetBool("corriendo", true);
+                if (flipY)
+                {
+                    transform.localScale = new Vector3(transform.localScale.x, -transform.localScale.y);
+                    flipY = false;
+                }
+            }
+            else if (Input.GetAxisRaw("Vertical") < 0)
+            {
+                transform.position += Vector3.down * Time.deltaTime * vel;
+                ar.SetBool("corriendo", true);
+                if (!flipY)
+                {
+                    transform.localScale = new Vector3(transform.localScale.x, -transform.localScale.y);
+                    flipY = true;
+                }
+            }
 
-			if (Input.GetAxisRaw ("Horizontal") > 0) {
-				transform.position += new Vector3 (1, 0) * Time.deltaTime * vel;
-			} else if (Input.GetAxisRaw ("Horizontal") < 0) {
-				transform.position -= new Vector3 (1, 0) * Time.deltaTime * vel;
-			}
-			if ((Input.GetKey (KeyCode.Space) && balonPies && !balonGolpeado)) {
-				balon.ultimoTocado = true;
-				balonPies = false;
-				balonGolpeado = true;
-				balon.interceptado = false;
-				balon.tiempo = true;
-				balon.fuerzaL = fuerzaGolpeo;
-				balon.direccion = new Vector2 (Input.GetAxisRaw ("Horizontal"), Input.GetAxisRaw ("Vertical"));
-				balon.golpeoV2 ();
-                StartCoroutine (setBalonGolpeadoFalse ());
-				StartCoroutine (balon.setBalonTiempoFalse ());
+            if (Input.GetAxisRaw("Horizontal") > 0)
+            {
+                transform.position += new Vector3(1, 0) * Time.deltaTime * vel;
+            }
+            else if (Input.GetAxisRaw("Horizontal") < 0)
+            {
+                transform.position -= new Vector3(1, 0) * Time.deltaTime * vel;
+            }
+            if ((Input.GetKey(KeyCode.Space) && balonPies && !balonGolpeado))
+            {
+                balon.ultimoTocado = true;
+                balonPies = false;
+                balonGolpeado = true;
+                balon.interceptado = false;
+                balon.tiempo = true;
+                balon.fuerzaL = fuerzaGolpeo;
+                balon.direccion = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+                balon.golpeoV2();
+                StartCoroutine(setBalonGolpeadoFalse());
+                StartCoroutine(balon.setBalonTiempoFalse());
 
-			}
-		} else 
-		{
-			ar.SetBool ("corriendo", false);
-			ar.SetBool ("falta", false);
-		}
-		float dist = transform.position.x - posicion.transform.position.x;
-		float dist2 = transform.position.y - posicion.transform.position.y;
-		if ((!selector)&&(dist<8) &&(!balon.ultimoTocado)&&(dist2<8)) {
-			if (transform.position.y > balon.transform.position.y + 1 || transform.position.y < balon.transform.position.y - 1
-			    || transform.position.x > balon.transform.position.x + 1 || transform.position.x < balon.transform.position.x - 1) {
-				if (transform.position.y > balon.transform.position.y) {
-					transform.position += Vector3.down * Time.deltaTime * vel;
-				}
-				if (transform.position.y < balon.transform.position.y) {
-					transform.position += Vector3.up * Time.deltaTime * vel;
-				}
-				if (transform.position.x > balon.transform.position.x) {
-					transform.position += Vector3.left * Time.deltaTime * vel;
-				}
-				if (transform.position.x < balon.transform.position.x) {
-					transform.position += Vector3.right * Time.deltaTime * vel;
-				}
-			}
-		}
-		if ((!balon.interceptado) && (!selector) && (dist < 20)) {
-			
-		}
+            }
+        }
+        else
+        {
+            ar.SetBool("corriendo", false);
+            ar.SetBool("falta", false);
+        }
+        Vector3 dist = transform.position - posicion.transform.position;
+
+        if ((dist.magnitude < 24f) && (!selector))
+        {
+            //si estamos dentro de la zona de accion
+            if (!balon.ultimoTocado)
+            {// y ellos tienen el balon
+                if (transform.position.y > balon.transform.position.y + 1 || transform.position.y < balon.transform.position.y - 1
+                    || transform.position.x > balon.transform.position.x + 1 || transform.position.x < balon.transform.position.x - 1)
+                {//vamos a por el balon
+                    if (transform.position.y > balon.transform.position.y)
+                    {
+                        transform.position += Vector3.down * Time.deltaTime * vel;
+                    }
+                    if (transform.position.y < balon.transform.position.y)
+                    {
+                        transform.position += Vector3.up * Time.deltaTime * vel;
+                    }
+                    if (transform.position.x > balon.transform.position.x)
+                    {
+                        transform.position += Vector3.left * Time.deltaTime * vel;
+                    }
+                    if (transform.position.x < balon.transform.position.x)
+                    {
+                        transform.position += Vector3.right * Time.deltaTime * vel;
+                    }
+                }
+            }
+            else
+            {//zona de accion y yo tengo el balon
+                if (transform.position.y > balon.transform.position.y)
+                {
+                    transform.position += Vector3.down * Time.deltaTime * vel;
+                }
+                if (transform.position.y < balon.transform.position.y)
+                    transform.position += Vector3.up * Time.deltaTime * vel;
+            }
+        }
+        if ((dist.magnitude>25f) &&(!selector)) 
+        {//si estamos fuera de la zona y no somos el selector
+            if (transform.position.y < posicion.transform.position.y)
+                transform.position += Vector3.up * Time.deltaTime * vel;
+            if (transform.position.y > posicion.transform.position.y)
+                transform.position += Vector3.down * Time.deltaTime * vel;
+            if (transform.position.x < posicion.transform.position.x)
+                transform.position += Vector3.right * Time.deltaTime * vel;
+            if (transform.position.x > posicion.transform.position.x)
+                transform.position += Vector3.left * Time.deltaTime * vel;
+        }
 
 
-	}
+    }
 
 	public IEnumerator setBalonGolpeadoFalse()
 	{//para no tocar el balon al golpearlo
