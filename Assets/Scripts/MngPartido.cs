@@ -49,6 +49,24 @@ public class MngPartido : MonoBehaviour {
 			}
 		}
 	}
+	public void ordeanar2()
+	{//ordenado la propiedad jugadores de mngEqui, en base a la propiedad magnitud de los jugadores,
+		for (int x = 0; x < mngRiv.Rival.Length-1; x++)
+		{
+			for (int k = 0; k < mngRiv.Rival.Length-1 - x;k++ )
+			{
+
+				if (mngRiv.Rival[k].magnitud < mngRiv.Rival[k + 1].magnitud)
+				{
+					Rival aux;
+					aux = mngRiv.Rival[k];
+					mngRiv.Rival[k] = mngRiv.Rival[k + 1];
+					mngRiv.Rival[k + 1] = aux;
+				}
+
+			}
+		}
+	}
 
     private void colocarPersonajesSaque()
     {
@@ -144,9 +162,24 @@ public class MngPartido : MonoBehaviour {
 			balonPosicionSaque = new Vector2 (balon.transform.position.x, balon.transform.position.y);
 			if (balon.ultimoTocado){
                 //SACA EQUIPO RIVAL
+				for (int n = 0; n < mngRiv.Rival.Length -1; n++){	
+					Vector3 distancia = new Vector3(3, 3); 
+					distancia = mngRiv.Rival[n].transform.position - balon.transform.position;
+					mngRiv.Rival[n].magnitud = distancia.magnitude;
+				}
+				ordeanar2();
+				if (balon.transform.position.x > 36f) {
+					mngRiv.Rival[0].transform.position = new Vector2 (balonPosicionSaque.x + .7f, balonPosicionSaque.y);
+					balon.transform.position = new Vector2 (balonPosicionSaque.x, balonPosicionSaque.y);
+				}
+				if (balon.transform.position.x < -36f) {
+					mngRiv.Rival [0].transform.position = new Vector2 (balonPosicionSaque.x - .7f, balonPosicionSaque.y);
+					balon.transform.position = new Vector2 (balonPosicionSaque.x, balonPosicionSaque.y);
+				}
+
             }
 			//cambiar por NOT cuando implemente los rivales
-            if (balon.ultimoTocado)
+            if (!balon.ultimoTocado)
 			{//SACA TU EQUIPO
 				for (int n = 0; n < mngEqui.jugadores.Length -1; n++){	
 					Vector3 distancia = new Vector3(3, 3); 

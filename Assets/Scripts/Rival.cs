@@ -8,12 +8,13 @@ public class Rival : MonoBehaviour {
     public Balon ball;
     public bool balonGolpeado = false;
     public bool balonPies = false;
-    private int vel = 4;
-    public int fuerzaGolpeo = 10;
+    private int vel = 6;
+    private int fuerzaGolpeo = 10;
     public GameObject porteriaRival;
     public Vector2 posInicial;
     public ManagerPersonajes eqContra;
     public Vector3 dirFalta;
+	public float magnitud = 0;
     //zasca te han hecho falta te caes al suelo no te puedes mover durante X tiempo
     public bool falta;
     //zasca te han hecho falta te caes al suelo no te puedes mover durante X tiempo
@@ -21,6 +22,7 @@ public class Rival : MonoBehaviour {
     //cuando se pulse C bloqueamos el movimiento y le damos la direccion de la falta
     public bool tRobo;
     public bool fakeInputC;
+	//public bool fakeInputSpace;
 
     void Start () {
         fakeInputC = false;
@@ -60,7 +62,7 @@ public class Rival : MonoBehaviour {
 
     public void perseguir()
     {
-        if (!balonPies)
+		if ((!balonPies)&&(!falta))
         {
             if (transform.position.y > ball.transform.position.y + 1 || transform.position.y < ball.transform.position.y - 1
                    || transform.position.x > ball.transform.position.x + 1 || transform.position.x < ball.transform.position.x - 1)
@@ -154,6 +156,32 @@ public class Rival : MonoBehaviour {
         }
         
     }
+	public IEnumerator setBalonGolpeadoFalse()
+	{//para no tocar el balon al golpearlo
+		yield return new WaitForSeconds(.5f);
+		balonGolpeado = false;
+		balonPies = false;
+	}
+
+	public void golpearPelota(){
+		if (balonPies) {
+			Vector3 distanciaPorteria = new Vector3();
+			distanciaPorteria = porteriaRival.transform.position - transform.position;
+			if (distanciaPorteria.magnitude < 17) {
+				Debug.Log ("igual te has pasado con la distancia de golpeo");
+				ball.ultimoTocado = false;
+				balonPies = false;
+				balonGolpeado = true;
+				ball.interceptado = false;
+				ball.tiempo = true;
+				ball.fuerzaL = fuerzaGolpeo;
+				ball.direccion = distanciaPorteria.normalized;
+				StartCoroutine (setBalonGolpeadoFalse ());
+				StartCoroutine (ball.setBalonTiempoFalse ());
+			}
+
+		}
+	}
 
 
     public void FixedUpdate()
@@ -180,10 +208,11 @@ public class Rival : MonoBehaviour {
             }
             
         }
-        conducirBalon();
-        balonEnPies();
-        hacerFalta();
-        movimientoFalta();
+		golpearPelota ();
+		conducirBalon ();
+		balonEnPies ();
+		hacerFalta ();
+		movimientoFalta ();
         if (!balonPies)
             this.tag = "Rival";
         else

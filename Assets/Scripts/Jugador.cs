@@ -9,8 +9,8 @@ public class Jugador : MonoBehaviour {
 	public bool balonGolpeado = false;
 	public bool balonPies = false;
 	public bool selector = false;
-	private int vel = 8;
-	public int fuerzaGolpeo = 10;
+	private int vel = 6;
+	private int fuerzaGolpeo = 10;
     //robo es para saber si podremos robar la pelota
     public bool robo;
     //cuando se pulse C bloqueamos el movimiento y le damos la direccion de la falta
@@ -20,7 +20,7 @@ public class Jugador : MonoBehaviour {
     //magnitud se usa en el manager partido, para saber que jugadores estaran mas cerca al salir la pelota
     public Vector3 dirFalta;
 	public float magnitud = 0;
-    public Vector2 posicionInicial;
+    public Vector3 posicionInicial;
 	public GameObject posicion;
 	private Animator ar;
 	public bool flipY = false;
@@ -106,9 +106,6 @@ public class Jugador : MonoBehaviour {
 				balon.fuerzaL = fuerzaGolpeo;
 				balon.direccion = new Vector2 (Input.GetAxisRaw ("Horizontal"), Input.GetAxisRaw ("Vertical"));
 				balon.golpeoV2 ();
-
-
-                //StartCoroutine(balon.Golpeo(fuerzaGolpeo));
                 StartCoroutine (setBalonGolpeadoFalse ());
 				StartCoroutine (balon.setBalonTiempoFalse ());
 
@@ -118,14 +115,35 @@ public class Jugador : MonoBehaviour {
 			ar.SetBool ("corriendo", false);
 			ar.SetBool ("falta", false);
 		}
+		float dist = transform.position.x - posicion.transform.position.x;
+		float dist2 = transform.position.y - posicion.transform.position.y;
+		if ((!selector)&&(dist<8) &&(!balon.ultimoTocado)&&(dist2<8)) {
+			if (transform.position.y > balon.transform.position.y + 1 || transform.position.y < balon.transform.position.y - 1
+			    || transform.position.x > balon.transform.position.x + 1 || transform.position.x < balon.transform.position.x - 1) {
+				if (transform.position.y > balon.transform.position.y) {
+					transform.position += Vector3.down * Time.deltaTime * vel;
+				}
+				if (transform.position.y < balon.transform.position.y) {
+					transform.position += Vector3.up * Time.deltaTime * vel;
+				}
+				if (transform.position.x > balon.transform.position.x) {
+					transform.position += Vector3.left * Time.deltaTime * vel;
+				}
+				if (transform.position.x < balon.transform.position.x) {
+					transform.position += Vector3.right * Time.deltaTime * vel;
+				}
+			}
+		}
+		if ((!balon.interceptado) && (!selector) && (dist < 20)) {
+			
+		}
+
+
 	}
 
 	public IEnumerator setBalonGolpeadoFalse()
 	{//para no tocar el balon al golpearlo
-		for (int n = 0; n < 10; n++)
-		{
-			yield return new WaitForSeconds(.1f);
-		}
+		yield return new WaitForSeconds(.5f);
 		balonGolpeado = false;
 		balonPies = false;
 	}
@@ -172,6 +190,29 @@ public class Jugador : MonoBehaviour {
        }
 
     }
+	public void hacerFalta()
+	{
+		if ((balon.interceptado) && (!balon.ultimoTocado))
+		{
+			Vector3 distancia = new Vector3(3, 3);
+			distancia = balon.transform.position - this.transform.position;
+			if (distancia.magnitude < 4)
+			{
+				if (!falta){
+					tRobo = true;
+					StartCoroutine(setTRoboFalse());
+					dirFalta = distancia.normalized;
+					if (robo)
+					{
+						equipoRival.limpiarBalonPies ();
+						equipoRival.Rival [equipoRival.rivalCercano ()].falta = true;
+						StartCoroutine (equipoRival.Rival[equipoRival.rivalCercano ()].setFaltaFalse());
+						balonPies = true;
+					}  
+				}
+			}
+		}
+	}
 
 	private void marcar() {
 		if (selector){
@@ -183,11 +224,15 @@ public class Jugador : MonoBehaviour {
 
 	void FixedUpdate()
 	{
+		if (!falta) {
+			movimiento ();
+			movimientoFalta();
+			conducirBalon();
+		}
 
-		movimiento();
-		conducirBalon();
 		marcar ();
-		movimientoFalta();
+		hacerFalta ();
+
         if (!balonPies)
         {
 			Entrada();
@@ -196,6 +241,7 @@ public class Jugador : MonoBehaviour {
         else
         {
             this.tag = "balonPies";
+			selector = true;
 			balon.ultimoTocado = true;
 
 		}

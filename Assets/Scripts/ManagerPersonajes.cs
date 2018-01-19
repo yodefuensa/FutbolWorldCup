@@ -29,13 +29,13 @@ public class ManagerPersonajes : MonoBehaviour {
         {
             if (n == 0)
             {
-                distancia = jugadores[n].transform.position - balon.transform.position;
+				distancia = balon.transform.position - jugadores[n].transform.position;
                 MaxDistancia = distancia;
                 posicion = n;
             }
             if (n > 0)
             {
-                distancia = jugadores[n].transform.position - balon.transform.position;
+				distancia = balon.transform.position - jugadores[n].transform.position;
                 if (MaxDistancia.magnitude > distancia.magnitude)
                 {
                     MaxDistancia = distancia;
