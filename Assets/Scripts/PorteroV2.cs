@@ -8,7 +8,7 @@ public class PorteroV2 : MonoBehaviour {
 	public bool balonGolpeado = false;
 	public bool balonPies = false;
 	public bool selector = false;
-	private int vel = 8;
+	private int vel = 3;
 	public int fuerzaGolpeo = 20;
 
 	public GameObject posicion;

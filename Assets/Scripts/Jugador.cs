@@ -25,12 +25,14 @@ public class Jugador : MonoBehaviour {
 	private Animator ar;
 	public bool flipY = false;
 	public Selector seguidor;
-    public GameObject equipoRivalGO;
+   // public GameObject equipoRivalGO;
     public MngRival equipoRival;
 
     private void Awake()
     {
-        equipoRival = equipoRivalGO.GetComponent<MngRival>();
+       // equipoRival = equipoRivalGO.GetComponent<MngRival>();
+		posicionInicial = new Vector2 (transform.position.x, transform.position.y);
+		falta = false;
     }
 
     void Start () {
@@ -47,7 +49,7 @@ public class Jugador : MonoBehaviour {
             foreach (Collider2D hit in hits)
             {
                 if ((hit.name == "balon") && (!balon.interceptado))
-                {
+				{Debug.Log ("toco balon");
                     balonPies = true;
                     selector = true;
                     if (!balonGolpeado)

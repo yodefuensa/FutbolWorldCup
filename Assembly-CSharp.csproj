@@ -55,6 +55,7 @@
      <Compile Include="Assets\Scripts\Jugador.cs" />
      <Compile Include="Assets\Scripts\ManagerPersonajes.cs" />
      <Compile Include="Assets\Scripts\MngCamera.cs" />
+     <Compile Include="Assets\Scripts\MngCargar.cs" />
      <Compile Include="Assets\Scripts\MngPartido.cs" />
      <Compile Include="Assets\Scripts\MngRival.cs" />
      <Compile Include="Assets\Scripts\MngScenes.cs" />
