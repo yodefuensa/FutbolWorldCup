@@ -9,7 +9,7 @@ public class Jugador : MonoBehaviour {
 	public bool balonGolpeado = false;
 	public bool balonPies = false;
 	public bool selector = false;
-	private int vel = 4;
+	private int vel = 9;
 	private int fuerzaGolpeo = 15;
     //robo es para saber si podremos robar la pelota
     public bool robo;
@@ -49,7 +49,7 @@ public class Jugador : MonoBehaviour {
             foreach (Collider2D hit in hits)
             {
                 if ((hit.name == "balon") && (!balon.interceptado))
-				{Debug.Log ("toco balon");
+				{
                     balonPies = true;
                     selector = true;
                     if (!balonGolpeado)
@@ -138,7 +138,7 @@ public class Jugador : MonoBehaviour {
             //si estamos dentro de la zona de accion
             if (!balon.ultimoTocado)
             {// y ellos tienen el balon
-				Debug.Log("deberian los gilipollas ir a por el balon (en su zona de accion)");
+			
                 if (transform.position.y > balon.transform.position.y + 1 || transform.position.y < balon.transform.position.y - 1
                     || transform.position.x > balon.transform.position.x + 1 || transform.position.x < balon.transform.position.x - 1)
                 {//vamos a por el balon
@@ -162,7 +162,6 @@ public class Jugador : MonoBehaviour {
             }
 			if ((dist.magnitude<25f) && (!selector) && (balon.ultimoTocado))
             {//zona de accion y yo tengo el balon
-				Debug.Log("yo tengo el balon y estan en su zona");
                 if (transform.position.y > balon.transform.position.y)
                 {
                     transform.position += Vector3.down * Time.deltaTime * vel;
@@ -173,7 +172,6 @@ public class Jugador : MonoBehaviour {
         }
         if ((dist.magnitude>24f) &&(!selector)) 
         {//si estamos fuera de la zona y no somos el selector
-			Debug.Log("corre a tu puto sitio");
             if (transform.position.y < posicion.transform.position.y)
                 transform.position += Vector3.up * Time.deltaTime * vel;
             if (transform.position.y > posicion.transform.position.y)
