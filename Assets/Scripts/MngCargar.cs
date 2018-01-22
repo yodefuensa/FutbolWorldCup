@@ -57,6 +57,7 @@ public class MngCargar : MonoBehaviour {
 		jugador8.GetComponent<Jugador> ().posicion = GameObject.Find ("posicion9");
 		jugador9.GetComponent<Jugador> ().posicion = GameObject.Find ("posicion10");
 
+		//HOSTIA TU CAMBIAR LA ALINEACION POR UNA Y * -1
 		rival0.GetComponent<Rival> ().posicionAl = GameObject.Find ("posicion");
 		rival1.GetComponent<Rival> ().posicionAl = GameObject.Find ("posicion2");
 		rival2.GetComponent<Rival> ().posicionAl = GameObject.Find ("posicion3");

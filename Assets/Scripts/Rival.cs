@@ -96,7 +96,7 @@ public class Rival : MonoBehaviour {
     {//pa Entrada
 		if ((tRobo) && (fakeInputC))
         {
-            transform.position += dirFalta * Time.deltaTime * vel;
+            transform.position += dirFalta * Time.deltaTime * vel/2;
         }
     }
 

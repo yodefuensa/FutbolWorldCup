@@ -1,19 +1,19 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/PorteroV2Rival.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Rival.cs">
     <Files>
-      <File FileName="Assets/Scripts/MngCargar.cs" Line="288" Column="42" />
-      <File FileName="Assets/Scripts/Jugador.cs" Line="24" Column="28" />
-      <File FileName="Assets/Scripts/Rival.cs" Line="175" Column="1" />
+      <File FileName="Assets/Scripts/MngCargar.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Jugador.cs" Line="12" Column="21" />
+      <File FileName="Assets/Scripts/Rival.cs" Line="71" Column="41" />
       <File FileName="Assets/Scripts/MngRival.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/Selector.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/ManagerPersonajes.cs" Line="45" Column="24" />
+      <File FileName="Assets/Scripts/ManagerPersonajes.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/Balon.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/MngPartido.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/MngCamera.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/Palo.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/PorteroV2.cs" Line="40" Column="1" />
-      <File FileName="Assets/Scripts/PorteroV2Rival.cs" Line="46" Column="1" />
+      <File FileName="Assets/Scripts/PorteroV2.cs" Line="41" Column="4" />
+      <File FileName="Assets/Scripts/PorteroV2Rival.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/MngScenes.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
