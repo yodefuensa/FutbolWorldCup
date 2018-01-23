@@ -68,7 +68,8 @@ public class Rival : MonoBehaviour {
             if (transform.position.y > ball.transform.position.y + 1 || transform.position.y < ball.transform.position.y - 1
                    || transform.position.x > ball.transform.position.x + 1 || transform.position.x < ball.transform.position.x - 1)
             {
-                if (transform.position.y > ball.transform.position.y)
+				Vector3 dist = transform.position - porteriaRival.transform.position;
+				if ((transform.position.y > ball.transform.position.y) && dist.magnitude<3f )
                 {
                     transform.position += Vector3.down * Time.deltaTime * vel;
                 }
@@ -80,7 +81,7 @@ public class Rival : MonoBehaviour {
                 {
                     transform.position += Vector3.left * Time.deltaTime * vel;
                 }
-                if (transform.position.x < ball.transform.position.x)
+				if (transform.position.x < ball.transform.position.x)
                 {
                     transform.position += Vector3.right * Time.deltaTime * vel;
                 }

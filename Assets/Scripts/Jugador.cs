@@ -9,7 +9,7 @@ public class Jugador : MonoBehaviour {
 	public bool balonGolpeado = false;
 	public bool balonPies = false;
 	public bool selector = false;
-	private int vel = 9;
+	private int vel = 0;
 	private int fuerzaGolpeo = 15;
     //robo es para saber si podremos robar la pelota
     public bool robo;

@@ -541,8 +541,8 @@ MonoBehaviour:
   brasil: {fileID: 1221896952411210, guid: 82237a3b179264051b242ea0a0d97daf, type: 2}
   usa: {fileID: 1302391492471334, guid: 91c346bfc1feaf24182f3b848c77af71, type: 2}
   argentina: {fileID: 1302391492471334, guid: 91c346bfc1feaf24182f3b848c77af71, type: 2}
-  japon: {fileID: 1302391492471334, guid: 91c346bfc1feaf24182f3b848c77af71, type: 2}
-  china: {fileID: 1302391492471334, guid: 91c346bfc1feaf24182f3b848c77af71, type: 2}
+  japon: {fileID: 1540656462032214, guid: 1139bb07a3f59499c88e12cee33aa563, type: 2}
+  china: {fileID: 1452588897721420, guid: 39a2e4e23701d4b16949934b4d0e88d3, type: 2}
   rusia: {fileID: 1302391492471334, guid: 91c346bfc1feaf24182f3b848c77af71, type: 2}
   alemania: {fileID: 1302391492471334, guid: 91c346bfc1feaf24182f3b848c77af71, type: 2}
   balon: {fileID: 1276751586}

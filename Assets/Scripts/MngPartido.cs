@@ -120,7 +120,8 @@ public class MngPartido : MonoBehaviour {
 
     private void saqueInicial()
     {
-        //meter opciones de tiempo
+		mngEqui.limpiarBalonPies();
+		mngRiv.limpiarBalonPies ();
         if (!quienSaca)
         {
             colocarPersonajesSaque();

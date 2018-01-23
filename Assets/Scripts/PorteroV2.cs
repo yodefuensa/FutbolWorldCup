@@ -22,7 +22,6 @@ public class PorteroV2 : MonoBehaviour {
             if (hit.name == "balon")
             {
                 Debug.Log("no me jodas");
-
                 balonPies = true;
                 selector = true;
                 if (!balonGolpeado)
@@ -77,7 +76,7 @@ public class PorteroV2 : MonoBehaviour {
 	{
 		if (balonPies && !balonGolpeado)
 		{
-			Vector3 posbal = new Vector3(transform.position.x, transform.position.y + 0.5f);
+			Vector3 posbal = new Vector3(transform.position.x, transform.position.y + .3f);
 			balon.setPosicion(posbal);
 		}
 	}
