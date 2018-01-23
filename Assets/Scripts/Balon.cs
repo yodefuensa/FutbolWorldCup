@@ -42,10 +42,11 @@ public class Balon : MonoBehaviour
 		hits = Physics2D.OverlapCircleAll (transform.position, 0.8f);
 
 		foreach (Collider2D hit in hits) {
-			if (hit.name == "balon")
-			{//WTF 
-				Debug.Log ("toca");
-			}
+            if (hit.name == "balon")
+            {//WTF 
+                Debug.Log("toca");
+            }
+
 		}
 		return hits;
 	}

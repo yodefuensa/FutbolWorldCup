@@ -9,7 +9,7 @@ public class Jugador : MonoBehaviour {
 	public bool balonGolpeado = false;
 	public bool balonPies = false;
 	public bool selector = false;
-	private int vel = 0;
+	private int vel = 9;
 	private int fuerzaGolpeo = 15;
     //robo es para saber si podremos robar la pelota
     public bool robo;
@@ -48,10 +48,11 @@ public class Jugador : MonoBehaviour {
         {
             foreach (Collider2D hit in hits)
             {
-                if ((hit.name == "balon") && (!balon.interceptado))
+                if ((hit.name == "balon") && (!balon.interceptado) && (!balonGolpeado))
 				{
                     balonPies = true;
                     selector = true;
+
                     if (!balonGolpeado)
                     {
                         balon.interceptado = true;
@@ -235,7 +236,7 @@ public class Jugador : MonoBehaviour {
 
     }
 	public void hacerFalta()
-	{
+	{//QUIZAS CUANDO ESTE EN EL RAYCAST? ASI NO HACE FALTAS AL AIRE AL DISPARAR OTRO
 		if ((balon.interceptado) && (!balon.ultimoTocado))
 		{
 			Vector3 distancia = new Vector3(3, 3);

@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: f7a207bd3390a4234ae79bc1c377759d
-timeCreated: 1516669111
+guid: 7e6463f309ec67d4c838feff4509c5c7
+timeCreated: 1516727012
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -12,8 +12,6 @@ TextureImporter:
     21300010: japan_5
     21300012: japan_6
     21300014: japan_7
-    21300016: japan_8
-    21300018: japan_9
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -86,6 +84,16 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
+  - buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -135,34 +143,6 @@ TextureImporter:
       name: japan_3
       rect:
         serializedVersion: 2
-        x: 160
-        y: 1172
-        width: 168
-        height: 220
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: japan_4
-      rect:
-        serializedVersion: 2
-        x: 672
-        y: 1172
-        width: 168
-        height: 220
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: japan_5
-      rect:
-        serializedVersion: 2
         x: 1184
         y: 1204
         width: 176
@@ -174,7 +154,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: japan_6
+      name: japan_4
       rect:
         serializedVersion: 2
         x: 160
@@ -188,7 +168,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: japan_7
+      name: japan_5
       rect:
         serializedVersion: 2
         x: 688
@@ -202,7 +182,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: japan_8
+      name: japan_6
       rect:
         serializedVersion: 2
         x: 1208
@@ -216,7 +196,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: japan_9
+      name: japan_7
       rect:
         serializedVersion: 2
         x: 176

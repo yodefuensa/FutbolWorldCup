@@ -37,7 +37,27 @@ public class MngScenes : MonoBehaviour {
         }
 
     }
-    public void rusia()
+    public void options()
+    {
+        SceneManager.LoadScene("options");
+    }
+    public void Back()
+    {
+        switch (SceneManager.GetActiveScene().name)
+        {
+            case "SelectSeleccion":
+                SceneManager.LoadScene("menu");
+                break;
+            case "SelectAlineacion":
+                SceneManager.LoadScene("SelectSeleccion");
+                break;
+            default:
+                SceneManager.LoadScene("menu");
+                break;
+        }
+    }
+
+public void rusia()
     {
         pais = "rusia";
     }
