@@ -18,6 +18,9 @@ public class MngPartido : MonoBehaviour {
     private int ObGol;
     private int ObGol2;
 	public Text marcador;
+	public Text tiempo;
+	private float time;
+	private float min;
 
 
 
@@ -26,6 +29,7 @@ public class MngPartido : MonoBehaviour {
         golesRivales = 0;
         ObGol = 0;
         ObGol2 = 0;
+		min = 0;
 	}
 	
 	void Update () {		
@@ -122,6 +126,7 @@ public class MngPartido : MonoBehaviour {
     {
 		mngEqui.limpiarBalonPies();
 		mngRiv.limpiarBalonPies ();
+		balon.interceptado = false;
         if (!quienSaca)
         {
             colocarPersonajesSaque();
@@ -232,6 +237,21 @@ public class MngPartido : MonoBehaviour {
 		}	
 	
 	}
+	private void actualizarTiempo()
+	{
+		time += Time.deltaTime*12;
+		if (Mathf.Round (time) == 59) {
+			time = 0;
+			min = min + 1;
+		}
+		Debug.Log (Mathf.Round (time));
+		if (Mathf.Round (time)<10)
+			tiempo.text = "Time: " + min + ":" + "0" +"joder" + Mathf.Round(time);
+		if (tiempo.text != "Time: " + min + ":" + Mathf.Round (time))
+			tiempo.text = "Time: " + min + ":" + Mathf.Round(time);
+		
+	}
+
 
 
     private void FixedUpdate()
@@ -241,6 +261,7 @@ public class MngPartido : MonoBehaviour {
 		saquesBanda ();
         observador();
 		actualizarMarcador ();
+		actualizarTiempo ();
     }
 
 }

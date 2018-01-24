@@ -21,7 +21,6 @@ public class PorteroV2 : MonoBehaviour {
 			foreach (Collider2D hit in hits) {
             if (hit.name == "balon")
             {
-                Debug.Log("no me jodas");
                 balonPies = true;
                 selector = true;
                 if (!balonGolpeado)
@@ -29,8 +28,8 @@ public class PorteroV2 : MonoBehaviour {
                     balon.interceptado = true;
                 }
             }
-            else
-                balonPies = false; 
+         //   else
+            //    balonPies = false; 
 		}
 	}
 
@@ -57,7 +56,6 @@ public class PorteroV2 : MonoBehaviour {
             balon.golpeoV2();
             StartCoroutine(setBalonGolpeadoFalse());
             StartCoroutine(balon.setBalonTiempoFalse());
-
         }
 
 	}
@@ -85,11 +83,11 @@ public class PorteroV2 : MonoBehaviour {
 	{
 		movimiento();
 		conducirBalon();
-        if (balonPies && !balonGolpeado)
+     /*   if (balonPies && !balonGolpeado)
         {
             Vector3 posbal = new Vector3(transform.position.x, transform.position.y + 0.5f);
             balon.setPosicion(posbal);
-        }
+        }*/
     }
 
 }

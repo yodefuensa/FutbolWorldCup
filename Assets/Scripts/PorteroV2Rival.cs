@@ -66,7 +66,6 @@ public class PorteroV2Rival : MonoBehaviour {
             balon.interceptado = false;
             balon.tiempo = true;
             balon.fuerzaL = fuerzaGolpeo;
-            balon.fuerzaL = fuerzaGolpeo;
             balon.direccion = Vector3.down;
             balon.golpeoV2();
             //StartCoroutine(balon.Golpeo(fuerzaGolpeo));

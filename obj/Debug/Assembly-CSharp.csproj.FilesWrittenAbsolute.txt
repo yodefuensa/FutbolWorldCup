@@ -52,3 +52,5 @@
 /home/jaime/Unity/FutbolWorldCup/Temp/bin/Debug/Unity.CecilTools.dll
 /home/jaime/Unity/FutbolWorldCup/Temp/bin/Debug/Unity.Cecil.Pdb.dll
 /home/jaime/Unity/FutbolWorldCup/Temp/bin/Debug/Unity.Cecil.Mdb.dll
+/home/jaime/Unity/FutbolWorldCup/Temp/bin/Debug/Assembly-CSharp.pdb
+/home/jaime/Unity/FutbolWorldCup/Temp/bin/Debug/Assembly-CSharp.dll
