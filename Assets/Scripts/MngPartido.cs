@@ -227,6 +227,15 @@ public class MngPartido : MonoBehaviour {
 		}
 	}
 
+    public void menuPause()
+    {
+        if(Input.GetKey(KeyCode.JoystickButton7))
+        {
+            Debug.Log("gaaaaaaaaaaaaaay");
+        
+
+        }
+    }
 
 
 
@@ -264,8 +273,10 @@ public class MngPartido : MonoBehaviour {
 			time = 0;
 			min = min + 1;
 		}
-		if (Mathf.Round (time)<10)
-			tiempo.text = "Time: " + min + ":" + "0" +"joder" + Mathf.Round(time);
+        float num = Mathf.Round(time);
+
+        if (num<10)
+			tiempo.text = "Time: " + min + ":" + "0"  + Mathf.Round(time);
 		if (tiempo.text != "Time: " + min + ":" + Mathf.Round (time))
 			tiempo.text = "Time: " + min + ":" + Mathf.Round(time);
 		

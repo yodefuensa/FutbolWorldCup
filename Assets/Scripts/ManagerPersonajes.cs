@@ -91,7 +91,7 @@ public class ManagerPersonajes : MonoBehaviour {
     
 	public void cambiarJugador()
     {//si pulsas la tecla "control" selecciona el jugador mas cercano
-        if (Input.GetKey(KeyCode.LeftControl))
+        if (Input.GetButton("Fire3"))
         {
             limpiarSelector();
             int pos = jugadorCercano();

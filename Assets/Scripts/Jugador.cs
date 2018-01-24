@@ -52,11 +52,7 @@ public class Jugador : MonoBehaviour {
 				{
                     balonPies = true;
                     selector = true;
-
-                    if (!balonGolpeado)
-                    {
-                        balon.interceptado = true;
-                    }
+                    balon.interceptado = true;
 
                 }
                 if (hit.tag == "balonPies")
@@ -112,7 +108,7 @@ public class Jugador : MonoBehaviour {
             {
                 transform.position -= new Vector3(1, 0) * Time.deltaTime * vel;
             }
-            if ((Input.GetKey(KeyCode.Space) && balonPies && !balonGolpeado))
+            if ((Input.GetButton("Fire1") && balonPies && !balonGolpeado))
             {
                 balon.ultimoTocado = true;
                 balonPies = false;
@@ -212,7 +208,7 @@ public class Jugador : MonoBehaviour {
 
     public void Entrada()
     {//pal Fixed
-		if ((Input.GetKey(KeyCode.C))&&(selector))
+		if ((Input.GetButton("Fire2"))&&(selector))
        {
             dirFalta = new Vector3(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
             tRobo = true;

@@ -23,6 +23,7 @@ public class PorteroV2 : MonoBehaviour {
             {
                 balonPies = true;
                 selector = true;
+                balon.ultimoTocado = true;
                 if (!balonGolpeado)
                 {
                     balon.interceptado = true;
@@ -45,7 +46,7 @@ public class PorteroV2 : MonoBehaviour {
 		if (transform.position.y< posicion.transform.position.y+3f)
 			transform.position += new Vector3(0,1)* Time.deltaTime * vel;
 
-		if (Input.GetKey(KeyCode.Space) && balonPies && !balonGolpeado)
+		if ((Input.GetButton("Fire1") && balonPies && !balonGolpeado))
 		{
             balon.ultimoTocado = true;
             balonPies = false;
@@ -84,11 +85,7 @@ public class PorteroV2 : MonoBehaviour {
 	{
 		movimiento();
 		conducirBalon();
-     /*   if (balonPies && !balonGolpeado)
-        {
-            Vector3 posbal = new Vector3(transform.position.x, transform.position.y + 0.5f);
-            balon.setPosicion(posbal);
-        }*/
+
     }
 
 }

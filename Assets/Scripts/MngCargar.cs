@@ -18,7 +18,8 @@ public class MngCargar : MonoBehaviour {
 	public GameObject mngJugadores;
 	public GameObject AliA;
 	public GameObject AliB;
-	public GameObject rival;
+    public GameObject AlRiv;
+    public GameObject rival;
 	public GameObject portero;
 	public GameObject porteroR;
 
@@ -58,16 +59,16 @@ public class MngCargar : MonoBehaviour {
 		jugador9.GetComponent<Jugador> ().posicion = GameObject.Find ("posicion10");
 
 		//HOSTIA TU CAMBIAR LA ALINEACION POR UNA Y * -1
-		rival0.GetComponent<Rival> ().posicionAl = GameObject.Find ("posicion");
-		rival1.GetComponent<Rival> ().posicionAl = GameObject.Find ("posicion2");
-		rival2.GetComponent<Rival> ().posicionAl = GameObject.Find ("posicion3");
-		rival3.GetComponent<Rival> ().posicionAl = GameObject.Find ("posicion4");
-		rival4.GetComponent<Rival> ().posicionAl = GameObject.Find ("posicion5");
-		rival5.GetComponent<Rival> ().posicionAl = GameObject.Find ("posicion6");
-		rival6.GetComponent<Rival> ().posicionAl = GameObject.Find ("posicion7");
-		rival7.GetComponent<Rival> ().posicionAl = GameObject.Find ("posicion8");
-		rival8.GetComponent<Rival> ().posicionAl = GameObject.Find ("posicion9");
-		rival9.GetComponent<Rival> ().posicionAl = GameObject.Find ("posicion10");
+		rival0.GetComponent<Rival> ().posicionAl = GameObject.Find ("posicionR");
+		rival1.GetComponent<Rival> ().posicionAl = GameObject.Find ("posicion2R");
+		rival2.GetComponent<Rival> ().posicionAl = GameObject.Find ("posicion3R");
+		rival3.GetComponent<Rival> ().posicionAl = GameObject.Find ("posicion4R");
+		rival4.GetComponent<Rival> ().posicionAl = GameObject.Find ("posicion5R");
+		rival5.GetComponent<Rival> ().posicionAl = GameObject.Find ("posicion6R");
+		rival6.GetComponent<Rival> ().posicionAl = GameObject.Find ("posicion7R");
+		rival7.GetComponent<Rival> ().posicionAl = GameObject.Find ("posicion8R");
+		rival8.GetComponent<Rival> ().posicionAl = GameObject.Find ("posicion9R");
+		rival9.GetComponent<Rival> ().posicionAl = GameObject.Find ("posicion10R");
 
 	}
 
@@ -292,13 +293,11 @@ public class MngCargar : MonoBehaviour {
 
 		if (MngScenes.alineacion == "A") {
 			GameObject PosicionesDeLosCojones = Instantiate (AliA, transform.position, Quaternion.identity);
-			Debug.Log ("posicionA");
-
 		}
 		if (MngScenes.alineacion == "B") {
 			GameObject PosicionesDeLosCojones = Instantiate (AliB, transform.position, Quaternion.identity);
-			Debug.Log ("posicionB");
 		}
+        GameObject PosicionRival = Instantiate(AlRiv, transform.position, Quaternion.identity);
 
 
     }

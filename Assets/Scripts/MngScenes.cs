@@ -17,7 +17,13 @@ public class MngScenes : MonoBehaviour {
 	void Update () {
 	}
 
-	public void Escenas()
+    private void OnGUI()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+    }
+
+    public void Escenas()
 	{
 
         switch (SceneManager.GetActiveScene().name)

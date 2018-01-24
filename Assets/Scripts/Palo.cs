@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Palo : MonoBehaviour {
 
+    public Balon balon;
     public bool pausa;
 	// Use this for initialization
 	void Start () {
@@ -16,6 +17,19 @@ public class Palo : MonoBehaviour {
         yield return new WaitForSeconds(3f);
         pausa = false;
     }
+
+    public void rebote()
+    {
+        Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, .2f);
+        Debug.DrawLine(new Vector2(transform.position.x-.2f, transform.position.y), new Vector2(transform.position.x+.2f, transform.position.y), Color.blue);
+        foreach (Collider2D hit in hits)
+        {
+            if (hit.name == "balon")
+            {
+                balon.direccion = new Vector3(balon.direccion.x, balon.direccion.y * -1);
+            }
+        }
+    }
     
     public int Marcar()
     {
@@ -25,20 +39,18 @@ public class Palo : MonoBehaviour {
             {
                 RaycastHit2D[] hits = Physics2D.RaycastAll(new Vector2(transform.position.x, transform.position.y - 0.2f), Vector3.right, 7.5f);
                 Debug.DrawLine(new Vector2(transform.position.x, transform.position.y + 0.2f), new Vector2(transform.position.x + 7.5f, transform.position.y + 0.2f), Color.red);
-                if (hits.Length > 1)
+                foreach (RaycastHit2D hit in hits)
                 {
-                    foreach (RaycastHit2D hit in hits)
+                    if (hit.collider.name == "balon")
                     {
-                        if (hit.collider.name == "balon")
-                        {
-                            Debug.Log("gol");
-                            pausa = true;
-                            StartCoroutine(setPausaFalse());
-                            return 1;
+                        Debug.Log("gol");
+                        pausa = true;
+                        StartCoroutine(setPausaFalse());
+                        return 1;
 
-                        }
                     }
                 }
+
             }
             if (name == "palo3")
             {
@@ -64,6 +76,9 @@ public class Palo : MonoBehaviour {
 
         return 0;
     }
-
+    public void FixedUpdate()
+    {
+        rebote();
+    }
 
 }
