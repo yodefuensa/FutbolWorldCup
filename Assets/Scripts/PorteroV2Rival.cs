@@ -52,6 +52,8 @@ public class PorteroV2Rival : MonoBehaviour {
 		{
 			transform.position += new Vector3(1, 0) * Time.deltaTime * vel;
 		}
+		if (transform.position.y> posicion.transform.position.y-3f)
+			transform.position -= new Vector3(0,1)* Time.deltaTime * vel;
 	}
 
 	private void mngPortero(){

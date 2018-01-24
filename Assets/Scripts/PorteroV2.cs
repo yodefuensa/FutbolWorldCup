@@ -28,8 +28,6 @@ public class PorteroV2 : MonoBehaviour {
                     balon.interceptado = true;
                 }
             }
-         //   else
-            //    balonPies = false; 
 		}
 	}
 
@@ -44,6 +42,9 @@ public class PorteroV2 : MonoBehaviour {
 		{
 			transform.position += new Vector3(1, 0) * Time.deltaTime * vel;
 		}
+		if (transform.position.y< posicion.transform.position.y+3f)
+			transform.position += new Vector3(0,1)* Time.deltaTime * vel;
+
 		if (Input.GetKey(KeyCode.Space) && balonPies && !balonGolpeado)
 		{
             balon.ultimoTocado = true;

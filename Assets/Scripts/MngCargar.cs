@@ -286,7 +286,9 @@ public class MngCargar : MonoBehaviour {
 		rival9.GetComponent<Rival> ().porteriaRival = GameObject.Find ("porteria"); 
 
 		portero.GetComponent<PorteroV2>().balon = balon.GetComponent<Balon> ();
+		portero.GetComponent<PorteroV2> ().posicion = GameObject.Find ("porteria");
 		porteroR.GetComponent<PorteroV2Rival>().balon = balon.GetComponent<Balon> ();
+		porteroR.GetComponent<PorteroV2Rival>().posicion = GameObject.Find ("porteria2");
 
 		if (MngScenes.alineacion == "A") {
 			GameObject PosicionesDeLosCojones = Instantiate (AliA, transform.position, Quaternion.identity);

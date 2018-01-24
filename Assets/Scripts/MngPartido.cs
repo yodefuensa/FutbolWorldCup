@@ -184,7 +184,6 @@ public class MngPartido : MonoBehaviour {
 				}
 
             }
-			//cambiar por NOT cuando implemente los rivales
             if (!balon.ultimoTocado)
 			{//SACA TU EQUIPO
 				for (int n = 0; n < mngEqui.jugadores.Length -1; n++){	
@@ -209,6 +208,27 @@ public class MngPartido : MonoBehaviour {
 		}
     }
 
+	public void saquePorteria(){
+		if ((balon.transform.position.y > esquina1.transform.position.y) && !balon.balonFuera) {
+			Debug.Log ("esta fuera hostias Portero");
+			balon.balonFuera = true;
+			if (balon.ultimoTocado) {
+				//saca equipo rival
+				mngRiv.benji.transform.position = new Vector3 (esquina1.transform.position.x + 15f, esquina1.transform.position.y - .7f);
+				balon.transform.position = new Vector2 (esquina1.transform.position.x + 15f, esquina1.transform.position.y - 1.4f);
+		}if ((balon.transform.position.y < esquina4.transform.position.y) && !balon.balonFuera){
+			balon.balonFuera = true;
+				if (!balon.ultimoTocado) {
+					mngEqui.benji.transform.position = new Vector3 (esquina4.transform.position.x - 15f, esquina4.transform.position.y + .7f);
+					balon.transform.position = new Vector2 (esquina4.transform.position.x-15f, esquina4.transform.position.y + 1.4f);
+				}
+		}
+		//	balon.balonFuera = false;
+		}
+	}
+
+
+
 
     public void observador()
     {
@@ -219,7 +239,7 @@ public class MngPartido : MonoBehaviour {
             quienSaca = true;
             saqueInicial();
         }
-        else if (ObGol2 < golesRivales)
+        if (ObGol2 < golesRivales)
         {
             quienSaca = false;
             Debug.Log("observador 2");
@@ -244,7 +264,6 @@ public class MngPartido : MonoBehaviour {
 			time = 0;
 			min = min + 1;
 		}
-		Debug.Log (Mathf.Round (time));
 		if (Mathf.Round (time)<10)
 			tiempo.text = "Time: " + min + ":" + "0" +"joder" + Mathf.Round(time);
 		if (tiempo.text != "Time: " + min + ":" + Mathf.Round (time))
@@ -260,6 +279,7 @@ public class MngPartido : MonoBehaviour {
         golesRivales = golesRivales + palo3.Marcar();
 		saquesBanda ();
         observador();
+		saquePorteria ();
 		actualizarMarcador ();
 		actualizarTiempo ();
     }
