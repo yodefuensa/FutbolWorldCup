@@ -12,6 +12,7 @@ public class MngPartido : MonoBehaviour {
     public Palo palo3;
     public ManagerPersonajes mngEqui;
     public MngRival mngRiv;
+	public GameObject menu;
     public int gol;
     public int golesRivales;
     private bool quienSaca;
@@ -229,13 +230,17 @@ public class MngPartido : MonoBehaviour {
 
     public void menuPause()
     {
-        if(Input.GetKey(KeyCode.JoystickButton7))
+		if(Input.GetKey(KeyCode.Escape))
         {
-            Debug.Log("gaaaaaaaaaaaaaay");
-        
-
+			menu.transform.localPosition = new Vector3 (0, 0,4f);
+			Time.timeScale = 0;
         }
+
     }
+	public void menuPauseContinue(){
+		menu.transform.position = new Vector3 (-50f, 0, 4f);
+		Time.timeScale = 1f;
+	}
 
 
 
@@ -293,6 +298,7 @@ public class MngPartido : MonoBehaviour {
 		saquePorteria ();
 		actualizarMarcador ();
 		actualizarTiempo ();
+		menuPause ();
     }
 
 }

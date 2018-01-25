@@ -19,8 +19,8 @@ public class MngScenes : MonoBehaviour {
 
     private void OnGUI()
     {
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+       // Cursor.lockState = CursorLockMode.Locked;
+        // Cursor.visible = false;
     }
 
     public void Escenas()
