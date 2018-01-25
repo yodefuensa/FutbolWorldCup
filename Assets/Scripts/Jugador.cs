@@ -108,7 +108,7 @@ public class Jugador : MonoBehaviour {
             {
                 transform.position -= new Vector3(1, 0) * Time.deltaTime * vel;
             }
-            if ((Input.GetButton("Fire1") && balonPies && !balonGolpeado))
+            if ((Input.GetButton("Fire1") && balonPies && !balonGolpeado)&& !MngPartido.visible)
             {
                 balon.ultimoTocado = true;
                 balonPies = false;

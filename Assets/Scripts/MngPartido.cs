@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+
 
 public class MngPartido : MonoBehaviour {
     public Balon balon;
@@ -20,6 +22,7 @@ public class MngPartido : MonoBehaviour {
     private int ObGol2;
 	public Text marcador;
 	public Text tiempo;
+    public static bool visible;
 	private float time;
 	private float min;
 
@@ -31,6 +34,7 @@ public class MngPartido : MonoBehaviour {
         ObGol = 0;
         ObGol2 = 0;
 		min = 0;
+        visible = false;
 	}
 	
 	void Update () {		
@@ -230,16 +234,38 @@ public class MngPartido : MonoBehaviour {
 
     public void menuPause()
     {
-		if(Input.GetKey(KeyCode.Escape))
+        if (Input.GetKey(KeyCode.Joystick1Button7))
         {
 			menu.transform.localPosition = new Vector3 (0, 0,4f);
 			Time.timeScale = 0;
+            visible = true;
         }
 
     }
-	public void menuPauseContinue(){
-		menu.transform.position = new Vector3 (-50f, 0, 4f);
-		Time.timeScale = 1f;
+    public void mainMenu()
+    {
+        if (visible){
+            SceneManager.LoadScene("menu");
+            Time.timeScale = 1f;
+        }
+    }
+    public void restart()
+    {
+        if (visible)
+        {
+            SceneManager.LoadScene("pruebas");
+            Time.timeScale = 1f;
+            
+        }
+    }
+
+    public void menuPauseContinue() {
+        if (visible)
+        {
+            menu.transform.position = new Vector3(-50f, 0, 4f);
+            Time.timeScale = 1f;
+            visible = false;
+        }
 	}
 
 

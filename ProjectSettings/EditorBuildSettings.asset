@@ -20,3 +20,18 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/options.unity
     guid: 826cb100065a9d641a7a77c6cbda5c5a
+  - enabled: 1
+    path: Assets/Scenes/SelectAliMulti2.unity
+    guid: a3d729265dfb6cd48a84744e7145ee97
+  - enabled: 1
+    path: Assets/Scenes/SelectAliMulti1.unity
+    guid: 01d7aed355cedcb42b1bb2876c57dd88
+  - enabled: 1
+    path: Assets/Scenes/SelectSelecMulti1.unity
+    guid: 8fb5b1e95fa1f034487f98c69981e6b5
+  - enabled: 1
+    path: Assets/Scenes/SelectSelecMulti2.unity
+    guid: 3d6e554df1f7b374898fc8f6706de2c3
+  - enabled: 1
+    path: Assets/Scenes/Multi.unity
+    guid: bb462d26b0255864a8521d1d0cd048a7

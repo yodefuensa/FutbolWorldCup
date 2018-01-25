@@ -8,6 +8,11 @@ public class MngScenes : MonoBehaviour {
 
     public static string pais;
     public static string alineacion;
+    public static string p1pais;
+    public static string p1Ali;
+    public static string p2pais;
+    public static string p2Ali;
+
 
     // Use this for initialization
     void Start () {
@@ -43,6 +48,47 @@ public class MngScenes : MonoBehaviour {
         }
 
     }
+    public void multi()
+    {
+        switch (SceneManager.GetActiveScene().name)
+        {
+            case "menu":
+                SceneManager.LoadScene("SelectSelecMulti1");
+                break;
+            case "SelectSelecMulti1":
+                SceneManager.LoadScene("SelectAliMulti1");
+                break;
+            case "SelectAliMulti1":
+                SceneManager.LoadScene("SelectSelecMulti2");
+                break;
+            case "SelectSelecMulti2":
+                SceneManager.LoadScene("SelectAliMulti2");
+                break;
+            case "SelectAliMulti2":
+                SceneManager.LoadScene("Multi");
+                break;
+        }
+    }
+
+    public void multiBack()
+    {
+        switch (SceneManager.GetActiveScene().name)
+        {
+            case "SelectSelecMulti1":
+                SceneManager.LoadScene("menu");
+                break;
+            case "SelectAliMulti1":
+                SceneManager.LoadScene("SelectSelecMulti1");
+                break;
+            case "SelectSelecMulti2":
+                SceneManager.LoadScene("SelectAliMulti1");
+                break;
+            case "SelectAliMulti2":
+                SceneManager.LoadScene("SelectSelecMulti2");
+                break;
+        }
+    }
+
     public void options()
     {
         SceneManager.LoadScene("options");
@@ -63,7 +109,7 @@ public class MngScenes : MonoBehaviour {
         }
     }
 
-public void rusia()
+    public void rusia()
     {
         pais = "rusia";
     }
@@ -104,4 +150,85 @@ public void rusia()
         alineacion = "B";
     }
 
+    public void rusiaP1()
+    {
+        p1pais = "rusia";
+    }
+    public void spainP1()
+    {
+        p1pais = "spain";
+    }
+    public void argentinaP1()
+    {
+        p1pais = "argentina";
+    }
+    public void brasilP1()
+    {
+        p1pais = "brasil";
+    }
+    public void chinaP1()
+    {
+        p1pais = "china";
+    }
+    public void japonP1()
+    {
+        p1pais = "japon";
+    }
+    public void alemaniaP1()
+    {
+        p1pais = "alemania";
+    }
+    public void usaP1()
+    {
+        p1pais = "usa";
+    }
+    public void aliAP1()
+    {
+        p1Ali = "A";
+    }
+    public void aliBP1()
+    {
+        p1Ali = "B";
+    }
+
+    public void rusiaP2()
+    {
+        p2pais = "rusia";
+    }
+    public void spainP2()
+    {
+        p2pais = "spain";
+    }
+    public void argentinaP2()
+    {
+        p2pais = "argentina";
+    }
+    public void brasilP2()
+    {
+        p2pais = "brasil";
+    }
+    public void chinaP2()
+    {
+        p2pais = "china";
+    }
+    public void japonP2()
+    {
+        p2pais = "japon";
+    }
+    public void alemaniaP2()
+    {
+        p2pais = "alemania";
+    }
+    public void usaP2()
+    {
+        p2pais = "usa";
+    }
+    public void aliAP2()
+    {
+        p2Ali = "A";
+    }
+    public void aliBP2()
+    {
+        p2Ali = "B";
+    }
 }
