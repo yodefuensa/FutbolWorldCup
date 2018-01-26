@@ -295,7 +295,8 @@ public class mngCargarMulti : MonoBehaviour {
 		rival6.GetComponent<Rival> ().porteriaRival = GameObject.Find ("porteria"); 
 		rival7.GetComponent<Rival> ().porteriaRival = GameObject.Find ("porteria"); 
 		rival8.GetComponent<Rival> ().porteriaRival = GameObject.Find ("porteria"); 
-		rival9.GetComponent<Rival> ().porteriaRival = GameObject.Find ("porteria"); 
+		rival9.GetComponent<Rival> ().porteriaRival = GameObject.Find ("porteria");
+        rival0.GetComponent<Rival>().selector = true;
 
 		portero.GetComponent<PorteroV2>().balon = balon.GetComponent<Balon> ();
 		portero.GetComponent<PorteroV2> ().posicion = GameObject.Find ("porteria");

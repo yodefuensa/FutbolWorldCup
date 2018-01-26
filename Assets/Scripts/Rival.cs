@@ -23,15 +23,29 @@ public class Rival : MonoBehaviour {
     //cuando se pulse C bloqueamos el movimiento y le damos la direccion de la falta
     public bool tRobo;
     public bool fakeInputC;
-	//public bool fakeInputSpace;
+    public bool selector;
+    public bool flipY = false;
+    private Animator ar;
+    //public bool fakeInputSpace;
 
     void Start () {
         fakeInputC = false;
         falta = false;
 	}
-	// Update is called once per frame
-	void Update () {
-	}
+    // Update is called once per frame
+    void Update()
+    {
+        if (!falta)
+        {
+            movimiento();
+            hacerFalta();
+            golpearPelota();
+            conducirBalon();
+            balonEnPies();
+            movimientoFalta();
+
+        }
+    }
 
     public Vector3 getPosicion()
     {
@@ -63,7 +77,7 @@ public class Rival : MonoBehaviour {
 
     public void perseguir()
     {
-		if ((!balonPies)&&(!falta))
+        if ((!balonPies) && (!falta) && (!MngScenes.multijugador))
         {
             if (transform.position.y > ball.transform.position.y + 1 || transform.position.y < ball.transform.position.y - 1
                    || transform.position.x > ball.transform.position.x + 1 || transform.position.x < ball.transform.position.x - 1)
@@ -88,14 +102,75 @@ public class Rival : MonoBehaviour {
             }
         }
 
-
-
-
-
     }
+    private void movimiento()
+    {
+        if ((selector) && (!falta) && (!tRobo)&& MngScenes.multijugador)
+        {
+            if (Input.GetAxisRaw("VerticalP2") > 0)
+            {
+                transform.position += Vector3.up * Time.deltaTime * vel;
+                if (flipY)
+                {
+                    transform.localScale = new Vector3(transform.localScale.x, -transform.localScale.y);
+                    flipY = false;
+                }
+            }
+            if (Input.GetAxisRaw("VerticalP2") < 0)
+            {
+                transform.position += Vector3.down * Time.deltaTime * vel;
+                if (!flipY)
+                {
+                    transform.localScale = new Vector3(transform.localScale.x, -transform.localScale.y);
+                    flipY = true;
+                }
+            }
+            /*
+            if (((Input.GetAxisRaw("VerticalP2") > 0) && (Input.GetAxisRaw("HorizontalP2") > 0)))
+            {
+                transform.position += new Vector3 (1,1) * Time.deltaTime * vel;
+            }
+            if (((Input.GetAxisRaw("VerticalP2") < 0) && (Input.GetAxisRaw("HorizontalP2") > 0)))
+            {
+                transform.position += new Vector3(1, -1) * Time.deltaTime * vel;
+            }
+            if (((Input.GetAxisRaw("VerticalP2") < 0) && (Input.GetAxisRaw("HorizontalP2") < 0)))
+            {
+                transform.position += new Vector3(-1, -1) * Time.deltaTime * vel;
+            }
+            if (((Input.GetAxisRaw("VerticalP2") > 0) && (Input.GetAxisRaw("HorizontalP2") < 0)))
+            {
+                transform.position += new Vector3(-1, 1) * Time.deltaTime * vel;
+            }
+            */
+            if (Input.GetAxisRaw("HorizontalP2") > 0)
+            {
+                transform.position += new Vector3(1, 0) * Time.deltaTime * vel;
+            }
+            if (Input.GetAxisRaw("HorizontalP2") < 0)
+            {
+                transform.position -= new Vector3(1, 0) * Time.deltaTime * vel;
+            }
+            if (Input.GetButtonDown("GolpeoP2") && balonPies && !balonGolpeado)
+            {
+                ball.ultimoTocado = false;
+                balonPies = false;
+                balonGolpeado = true;
+                ball.interceptado = false;
+                ball.tiempo = true;
+                ball.fuerzaL = fuerzaGolpeo;
+                ball.direccion = new Vector2(Input.GetAxisRaw("HorizontalP2"), Input.GetAxisRaw("VerticalP2"));
+                ball.golpeoV2();
+                StartCoroutine(setBalonGolpeadoFalse());
+                StartCoroutine(ball.setBalonTiempoFalse());
+
+            }
+        }
+    }
+
     public void movimientoFalta()
     {//pa Entrada
-		if ((tRobo) && (fakeInputC))
+		if ((tRobo && fakeInputC && !MngScenes.multijugador)|| (tRobo && Input.GetButtonDown("FaltaP2") && MngScenes.multijugador))
         {
             transform.position += dirFalta * Time.deltaTime * vel/2;
         }
@@ -107,7 +182,7 @@ public class Rival : MonoBehaviour {
         {
             Vector3 distancia = new Vector3(3, 3);
             distancia = ball.transform.position - this.transform.position;
-			if (distancia.magnitude < 4)
+			if (((distancia.magnitude < 4) && (!MngScenes.multijugador)) || (MngScenes.multijugador && Input.GetButtonDown("GolpeoP2")))
             {
 				if (!falta){
 	                fakeInputC = true;
@@ -133,7 +208,7 @@ public class Rival : MonoBehaviour {
 
     public void conducirBalon()
     {
-        if (balonPies && !balonGolpeado)
+        if ((balonPies && !balonGolpeado) && !MngScenes.multijugador)
         {
             Vector3 posbal = new Vector3(transform.position.x, transform.position.y + 0.5f);
             ball.setPosicion(posbal);
@@ -142,7 +217,7 @@ public class Rival : MonoBehaviour {
 
     public void balonEnPies()
     {
-        if (balonPies)
+        if ((balonPies)&& !MngScenes.multijugador)
         {
             if (transform.position.y > porteriaRival.transform.position.y)
             {
@@ -163,6 +238,10 @@ public class Rival : MonoBehaviour {
         }
         
     }
+   
+
+
+
 	public IEnumerator setBalonGolpeadoFalse()
 	{//para no tocar el balon al golpearlo
 		yield return new WaitForSeconds(.5f);
@@ -215,15 +294,13 @@ public class Rival : MonoBehaviour {
             }
             
         }
-		golpearPelota ();
-		conducirBalon ();
-		balonEnPies ();
-		hacerFalta ();
-		movimientoFalta ();
+
         if (!balonPies)
             this.tag = "Rival";
         else
             this.tag = "balonPies";
     }
+
+
 
 }

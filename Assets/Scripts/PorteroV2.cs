@@ -46,7 +46,7 @@ public class PorteroV2 : MonoBehaviour {
 		if (transform.position.y< posicion.transform.position.y+3f)
 			transform.position += new Vector3(0,1)* Time.deltaTime * vel;
 
-		if ((Input.GetButton("Fire1") && balonPies && !balonGolpeado))
+		if ((Input.GetButton("Golpeo") && balonPies && !balonGolpeado))
 		{
             balon.ultimoTocado = true;
             balonPies = false;

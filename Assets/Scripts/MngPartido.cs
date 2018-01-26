@@ -212,6 +212,22 @@ public class MngPartido : MonoBehaviour {
 			balon.balonFuera = false;
 		}
     }
+    public void corner()
+    {
+        if ((balon.transform.position.y < esquina4.transform.position.y) && balon.ultimoTocado){
+            balon.balonFuera = true;
+            balon.transform.position = esquina4.transform.position;
+            ordeanar2();
+            mngRiv.Rival[0].transform.position = new Vector2(balonPosicionSaque.x + .7f, balonPosicionSaque.y);
+        }
+        if ((balon.transform.position.y > esquina1.transform.position.y) && !balon.ultimoTocado)
+        {
+            balon.balonFuera = true;
+            balon.transform.position = esquina4.transform.position;
+            ordeanar();
+            mngEqui.jugadores[0].transform.position = new Vector2(balon.transform.position.x - .7f, balon.transform.position.y);
+        }
+    }
 
 	public void saquePorteria(){
 		if ((balon.transform.position.y > esquina1.transform.position.y) && !balon.balonFuera) {
@@ -234,7 +250,7 @@ public class MngPartido : MonoBehaviour {
 
     public void menuPause()
     {
-		if (Input.GetKey(KeyCode.Joystick1Button7)|| Input.GetKeyDown(KeyCode.Escape))
+		if (Input.GetButtonDown("Pause")|| Input.GetKeyDown(KeyCode.Escape))
         {
 			menu.transform.localPosition = new Vector3 (0, 0,4f);
 			Time.timeScale = 0;
@@ -253,10 +269,19 @@ public class MngPartido : MonoBehaviour {
     {
         if (visible)
         {
-            SceneManager.LoadScene("pruebas");
-            Time.timeScale = 1f;
-            
+            if (!MngScenes.multijugador)
+            {
+                SceneManager.LoadScene("pruebas");
+                Time.timeScale = 1f;
+            }
+            if (MngScenes.multijugador)
+            {
+                SceneManager.LoadScene("Multi");
+                Time.timeScale = 1f;
+            }
+
         }
+
     }
 
     public void menuPauseContinue() {
@@ -325,6 +350,7 @@ public class MngPartido : MonoBehaviour {
 		actualizarMarcador ();
 		actualizarTiempo ();
 		menuPause ();
+        corner();
     }
 
 }

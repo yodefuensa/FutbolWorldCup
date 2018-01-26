@@ -42,7 +42,16 @@ public class Jugador : MonoBehaviour {
 	}
 
 	void Update () {
-		Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, 1f);
+        if (!falta)
+        {
+            movimiento();
+            movimientoFalta();
+            conducirBalon();
+        }
+        marcar();
+        hacerFalta();
+
+        Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, 1f);
         robo = false;
         if (!falta)
         {
@@ -89,7 +98,7 @@ public class Jugador : MonoBehaviour {
                     flipY = false;
                 }
             }
-            else if (Input.GetAxisRaw("Vertical") < 0)
+            if (Input.GetAxisRaw("Vertical") < 0)
             {
                 transform.position += Vector3.down * Time.deltaTime * vel;
                 ar.SetBool("corriendo", true);
@@ -104,11 +113,11 @@ public class Jugador : MonoBehaviour {
             {
                 transform.position += new Vector3(1, 0) * Time.deltaTime * vel;
             }
-            else if (Input.GetAxisRaw("Horizontal") < 0)
+            if (Input.GetAxisRaw("Horizontal") < 0)
             {
                 transform.position -= new Vector3(1, 0) * Time.deltaTime * vel;
             }
-            if (Input.GetButton("Fire1") && balonPies && !balonGolpeado)
+            if (Input.GetButtonDown("Golpeo") && balonPies && !balonGolpeado)
             {
                 balon.ultimoTocado = true;
                 balonPies = false;
@@ -208,29 +217,25 @@ public class Jugador : MonoBehaviour {
 
     public void Entrada()
     {//pal Fixed
-		if ((Input.GetButton("Fire2"))&&(selector))
+		if ((Input.GetButtonDown("Falta"))&&(selector))
        {
             dirFalta = new Vector3(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
             tRobo = true;
 			ar.SetBool ("falta", true);
-            //movimiento falta en el puto fixed surprise madafaka
-            //movimientoFalta();
             StartCoroutine(setTRoboFalse());
-            //animacion 
             if (robo)
             {
                 equipoRival.limpiarBalonPies();
-                //equipoRival.rivalCercano();
                 equipoRival.Rival[equipoRival.rivalCercano()].falta = true;
                 StartCoroutine (equipoRival.Rival[equipoRival.rivalCercano()].setFaltaFalse());
                 balonPies = true;
-                //balon.ultimoTocado = true;
-
 
             }
        }
 
     }
+
+
 	public void hacerFalta()
 	{//QUIZAS CUANDO ESTE EN EL RAYCAST? ASI NO HACE FALTAS AL AIRE AL DISPARAR OTRO
 		if ((balon.interceptado) && (!balon.ultimoTocado))
@@ -265,14 +270,7 @@ public class Jugador : MonoBehaviour {
 
 	void FixedUpdate()
 	{
-		if (!falta) {
-			movimiento ();
-			movimientoFalta();
-			conducirBalon();
-		}
 
-		marcar ();
-		hacerFalta ();
 
         if (!balonPies)
         {

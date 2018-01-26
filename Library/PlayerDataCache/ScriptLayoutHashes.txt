@@ -5,14 +5,20 @@ Assets/Scenes/pruebas.unity
 Assets/Scenes/SelectAlineacion.unity
 Assets/Scenes/SelectSeleccion.unity
 Assets/Scenes/options.unity
+Assets/Scenes/SelectAliMulti2.unity
+Assets/Scenes/SelectAliMulti1.unity
+Assets/Scenes/SelectSelecMulti1.unity
+Assets/Scenes/SelectSelecMulti2.unity
+Assets/Scenes/Multi.unity
 SceneListEnd?
 983aacbcf9bcc9492689c87166dda713 Assembly-CSharp.dll:.ManagerPersonajes
 c9e4b10ec76e849a15734918dab0685b Assembly-CSharp.dll:.PorteroV2
 1bcf266f74d0efdb7f9ca70c675947d4 Assembly-CSharp.dll:.MngCamera
 e738eaff9862824f183ebca8cb53bc49 Assembly-CSharp.dll:.PorteroV2Rival
 60621b779e69c2d152ca4fec36c56c04 Assembly-CSharp.dll:.MngPartido
+322cb40e1e282f28af980cbef7922a90 UnityEngine.Analytics.dll:UnityEngine.Analytics.AnalyticsEventTracker
 dc07d7ad69b399a46e92c483bf1c04ca UnityEngine.Analytics.dll:UnityEngine.Analytics.AnalyticsTracker
-8c5283ce8217d82fa0d8f7de707765c1 Assembly-CSharp.dll:.Rival
+0e2105764a21a52602cd427cb3bc6b73 Assembly-CSharp.dll:.Rival
 eb9feca28501cf714470b9fde70b202b Assembly-CSharp.dll:.MngCargar
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.MngScenes
 43b43550e4030c8bfc33138938e13b63 Assembly-CSharp.dll:.Balon
@@ -22,12 +28,12 @@ eb9feca28501cf714470b9fde70b202b Assembly-CSharp.dll:.MngCargar
 46cd6c8aa01e4a91842c4db06f1c2391 Assembly-CSharp.dll:.MngRival
 5b5b9bceaf3ac7b4626f6716a4bc1b92 Assembly-CSharp.dll:.Jugador
 66a973fc39cb0186888181ee2fa740c2 Assembly-CSharp.dll:.Palo
+e52a96181ebb940ad0776d314e95dcc0 Assembly-CSharp.dll:.mngCargarMulti
 bc68edb0af574bf79f9550ead8ebae5c UnityEngine.HoloLens.dll:UnityEngine.Audio.AudioSpatializerMicrosoft
 c2275a8bfbb9f9942cad75ecdfded41d UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.SpatialMappingCollider
 45f3431f0103c41611e8d4eec3d439df UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.SpatialMappingRenderer
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.HoloLens.dll:UnityEngine.EventSystems.HoloLensInput
 463516d5b5fe8e67a0a24c48f2095b04 UnityEngine.HoloLens.dll:UnityEngine.EventSystems.HoloLensInputModule
-322cb40e1e282f28af980cbef7922a90 UnityEngine.Analytics.dll:UnityEngine.Analytics.AnalyticsEventTracker
 9de3a22eca9aefadba2d10d5987cefe3 UnityEngine.SpatialTracking.dll:UnityEngine.SpatialTracking.TrackedPoseDriver
 96d0fbde9fd209878a0a291f82c9bcdd UnityEngine.TestRunner.dll:UnityEngine.TestTools.TestRunner.PlaymodeTestsController
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.TestRunner.dll:UnityEngine.TestTools.TestRunner.Callbacks.PlayModeRunnerCallback
