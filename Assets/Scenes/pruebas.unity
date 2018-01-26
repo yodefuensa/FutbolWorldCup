@@ -88,7 +88,6 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaDirect: 0.5
     m_PVRFilteringAtrousPositionSigmaIndirect: 2
     m_PVRFilteringAtrousPositionSigmaAO: 1
-    m_ShowResolutionOverlay: 1
   m_LightingDataAsset: {fileID: 0}
   m_UseShadowmask: 1
 --- !u!196 &4
@@ -614,7 +613,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spain: {fileID: 1302391492471334, guid: 91c346bfc1feaf24182f3b848c77af71, type: 2}
-  brasil: {fileID: 1221896952411210, guid: 82237a3b179264051b242ea0a0d97daf, type: 2}
+  brasil: {fileID: 1917639139076228, guid: 0e12f57ac58254dd8a70faf2e1fb7c3e, type: 2}
   usa: {fileID: 1302391492471334, guid: 91c346bfc1feaf24182f3b848c77af71, type: 2}
   argentina: {fileID: 1302391492471334, guid: 91c346bfc1feaf24182f3b848c77af71, type: 2}
   japon: {fileID: 1540656462032214, guid: 1139bb07a3f59499c88e12cee33aa563, type: 2}

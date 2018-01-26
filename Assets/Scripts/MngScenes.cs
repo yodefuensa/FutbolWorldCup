@@ -12,6 +12,7 @@ public class MngScenes : MonoBehaviour {
     public static string p1Ali;
     public static string p2pais;
     public static string p2Ali;
+	public static bool multijugador;
 
 
     // Use this for initialization
@@ -108,6 +109,12 @@ public class MngScenes : MonoBehaviour {
                 break;
         }
     }
+	public void multiON(){
+		multijugador = true;
+	}
+	public void multiOFF(){
+		multijugador = false;
+	}
 
     public void rusia()
     {

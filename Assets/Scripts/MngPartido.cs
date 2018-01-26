@@ -234,7 +234,7 @@ public class MngPartido : MonoBehaviour {
 
     public void menuPause()
     {
-        if (Input.GetKey(KeyCode.Joystick1Button7))
+		if (Input.GetKey(KeyCode.Joystick1Button7)|| Input.GetKeyDown(KeyCode.Escape))
         {
 			menu.transform.localPosition = new Vector3 (0, 0,4f);
 			Time.timeScale = 0;

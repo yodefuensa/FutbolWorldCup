@@ -30,7 +30,7 @@ public class Jugador : MonoBehaviour {
 
     private void Awake()
     {
-       // equipoRival = equipoRivalGO.GetComponent<MngRival>();
+
 		posicionInicial = new Vector2 (transform.position.x, transform.position.y);
 		falta = false;
     }
@@ -108,7 +108,7 @@ public class Jugador : MonoBehaviour {
             {
                 transform.position -= new Vector3(1, 0) * Time.deltaTime * vel;
             }
-            if ((Input.GetButton("Fire1") && balonPies && !balonGolpeado)&& !MngPartido.visible)
+            if (Input.GetButton("Fire1") && balonPies && !balonGolpeado)
             {
                 balon.ultimoTocado = true;
                 balonPies = false;

@@ -9,6 +9,7 @@ public class mngCargarMulti : MonoBehaviour {
     public GameObject usa;
     public GameObject argentina;
     public GameObject japon;
+	public GameObject japonR;
     public GameObject china;
     public GameObject rusia;
     public GameObject alemania;
@@ -19,7 +20,6 @@ public class mngCargarMulti : MonoBehaviour {
     public GameObject AliA;
     public GameObject AliB;
     public GameObject AlRiv;
-    public GameObject rival;
     public GameObject portero;
     public GameObject porteroR;
 
@@ -74,6 +74,22 @@ public class mngCargarMulti : MonoBehaviour {
 
     private void Awake()
     {
+		portero = Instantiate (portero, new Vector2(transform.position.x,transform.position.y-55f), Quaternion.identity);
+		porteroR = Instantiate (porteroR, new Vector2(transform.position.x,transform.position.y+55f), Quaternion.identity);
+		if (MngScenes.p2pais == "japon")
+		{
+			rival0 = Instantiate (japonR, new Vector2(transform.position.x+6f,transform.position.y+6f), Quaternion.identity);
+			rival1 = Instantiate (japonR, new Vector2( transform.position.x-6f,transform.position.y+6f), Quaternion.identity);
+			rival2 = Instantiate (japonR, new Vector2(transform.position.x-20f,transform.position.y+15f), Quaternion.identity);
+			rival3 = Instantiate (japonR, new Vector2( transform.position.x-10f,transform.position.y+15f), Quaternion.identity);
+			rival4 = Instantiate (japonR, new Vector2(transform.position.x+10f,transform.position.y+15f), Quaternion.identity);
+			rival5 = Instantiate (japonR, new Vector2(transform.position.x+20f,transform.position.y+15f), Quaternion.identity);
+			rival6 = Instantiate (japonR, new Vector2( transform.position.x-20f,transform.position.y+35f), Quaternion.identity);
+			rival7 = Instantiate (japonR, new Vector2(transform.position.x-10f,transform.position.y+35f), Quaternion.identity);
+			rival8 = Instantiate (japonR, new Vector2( transform.position.x+10f,transform.position.y+35f), Quaternion.identity);
+			rival9 = Instantiate (japonR, new Vector2(transform.position.x+20f,transform.position.y+35f), Quaternion.identity);
+		}
+
         if (MngScenes.p1pais == "spain")
         {
             jugador0 = Instantiate(spain, new Vector2(transform.position.x + 3f, transform.position.y - 3f), Quaternion.identity);
@@ -179,23 +195,124 @@ public class mngCargarMulti : MonoBehaviour {
             jugador9 = Instantiate(china, new Vector2(transform.position.x + 20f, transform.position.y - 35f), Quaternion.identity);
         }
 
-        if (MngScenes.p2pais == "spain")
-        {
-            rival0 = Instantiate(spainR, new Vector2(transform.position.x + 3f, transform.position.y - 3f), Quaternion.identity);
-            rival1 = Instantiate(spainR, new Vector2(transform.position.x - 3f, transform.position.y - 3f), Quaternion.identity);
-            rival2 = Instantiate(spainR, new Vector2(transform.position.x - 20f, transform.position.y - 15f), Quaternion.identity);
-            rival3 = Instantiate(spainR, new Vector2(transform.position.x - 10f, transform.position.y - 15f), Quaternion.identity);
-            rival4 = Instantiate(spainR, new Vector2(transform.position.x + 10f, transform.position.y - 15f), Quaternion.identity);
-            rival5 = Instantiate(spainR, new Vector2(transform.position.x + 20f, transform.position.y - 15f), Quaternion.identity);
-            rival6 = Instantiate(spainR, new Vector2(transform.position.x - 20f, transform.position.y - 35f), Quaternion.identity);
-            rival7 = Instantiate(spainR, new Vector2(transform.position.x - 10f, transform.position.y - 35f), Quaternion.identity);
-            rival8 = Instantiate(spainR, new Vector2(transform.position.x + 10f, transform.position.y - 35f), Quaternion.identity);
-            rival9 = Instantiate(spainR, new Vector2(transform.position.x + 20f, transform.position.y - 35f), Quaternion.identity);
-        }
+
+
+		jugador0.GetComponent<Jugador> ().selector = true;
+		jugador0.GetComponent<Jugador> ().balon = balon.GetComponent<Balon> ();
+		jugador1.GetComponent<Jugador> ().balon = balon.GetComponent<Balon> ();
+		jugador2.GetComponent<Jugador> ().balon = balon.GetComponent<Balon> ();
+		jugador3.GetComponent<Jugador> ().balon = balon.GetComponent<Balon> ();
+		jugador4.GetComponent<Jugador> ().balon = balon.GetComponent<Balon> ();
+		jugador5.GetComponent<Jugador> ().balon = balon.GetComponent<Balon> ();
+		jugador6.GetComponent<Jugador> ().balon = balon.GetComponent<Balon> ();
+		jugador7.GetComponent<Jugador> ().balon = balon.GetComponent<Balon> ();
+		jugador8.GetComponent<Jugador> ().balon = balon.GetComponent<Balon> ();
+		jugador9.GetComponent<Jugador> ().balon = balon.GetComponent<Balon> ();
+		jugador0.GetComponent<Jugador> ().seguidor = guia.GetComponent<Selector> ();
+		jugador1.GetComponent<Jugador> ().seguidor = guia.GetComponent<Selector> ();
+		jugador2.GetComponent<Jugador> ().seguidor = guia.GetComponent<Selector> ();
+		jugador3.GetComponent<Jugador> ().seguidor = guia.GetComponent<Selector> ();
+		jugador4.GetComponent<Jugador> ().seguidor = guia.GetComponent<Selector> ();
+		jugador5.GetComponent<Jugador> ().seguidor = guia.GetComponent<Selector> ();
+		jugador6.GetComponent<Jugador> ().seguidor = guia.GetComponent<Selector> ();
+		jugador7.GetComponent<Jugador> ().seguidor = guia.GetComponent<Selector> ();
+		jugador8.GetComponent<Jugador> ().seguidor = guia.GetComponent<Selector> ();
+		jugador9.GetComponent<Jugador> ().seguidor = guia.GetComponent<Selector> ();
+		jugador0.GetComponent<Jugador> ().seguidor = guia.GetComponent<Selector> ();
+		jugador1.GetComponent<Jugador> ().seguidor = guia.GetComponent<Selector> ();
+		jugador2.GetComponent<Jugador> ().seguidor = guia.GetComponent<Selector> ();
+		jugador3.GetComponent<Jugador> ().seguidor = guia.GetComponent<Selector> ();
+		jugador4.GetComponent<Jugador> ().seguidor = guia.GetComponent<Selector> ();
+		jugador5.GetComponent<Jugador> ().seguidor = guia.GetComponent<Selector> ();
+		jugador6.GetComponent<Jugador> ().seguidor = guia.GetComponent<Selector> ();
+		jugador7.GetComponent<Jugador> ().seguidor = guia.GetComponent<Selector> ();
+		jugador8.GetComponent<Jugador> ().seguidor = guia.GetComponent<Selector> ();
+		jugador9.GetComponent<Jugador> ().seguidor = guia.GetComponent<Selector> ();
+		jugador0.GetComponent<Jugador> ().equipoRival = equiRiv.GetComponent<MngRival> ();
+		jugador1.GetComponent<Jugador> ().equipoRival = equiRiv.GetComponent<MngRival> ();
+		jugador2.GetComponent<Jugador> ().equipoRival = equiRiv.GetComponent<MngRival> ();
+		jugador3.GetComponent<Jugador> ().equipoRival = equiRiv.GetComponent<MngRival> ();
+		jugador4.GetComponent<Jugador> ().equipoRival = equiRiv.GetComponent<MngRival> ();
+		jugador5.GetComponent<Jugador> ().equipoRival = equiRiv.GetComponent<MngRival> ();
+		jugador6.GetComponent<Jugador> ().equipoRival = equiRiv.GetComponent<MngRival> ();
+		jugador7.GetComponent<Jugador> ().equipoRival = equiRiv.GetComponent<MngRival> ();
+		jugador8.GetComponent<Jugador> ().equipoRival = equiRiv.GetComponent<MngRival> ();
+		jugador9.GetComponent<Jugador> ().equipoRival = equiRiv.GetComponent<MngRival> ();
+
+		mngJugadores.GetComponent<ManagerPersonajes> ().balon = balon.GetComponent<Balon> ();
+		mngJugadores.GetComponent<ManagerPersonajes> ().jugadores [0] = jugador0.GetComponent<Jugador> ();
+		mngJugadores.GetComponent<ManagerPersonajes> ().jugadores [1] = jugador1.GetComponent<Jugador> ();
+		mngJugadores.GetComponent<ManagerPersonajes> ().jugadores [2] = jugador2.GetComponent<Jugador> ();
+		mngJugadores.GetComponent<ManagerPersonajes> ().jugadores [3] = jugador3.GetComponent<Jugador> ();
+		mngJugadores.GetComponent<ManagerPersonajes> ().jugadores [4] = jugador4.GetComponent<Jugador> ();
+		mngJugadores.GetComponent<ManagerPersonajes> ().jugadores [5] = jugador5.GetComponent<Jugador> ();
+		mngJugadores.GetComponent<ManagerPersonajes> ().jugadores [6] = jugador6.GetComponent<Jugador> ();
+		mngJugadores.GetComponent<ManagerPersonajes> ().jugadores [7] = jugador7.GetComponent<Jugador> ();
+		mngJugadores.GetComponent<ManagerPersonajes> ().jugadores [8] = jugador8.GetComponent<Jugador> ();
+		mngJugadores.GetComponent<ManagerPersonajes> ().jugadores [9] = jugador9.GetComponent<Jugador> ();
+		mngJugadores.GetComponent<ManagerPersonajes> ().benji = portero.GetComponent<PorteroV2> ();
+
+		equiRiv.GetComponent<MngRival> ().Rival [0] = rival0.GetComponent < Rival> ();
+		equiRiv.GetComponent<MngRival> ().Rival [1] = rival1.GetComponent < Rival> ();
+		equiRiv.GetComponent<MngRival> ().Rival [2] = rival2.GetComponent < Rival> ();
+		equiRiv.GetComponent<MngRival> ().Rival [3] = rival3.GetComponent < Rival> ();
+		equiRiv.GetComponent<MngRival> ().Rival [4] = rival4.GetComponent < Rival> ();
+		equiRiv.GetComponent<MngRival> ().Rival [5] = rival5.GetComponent < Rival> ();
+		equiRiv.GetComponent<MngRival> ().Rival [6] = rival6.GetComponent < Rival> ();
+		equiRiv.GetComponent<MngRival> ().Rival [7] = rival7.GetComponent < Rival> ();
+		equiRiv.GetComponent<MngRival> ().Rival [8] = rival8.GetComponent < Rival> ();
+		equiRiv.GetComponent<MngRival> ().Rival [9] = rival9.GetComponent < Rival> ();
+		equiRiv.GetComponent<MngRival> ().benji = porteroR.GetComponent <PorteroV2Rival> ();
+
+		rival0.GetComponent<Rival> ().ball = balon.GetComponent<Balon> ();
+		rival1.GetComponent<Rival> ().ball = balon.GetComponent<Balon> ();
+		rival2.GetComponent<Rival> ().ball = balon.GetComponent<Balon> ();
+		rival3.GetComponent<Rival> ().ball = balon.GetComponent<Balon> ();
+		rival4.GetComponent<Rival> ().ball = balon.GetComponent<Balon> ();
+		rival5.GetComponent<Rival> ().ball = balon.GetComponent<Balon> ();
+		rival6.GetComponent<Rival> ().ball = balon.GetComponent<Balon> ();
+		rival7.GetComponent<Rival> ().ball = balon.GetComponent<Balon> ();
+		rival8.GetComponent<Rival> ().ball = balon.GetComponent<Balon> ();
+		rival9.GetComponent<Rival> ().ball = balon.GetComponent<Balon> ();
+
+		rival0.GetComponent<Rival> ().eqContra = mngJugadores.GetComponent<ManagerPersonajes> ();
+		rival1.GetComponent<Rival> ().eqContra = mngJugadores.GetComponent<ManagerPersonajes> ();
+		rival2.GetComponent<Rival> ().eqContra = mngJugadores.GetComponent<ManagerPersonajes> ();
+		rival3.GetComponent<Rival> ().eqContra = mngJugadores.GetComponent<ManagerPersonajes> ();
+		rival4.GetComponent<Rival> ().eqContra = mngJugadores.GetComponent<ManagerPersonajes> ();
+		rival5.GetComponent<Rival> ().eqContra = mngJugadores.GetComponent<ManagerPersonajes> ();
+		rival6.GetComponent<Rival> ().eqContra = mngJugadores.GetComponent<ManagerPersonajes> ();
+		rival7.GetComponent<Rival> ().eqContra = mngJugadores.GetComponent<ManagerPersonajes> ();
+		rival8.GetComponent<Rival> ().eqContra = mngJugadores.GetComponent<ManagerPersonajes> ();
+		rival9.GetComponent<Rival> ().eqContra = mngJugadores.GetComponent<ManagerPersonajes> ();
+
+		rival0.GetComponent<Rival> ().porteriaRival = GameObject.Find ("porteria"); 
+		rival1.GetComponent<Rival> ().porteriaRival = GameObject.Find ("porteria"); 
+		rival2.GetComponent<Rival> ().porteriaRival = GameObject.Find ("porteria"); 
+		rival3.GetComponent<Rival> ().porteriaRival = GameObject.Find ("porteria"); 
+		rival4.GetComponent<Rival> ().porteriaRival = GameObject.Find ("porteria"); 
+		rival5.GetComponent<Rival> ().porteriaRival = GameObject.Find ("porteria"); 
+		rival6.GetComponent<Rival> ().porteriaRival = GameObject.Find ("porteria"); 
+		rival7.GetComponent<Rival> ().porteriaRival = GameObject.Find ("porteria"); 
+		rival8.GetComponent<Rival> ().porteriaRival = GameObject.Find ("porteria"); 
+		rival9.GetComponent<Rival> ().porteriaRival = GameObject.Find ("porteria"); 
+
+		portero.GetComponent<PorteroV2>().balon = balon.GetComponent<Balon> ();
+		portero.GetComponent<PorteroV2> ().posicion = GameObject.Find ("porteria");
+		porteroR.GetComponent<PorteroV2Rival>().balon = balon.GetComponent<Balon> ();
+		porteroR.GetComponent<PorteroV2Rival>().posicion = GameObject.Find ("porteria2");
+
+
+		if (MngScenes.p1Ali == "A") {
+			GameObject PosicionesDeLosCojones = Instantiate (AliA, transform.position, Quaternion.identity);
+		}
+		if (MngScenes.p1Ali == "B") {
+			GameObject PosicionesDeLosCojones = Instantiate (AliB, transform.position, Quaternion.identity);
+		}
+		GameObject PosicionRival = Instantiate(AlRiv, transform.position, Quaternion.identity);
+
     }
-
-
-
+		
 
     // Update is called once per frame
     void Update () {
