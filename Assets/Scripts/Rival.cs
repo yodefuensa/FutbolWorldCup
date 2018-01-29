@@ -8,7 +8,7 @@ public class Rival : MonoBehaviour {
     public Balon ball;
     public bool balonGolpeado = false;
     public bool balonPies = false;
-    private int vel = 9;
+    private int vel = 12;
     private int fuerzaGolpeo = 15;
     public GameObject porteriaRival;
     public Vector2 posInicial;
@@ -107,6 +107,7 @@ public class Rival : MonoBehaviour {
             }
             if (Input.GetButtonDown("GolpeoP2") && balonPies && !balonGolpeado && !ball.ultimoTocado)
             {
+                Debug.Log("NO ME JODAS!!!!!!!!!!!!!!!!!");
                 ball.ultimoTocado = false;
                 balonPies = false;
                 balonGolpeado = true;
@@ -137,7 +138,8 @@ public class Rival : MonoBehaviour {
 				}
 
 			}
-			if ((dist.magnitude < 17f) && (!selector) && (!ball.ultimoTocado) && !balonPies) {//zona de accion y yo tengo el balon
+			if ((dist.magnitude < 17f) && (!ball.ultimoTocado) && !balonPies) {//zona de accion y yo tengo el balon
+                Debug.Log("now now");
 				if (transform.position.y > ball.transform.position.y) {
 					transform.position += Vector3.down * Time.deltaTime * vel;
 				}
@@ -176,15 +178,17 @@ public class Rival : MonoBehaviour {
 			StartCoroutine (setTRoboFalse ());
 			Vector3 distancia = new Vector3 (3, 3);
 			GameObject jugadorConPelota = GameObject.FindGameObjectWithTag ("balonPies");
-			distancia = jugadorConPelota.transform.position - transform.position;
-			transform.position += dirFalta * Time.deltaTime * vel/5;
-			if (distancia.magnitude < 2f){
-				eqContra.jugadores [eqContra.jugadorCercano ()].balonPies = false;
-				eqContra.jugadores [eqContra.jugadorCercano ()].falta = true;
-				StartCoroutine (eqContra.jugadores [eqContra.jugadorCercano ()].setFaltaFalse ());
-				ball.interceptado = false;
-			}
-		}     
+            if (jugadorConPelota != null) {
+                distancia = jugadorConPelota.transform.position - transform.position;
+			    transform.position += dirFalta * Time.deltaTime * vel/5;
+			    if (distancia.magnitude < 2f){
+				    eqContra.jugadores [eqContra.jugadorCercano ()].balonPies = false;
+				    eqContra.jugadores [eqContra.jugadorCercano ()].falta = true;
+				    StartCoroutine (eqContra.jugadores [eqContra.jugadorCercano ()].setFaltaFalse ());
+				    ball.interceptado = false;
+			    }
+            }
+        }     
     
     }
 
@@ -252,9 +256,6 @@ public class Rival : MonoBehaviour {
                 }
                 if (balonPies)
                     ball.ultimoTocado = false;
-				//if (hit.tag == "balonPies")
-				//	robo = true;
-
             }
             
         }

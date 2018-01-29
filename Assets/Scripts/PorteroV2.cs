@@ -8,7 +8,7 @@ public class PorteroV2 : MonoBehaviour {
 	public bool balonGolpeado = false;
 	public bool balonPies = false;
 	public bool selector = false;
-	private int vel = 3;
+	private int vel = 6;
 	public int fuerzaGolpeo = 20;
 
 	public GameObject posicion;
@@ -30,21 +30,23 @@ public class PorteroV2 : MonoBehaviour {
 	            }
 	        }
 		}
-	}
+        movimiento();
+    }
 
 	private void movimiento()
 	{
-		if (balon.transform.position.x < transform.position.x)
-		{
-			transform.position -= new Vector3(1, 0) * Time.deltaTime * vel;
-		}
 
-		if (balon.transform.position.x > transform.position.x)
-		{
-			transform.position += new Vector3(1, 0) * Time.deltaTime * vel;
-		}
-		if (transform.position.y< posicion.transform.position.y+3f)
-			transform.position += new Vector3(0,1)* Time.deltaTime * vel;
+        Vector3 zonaBalon = posicion.transform.position-balon.transform.position;
+        Vector3 zona = posicion.transform.position - transform.position;
+        Vector3 balonDist = balon.transform.position - transform.position;
+        if (zonaBalon.magnitude < 10f)
+        {
+            transform.position += balonDist.normalized * Time.deltaTime * vel;
+        }
+        else if ((zona.magnitude > 2f)&& !balonPies)
+            transform.position += zona.normalized * Time.deltaTime * vel;
+
+
 
 		if ((Input.GetButton("Golpeo") && balonPies && !balonGolpeado))
 		{
@@ -82,7 +84,7 @@ public class PorteroV2 : MonoBehaviour {
 
 	void FixedUpdate()
 	{
-		movimiento();
+
 		conducirBalon();
 
     }

@@ -118,6 +118,7 @@ public class Jugador : MonoBehaviour {
             }
 			if (Input.GetButtonDown("Golpeo") && balonPies && !balonGolpeado && balon.ultimoTocado)
             {
+                Debug.Log("NOOOOOOOOOOOOOOOOOOOOOO");
                 balon.ultimoTocado = true;
                 balonPies = false;
                 balonGolpeado = true;
@@ -198,13 +199,15 @@ public class Jugador : MonoBehaviour {
 			StartCoroutine (setTRoboFalse ());
 			Vector3 distancia = new Vector3 (3, 3);
 			GameObject jugadorConPelota = GameObject.FindGameObjectWithTag ("balonPies");
-			distancia = jugadorConPelota.transform.position - transform.position;
-			transform.position += dirFalta * Time.deltaTime * vel/5;
-			if (distancia.magnitude < 2f){
-				equipoRival.Rival [equipoRival.rivalCercano ()].balonPies = false;
-				equipoRival.Rival [equipoRival.rivalCercano ()].falta = true;
-				StartCoroutine (equipoRival.Rival [equipoRival.rivalCercano ()].setFaltaFalse ());
-				balon.interceptado = false;
+            if (jugadorConPelota != null){
+                distancia = jugadorConPelota.transform.position - transform.position;
+			    transform.position += dirFalta * Time.deltaTime * vel/5;
+                if (distancia.magnitude < 2f){
+                    equipoRival.Rival[equipoRival.rivalCercano()].balonPies = false;
+                    equipoRival.Rival[equipoRival.rivalCercano()].falta = true;
+                    StartCoroutine(equipoRival.Rival[equipoRival.rivalCercano()].setFaltaFalse());
+                    balon.interceptado = false;
+                }
 			}
 		}  
 	}

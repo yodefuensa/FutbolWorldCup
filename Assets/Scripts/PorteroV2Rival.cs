@@ -9,7 +9,7 @@ public class PorteroV2Rival : MonoBehaviour {
 	public bool balonGolpeado = false;
 	public bool balonPies = false;
 	public bool selector = false;
-	private int vel = 3;
+	private int vel = 6;
 	public int fuerzaGolpeo = 20;
 	public bool inputFalsoEspacio;
 	public GameObject posicion;
@@ -41,22 +41,20 @@ public class PorteroV2Rival : MonoBehaviour {
 		inputFalsoEspacio = true;
 	}
 
-	private void movimiento()
-	{
-		if (balon.transform.position.x < transform.position.x)
-		{
-			transform.position -= new Vector3(1, 0) * Time.deltaTime * vel;
-		}
+    private void movimiento()
+    {
+        Vector3 zonaBalon = posicion.transform.position - balon.transform.position;
+        Vector3 zona = posicion.transform.position - transform.position;
+        Vector3 balonDist = balon.transform.position - transform.position;
+        if (zonaBalon.magnitude < 10f)
+        {
+            transform.position += balonDist.normalized * Time.deltaTime * vel;
+        }
+        else if ((zona.magnitude > 2f) && !balonPies)
+            transform.position += zona.normalized * Time.deltaTime * vel;
+    }
 
-		if (balon.transform.position.x > transform.position.x)
-		{
-			transform.position += new Vector3(1, 0) * Time.deltaTime * vel;
-		}
-		if (transform.position.y> posicion.transform.position.y-3f)
-			transform.position -= new Vector3(0,1)* Time.deltaTime * vel;
-	}
-
-	private void mngPortero(){
+    private void mngPortero(){
 		if (balonPies) {
 			StartCoroutine (inputFalsoEspacioTrue ());
 		}

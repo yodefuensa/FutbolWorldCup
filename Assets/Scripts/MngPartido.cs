@@ -22,6 +22,9 @@ public class MngPartido : MonoBehaviour {
     private int ObGol2;
 	public Text marcador;
 	public Text tiempo;
+    public GameObject win;
+    public GameObject lose;
+    public GameObject extraTime;
     public static bool visible;
 	private float time;
 	private float min;
@@ -35,7 +38,7 @@ public class MngPartido : MonoBehaviour {
         ObGol2 = 0;
 		min = 0;
         visible = false;
-	}
+    }
 	
 	void Update () {		
 	}
@@ -302,6 +305,32 @@ public class MngPartido : MonoBehaviour {
             visible = false;
         }
 	}
+    private IEnumerator setTimeOne()
+    {//para no tocar el balon al golpearlo
+        yield return new WaitForSeconds(.3f);
+        Time.timeScale = 1;
+        SceneManager.LoadScene("menu");
+    }
+
+    private void fin()
+    {
+        if ((min >= 90) && (gol!=golesRivales)){
+            if (gol > golesRivales) {
+                win.transform.localPosition = new Vector3(0, 0, 4f);
+                StartCoroutine(setTimeOne());
+                Time.timeScale = 0.05f;
+            }
+            if (golesRivales > gol) {
+                lose.transform.localPosition = new Vector3(0, 0, 4f);
+                StartCoroutine(setTimeOne());
+                Time.timeScale = 0.05f;
+            }
+        }
+        if ((min > 90) && (gol == golesRivales)) {
+            extraTime.transform.localPosition = new Vector3(-187f, 187f, 4f);
+        }
+
+    }
 
 
 
@@ -334,7 +363,8 @@ public class MngPartido : MonoBehaviour {
 	}
 	private void actualizarTiempo()
 	{
-		time += Time.deltaTime*12;
+
+        time += Time.deltaTime*20;
 		if (Mathf.Round (time) == 59) {
 			time = 0;
 			min = min + 1;
@@ -360,6 +390,7 @@ public class MngPartido : MonoBehaviour {
 		actualizarTiempo ();
 		menuPause ();
         corner();
+        fin();
     }
 
 }
