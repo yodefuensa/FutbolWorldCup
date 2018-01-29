@@ -259,7 +259,7 @@ RectTransform:
   - {fileID: 1573516226}
   - {fileID: 1206051745}
   m_Father: {fileID: 604828465}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -478,6 +478,7 @@ RectTransform:
   m_Children:
   - {fileID: 802312656}
   - {fileID: 1839471540}
+  - {fileID: 1262325169}
   - {fileID: 317678799}
   m_Father: {fileID: 0}
   m_RootOrder: 5
@@ -615,12 +616,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spain: {fileID: 1302391492471334, guid: 91c346bfc1feaf24182f3b848c77af71, type: 2}
   brasil: {fileID: 1917639139076228, guid: 0e12f57ac58254dd8a70faf2e1fb7c3e, type: 2}
-  usa: {fileID: 1302391492471334, guid: 91c346bfc1feaf24182f3b848c77af71, type: 2}
-  argentina: {fileID: 1302391492471334, guid: 91c346bfc1feaf24182f3b848c77af71, type: 2}
+  usa: {fileID: 1982863944638636, guid: f10665a22759a43b581ccaf7ab59f95e, type: 2}
+  argentina: {fileID: 1917639139076228, guid: 3f3b3222d59eb4cd9bbdf52f55d2aacf, type: 2}
   japon: {fileID: 1540656462032214, guid: 1139bb07a3f59499c88e12cee33aa563, type: 2}
   china: {fileID: 1452588897721420, guid: 39a2e4e23701d4b16949934b4d0e88d3, type: 2}
-  rusia: {fileID: 1302391492471334, guid: 91c346bfc1feaf24182f3b848c77af71, type: 2}
-  alemania: {fileID: 1302391492471334, guid: 91c346bfc1feaf24182f3b848c77af71, type: 2}
+  rusia: {fileID: 1737886321891702, guid: 178046bc6b29b49889cb7e50785fff95, type: 2}
+  alemania: {fileID: 1917639139076228, guid: 9705dfb02aca247b0b431a8803218483, type: 2}
   balon: {fileID: 1276751586}
   guia: {fileID: 478424442}
   equiRiv: {fileID: 246119102}
@@ -1281,6 +1282,80 @@ RectTransform:
   m_AnchoredPosition: {x: -0.000021577, y: 2.234}
   m_SizeDelta: {x: 176.42, y: 54.684}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1262325168
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1262325169}
+  - component: {fileID: 1262325171}
+  - component: {fileID: 1262325170}
+  m_Layer: 0
+  m_Name: tiempotext
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1262325169
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1262325168}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.9999996, y: 0.9999996, z: 0.9999996}
+  m_Children: []
+  m_Father: {fileID: 604828465}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 181.91501, y: 190.53009}
+  m_SizeDelta: {x: -679.3, y: -424.17}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1262325170
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1262325168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 44cc8fc06bba5440eb79b13c492b1fb6, type: 3}
+    m_FontSize: 20
+    m_FontStyle: 1
+    m_BestFit: 0
+    m_MinSize: 1
+    m_MaxSize: 40
+    m_Alignment: 5
+    m_AlignByGeometry: 0
+    m_RichText: 0
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 'Time:'
+--- !u!222 &1262325171
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1262325168}
 --- !u!1001 &1276751585
 Prefab:
   m_ObjectHideFlags: 0
@@ -1712,13 +1787,13 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 1
     m_MaxSize: 40
-    m_Alignment: 4
+    m_Alignment: 5
     m_AlignByGeometry: 0
     m_RichText: 0
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Time:'
+  m_Text: 
 --- !u!222 &1839471539
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1740,8 +1815,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 261.64255, y: 190.78105}
-  m_SizeDelta: {x: -564.2999, y: -424.17}
+  m_AnchoredPosition: {x: 235.6, y: 190.52}
+  m_SizeDelta: {x: -679.3, y: -424.17}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1982648095
 GameObject:

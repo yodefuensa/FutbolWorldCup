@@ -217,13 +217,23 @@ public class MngPartido : MonoBehaviour {
         if ((balon.transform.position.y < esquina4.transform.position.y) && balon.ultimoTocado){
             balon.balonFuera = true;
             balon.transform.position = esquina4.transform.position;
+			for (int n = 0; n < mngRiv.Rival.Length - 1; n++) {	
+				Vector3 distancia = new Vector3 (3, 3); 
+				distancia = mngRiv.Rival [n].transform.position - balon.transform.position;
+				mngRiv.Rival [n].magnitud = distancia.magnitude;
+			}
             ordeanar2();
-            mngRiv.Rival[0].transform.position = new Vector2(balonPosicionSaque.x + .7f, balonPosicionSaque.y);
+			mngRiv.Rival[0].transform.position = new Vector2(balon.transform.position.x + .7f, balon.transform.position.y);
         }
         if ((balon.transform.position.y > esquina1.transform.position.y) && !balon.ultimoTocado)
         {
             balon.balonFuera = true;
-            balon.transform.position = esquina4.transform.position;
+            balon.transform.position = esquina1.transform.position;
+			for (int n = 0; n < mngEqui.jugadores.Length -1; n++){	
+				Vector3 distancia = new Vector3(3, 3); 
+				distancia = mngEqui.jugadores[n].transform.position - balon.transform.position;
+				mngEqui.jugadores[n].magnitud = distancia.magnitude;
+			}
             ordeanar();
             mngEqui.jugadores[0].transform.position = new Vector2(balon.transform.position.x - .7f, balon.transform.position.y);
         }
@@ -330,11 +340,10 @@ public class MngPartido : MonoBehaviour {
 			min = min + 1;
 		}
         float num = Mathf.Round(time);
-
-        if (num<10)
-			tiempo.text = "Time: " + min + ":" + "0"  + Mathf.Round(time);
-		if (tiempo.text != "Time: " + min + ":" + Mathf.Round (time))
-			tiempo.text = "Time: " + min + ":" + Mathf.Round(time);
+        if (num < 10)
+			tiempo.text =  min + ":" + "0"  + num ;
+		else 
+			tiempo.text = min + ":" + num ;
 		
 	}
 

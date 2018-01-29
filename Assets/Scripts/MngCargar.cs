@@ -206,16 +206,6 @@ public class MngCargar : MonoBehaviour {
 		jugador7.GetComponent<Jugador> ().seguidor = guia.GetComponent<Selector> ();
 		jugador8.GetComponent<Jugador> ().seguidor = guia.GetComponent<Selector> ();
 		jugador9.GetComponent<Jugador> ().seguidor = guia.GetComponent<Selector> ();
-		jugador0.GetComponent<Jugador> ().seguidor = guia.GetComponent<Selector> ();
-		jugador1.GetComponent<Jugador> ().seguidor = guia.GetComponent<Selector> ();
-		jugador2.GetComponent<Jugador> ().seguidor = guia.GetComponent<Selector> ();
-		jugador3.GetComponent<Jugador> ().seguidor = guia.GetComponent<Selector> ();
-		jugador4.GetComponent<Jugador> ().seguidor = guia.GetComponent<Selector> ();
-		jugador5.GetComponent<Jugador> ().seguidor = guia.GetComponent<Selector> ();
-		jugador6.GetComponent<Jugador> ().seguidor = guia.GetComponent<Selector> ();
-		jugador7.GetComponent<Jugador> ().seguidor = guia.GetComponent<Selector> ();
-		jugador8.GetComponent<Jugador> ().seguidor = guia.GetComponent<Selector> ();
-		jugador9.GetComponent<Jugador> ().seguidor = guia.GetComponent<Selector> ();
 		jugador0.GetComponent<Jugador> ().equipoRival = equiRiv.GetComponent<MngRival> ();
 		jugador1.GetComponent<Jugador> ().equipoRival = equiRiv.GetComponent<MngRival> ();
 		jugador2.GetComponent<Jugador> ().equipoRival = equiRiv.GetComponent<MngRival> ();

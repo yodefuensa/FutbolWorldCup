@@ -9,7 +9,7 @@ public class Jugador : MonoBehaviour {
 	public bool balonGolpeado = false;
 	public bool balonPies = false;
 	public bool selector = false;
-	private int vel = 9;
+	private int vel = 12;
 	private int fuerzaGolpeo = 15;
     //robo es para saber si podremos robar la pelota
     public bool robo;
@@ -45,11 +45,9 @@ public class Jugador : MonoBehaviour {
         if (!falta)
         {
             movimiento();
-            movimientoFalta();
             conducirBalon();
         }
         marcar();
-        hacerFalta();
 
         Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, 1f);
         robo = false;
@@ -77,6 +75,7 @@ public class Jugador : MonoBehaviour {
         yield return new WaitForSeconds(2f);
         falta = false;
     }
+
     public IEnumerator setTRoboFalse()
     {//tiempo de robo, momento que haces falta y se te bloquea la direcion
         yield return new WaitForSeconds(0.7f);
@@ -117,7 +116,7 @@ public class Jugador : MonoBehaviour {
             {
                 transform.position -= new Vector3(1, 0) * Time.deltaTime * vel;
             }
-            if (Input.GetButtonDown("Golpeo") && balonPies && !balonGolpeado)
+			if (Input.GetButtonDown("Golpeo") && balonPies && !balonGolpeado && balon.ultimoTocado)
             {
                 balon.ultimoTocado = true;
                 balonPies = false;
@@ -131,6 +130,11 @@ public class Jugador : MonoBehaviour {
                 StartCoroutine(balon.setBalonTiempoFalse());
 
             }
+			if (Input.GetButtonDown ("Falta")) {
+				ar.SetBool ("falta", true);
+				hacerFalta (new Vector2 (Input.GetAxisRaw ("Horizontal"), Input.GetAxisRaw ("Vertical")));
+			}
+
         }
         else
         {
@@ -138,35 +142,24 @@ public class Jugador : MonoBehaviour {
             ar.SetBool("falta", false);
         }
         Vector3 dist = transform.position - posicion.transform.position;
-
-        if ((dist.magnitude < 25f) && (!selector))
+		Vector3 distBalon = posicion.transform.position - balon.transform.position;
+        if ((dist.magnitude < 17f) && (!selector))
         {
             //si estamos dentro de la zona de accion
             if (!balon.ultimoTocado)
             {// y ellos tienen el balon
 			
-                if (transform.position.y > balon.transform.position.y + 1 || transform.position.y < balon.transform.position.y - 1
-                    || transform.position.x > balon.transform.position.x + 1 || transform.position.x < balon.transform.position.x - 1)
+                if ((transform.position.y > balon.transform.position.y + 1 || transform.position.y < balon.transform.position.y - 1
+					|| transform.position.x > balon.transform.position.x + 1 || transform.position.x < balon.transform.position.x - 1) && distBalon.magnitude<16f)
                 {//vamos a por el balon
-                    if (transform.position.y > balon.transform.position.y)
-                    {
-                        transform.position += Vector3.down * Time.deltaTime * vel;
-                    }
-                    if (transform.position.y < balon.transform.position.y)
-                    {
-                        transform.position += Vector3.up * Time.deltaTime * vel;
-                    }
-                    if (transform.position.x > balon.transform.position.x)
-                    {
-                        transform.position += Vector3.left * Time.deltaTime * vel;
-                    }
-                    if (transform.position.x < balon.transform.position.x)
-                    {
-                        transform.position += Vector3.right * Time.deltaTime * vel;
-                    }
+					Vector3 distanciaBalon = balon.transform.position - transform.position;
+					transform.position += distanciaBalon.normalized * Time.deltaTime * vel;
+					if (distanciaBalon.magnitude < 4f) {
+						hacerFalta (distanciaBalon.normalized);
+					}
                 }
             }
-			if ((dist.magnitude<25f) && (!selector) && (balon.ultimoTocado))
+			if ((dist.magnitude<17f) && (!selector) && (balon.ultimoTocado))
             {//zona de accion y yo tengo el balon
                 if (transform.position.y > balon.transform.position.y)
                 {
@@ -176,7 +169,7 @@ public class Jugador : MonoBehaviour {
                     transform.position += Vector3.up * Time.deltaTime * vel;
             }
         }
-        if ((dist.magnitude>24f) &&(!selector)) 
+        if ((dist.magnitude>16f) &&(!selector)) 
         {//si estamos fuera de la zona y no somos el selector
             if (transform.position.y < posicion.transform.position.y)
                 transform.position += Vector3.up * Time.deltaTime * vel;
@@ -198,6 +191,25 @@ public class Jugador : MonoBehaviour {
 		balonPies = false;
 	}
 
+	public void hacerFalta(Vector3 dirFalta)
+	{//vector normalizado 
+		tRobo = true;
+		if (tRobo) {
+			StartCoroutine (setTRoboFalse ());
+			Vector3 distancia = new Vector3 (3, 3);
+			GameObject jugadorConPelota = GameObject.FindGameObjectWithTag ("balonPies");
+			distancia = jugadorConPelota.transform.position - transform.position;
+			transform.position += dirFalta * Time.deltaTime * vel/5;
+			if (distancia.magnitude < 2f){
+				equipoRival.Rival [equipoRival.rivalCercano ()].balonPies = false;
+				equipoRival.Rival [equipoRival.rivalCercano ()].falta = true;
+				StartCoroutine (equipoRival.Rival [equipoRival.rivalCercano ()].setFaltaFalse ());
+				balon.interceptado = false;
+			}
+		}  
+	}
+
+
 	public void conducirBalon()
 	{
 		if (balonPies && !balonGolpeado)
@@ -206,14 +218,7 @@ public class Jugador : MonoBehaviour {
 			balon.setPosicion(posbal);
 		}
 	}
-
-    public void movimientoFalta()
-    {//pa Entrada
-        if ((tRobo)&&(selector))
-        {
-            transform.position += dirFalta * Time.deltaTime * vel/2;
-        }
-    }
+		
 
     public void Entrada()
     {//pal Fixed
@@ -234,31 +239,6 @@ public class Jugador : MonoBehaviour {
        }
 
     }
-
-
-	public void hacerFalta()
-	{//QUIZAS CUANDO ESTE EN EL RAYCAST? ASI NO HACE FALTAS AL AIRE AL DISPARAR OTRO
-		if ((balon.interceptado) && (!balon.ultimoTocado))
-		{
-			Vector3 distancia = new Vector3(3, 3);
-			distancia = balon.transform.position - this.transform.position;
-			if (distancia.magnitude < 4)
-			{
-				if (!falta){
-					tRobo = true;
-					StartCoroutine(setTRoboFalse());
-					dirFalta = distancia.normalized;
-					if (robo)
-					{
-						equipoRival.limpiarBalonPies ();
-						equipoRival.Rival [equipoRival.rivalCercano ()].falta = true;
-						StartCoroutine (equipoRival.Rival[equipoRival.rivalCercano ()].setFaltaFalse());
-						balonPies = true;
-					}  
-				}
-			}
-		}
-	}
 
 	private void marcar() {
 		if (selector){

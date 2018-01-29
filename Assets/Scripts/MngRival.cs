@@ -25,39 +25,46 @@ public class MngRival : MonoBehaviour {
         }
     }
 
-    public int jugadorCercano()
-    {//devuelve la posicion del array del jugador mas cercano
-        int posicion = 0;
-        Vector3 distancia = new Vector3(3, 3);
-        Vector3 MaxDistancia = new Vector3(3, 3);
-        for (int n = 0; n < this.Rival.Length; n++)
-        {
-            if (n == 0)
-            {
-                distancia = balon.transform.position - Rival[n].transform.position;
-                MaxDistancia = distancia;
-                posicion = n;
-            }
-            if (n > 0)
-            {
-                distancia = balon.transform.position - Rival[n].transform.position;
-                if (MaxDistancia.magnitude > distancia.magnitude)
-                {
-                    MaxDistancia = distancia;
-                    posicion = n;
-                }
-            }
-        }
-        return posicion;
-    }
+
+	private void escanerSelector(){
+		//impide que haya mas de un jugador seleccionado
+		//implementado limpiador balonPies 
+		int count = 0;
+		for (int n = 0; n<Rival.Length; n++){
+			if (Rival[n].selector ==true)
+				count++;
+			if (count > 1) {
+				Debug.Log ("count mayor de uno");
+				limpiarSelector ();
+				int pos = rivalCercano();
+				Rival[pos].selector = true;
+			}
+		}
+		int count2 = 0;
+		for (int n = 0; n<Rival.Length; n++){
+			if (Rival[n].balonPies ==true)
+				count2++;
+			if (count2 > 1) {
+				Debug.Log ("count2 mayor de uno");
+				for (int m = 0; m < Rival.Length; m++)
+				{	
+					Rival[m].balonPies = false;
+				}
+				int pos = rivalCercano();
+				Rival[pos].selector = true;
+				Rival [pos].balonPies = true;
+			}
+		}
+	}
+
 
 
     public void cambiarJugador()
     {//si pulsas la tecla "control" selecciona el jugador mas cercano
-        if (Input.GetButton("CambiarPlayer"))
+        if (Input.GetButton("CambiarPlayerP2"))
         {
             limpiarSelector();
-            int pos = jugadorCercano();
+            int pos = rivalCercano();
             Rival[pos].selector = true;
         }
     }
@@ -107,8 +114,10 @@ public class MngRival : MonoBehaviour {
 
     private void FixedUpdate()
     {
-        int cercano = rivalCercano();
-        Rival[cercano].perseguir(); 
+        //int cercano = rivalCercano();
+        //Rival[cercano].perseguir(); 
+		cambiarJugador ();
+		escanerSelector ();
 
     }
 }

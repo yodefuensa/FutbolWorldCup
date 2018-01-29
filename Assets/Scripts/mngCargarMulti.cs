@@ -15,6 +15,7 @@ public class mngCargarMulti : MonoBehaviour {
     public GameObject alemania;
     public GameObject balon;
     public GameObject guia;
+	public GameObject guia2;
     public GameObject equiRiv;
     public GameObject mngJugadores;
     public GameObject AliA;
@@ -218,16 +219,6 @@ public class mngCargarMulti : MonoBehaviour {
 		jugador7.GetComponent<Jugador> ().seguidor = guia.GetComponent<Selector> ();
 		jugador8.GetComponent<Jugador> ().seguidor = guia.GetComponent<Selector> ();
 		jugador9.GetComponent<Jugador> ().seguidor = guia.GetComponent<Selector> ();
-		jugador0.GetComponent<Jugador> ().seguidor = guia.GetComponent<Selector> ();
-		jugador1.GetComponent<Jugador> ().seguidor = guia.GetComponent<Selector> ();
-		jugador2.GetComponent<Jugador> ().seguidor = guia.GetComponent<Selector> ();
-		jugador3.GetComponent<Jugador> ().seguidor = guia.GetComponent<Selector> ();
-		jugador4.GetComponent<Jugador> ().seguidor = guia.GetComponent<Selector> ();
-		jugador5.GetComponent<Jugador> ().seguidor = guia.GetComponent<Selector> ();
-		jugador6.GetComponent<Jugador> ().seguidor = guia.GetComponent<Selector> ();
-		jugador7.GetComponent<Jugador> ().seguidor = guia.GetComponent<Selector> ();
-		jugador8.GetComponent<Jugador> ().seguidor = guia.GetComponent<Selector> ();
-		jugador9.GetComponent<Jugador> ().seguidor = guia.GetComponent<Selector> ();
 		jugador0.GetComponent<Jugador> ().equipoRival = equiRiv.GetComponent<MngRival> ();
 		jugador1.GetComponent<Jugador> ().equipoRival = equiRiv.GetComponent<MngRival> ();
 		jugador2.GetComponent<Jugador> ().equipoRival = equiRiv.GetComponent<MngRival> ();
@@ -274,6 +265,17 @@ public class mngCargarMulti : MonoBehaviour {
 		rival7.GetComponent<Rival> ().ball = balon.GetComponent<Balon> ();
 		rival8.GetComponent<Rival> ().ball = balon.GetComponent<Balon> ();
 		rival9.GetComponent<Rival> ().ball = balon.GetComponent<Balon> ();
+
+		rival0.GetComponent<Rival> ().seguidor = guia2.GetComponent<Selector> ();
+		rival1.GetComponent<Rival> ().seguidor = guia2.GetComponent<Selector> ();
+		rival2.GetComponent<Rival> ().seguidor = guia2.GetComponent<Selector> ();
+		rival3.GetComponent<Rival> ().seguidor = guia2.GetComponent<Selector> ();
+		rival4.GetComponent<Rival> ().seguidor = guia2.GetComponent<Selector> ();
+		rival5.GetComponent<Rival> ().seguidor = guia2.GetComponent<Selector> ();
+		rival6.GetComponent<Rival> ().seguidor = guia2.GetComponent<Selector> ();
+		rival7.GetComponent<Rival> ().seguidor = guia2.GetComponent<Selector> ();
+		rival8.GetComponent<Rival> ().seguidor = guia2.GetComponent<Selector> ();
+		rival9.GetComponent<Rival> ().seguidor = guia2.GetComponent<Selector> ();
 
 		rival0.GetComponent<Rival> ().eqContra = mngJugadores.GetComponent<ManagerPersonajes> ();
 		rival1.GetComponent<Rival> ().eqContra = mngJugadores.GetComponent<ManagerPersonajes> ();

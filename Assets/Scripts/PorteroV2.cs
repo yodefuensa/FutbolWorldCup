@@ -18,17 +18,17 @@ public class PorteroV2 : MonoBehaviour {
 
 	void Update () {
 		Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, 1f);
-			foreach (Collider2D hit in hits) {
-            if (hit.name == "balon")
-            {
-                balonPies = true;
-                selector = true;
-                balon.ultimoTocado = true;
-                if (!balonGolpeado)
-                {
-                    balon.interceptado = true;
-                }
-            }
+		foreach (Collider2D hit in hits) {
+      		if (hit.name == "balon")
+	        {
+	            balonPies = true;
+	            selector = true;
+	            balon.ultimoTocado = true;
+	            if (!balonGolpeado)
+	            {
+	                balon.interceptado = true;
+	            }
+	        }
 		}
 	}
 
@@ -64,8 +64,7 @@ public class PorteroV2 : MonoBehaviour {
 
 	public IEnumerator setBalonGolpeadoFalse()
 	{//para no tocar el balon al golpearlo
-		for (int n = 0; n < 10; n++)
-		{            
+		for (int n = 0; n < 10; n++) {            
 			yield return new WaitForSeconds(.1f);
 		}
 		balonGolpeado = false;

@@ -29,6 +29,10 @@ public class MngScenes : MonoBehaviour {
         // Cursor.visible = false;
     }
 
+	public void salir(){
+		Application.Quit();
+	}
+
     public void Escenas()
 	{
 
