@@ -4,12 +4,14 @@ Assets/Scenes/menu.unity
 Assets/Scenes/pruebas.unity
 Assets/Scenes/SelectAlineacion.unity
 Assets/Scenes/SelectSeleccion.unity
-Assets/Scenes/options.unity
+Assets/Scenes/controles.unity
 Assets/Scenes/SelectAliMulti2.unity
 Assets/Scenes/SelectAliMulti1.unity
 Assets/Scenes/SelectSelecMulti1.unity
 Assets/Scenes/SelectSelecMulti2.unity
+Assets/Scenes/creditos.unity
 Assets/Scenes/Multi.unity
+Assets/Scenes/opciones.unity
 SceneListEnd?
 983aacbcf9bcc9492689c87166dda713 Assembly-CSharp.dll:.ManagerPersonajes
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.Timeline.dll:UnityEngine.Timeline.ActivationPlayableAsset
@@ -146,6 +148,7 @@ e9bdabf9265d758d56f01bb188916fa8 UnityEngine.Networking.dll:UnityEngine.Networki
 3f32f08a64daf40b09ed864d96fe3840 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkTransform
 73843688b51256aed059f049c540bca8 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkTransformChild
 528ea1fd7c01796fc60c4e2f172ea229 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkTransformVisualizer
+055a5440a3ad27e0477474f86f8cefbf Assembly-CSharp.dll:.mngOpciones
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.TestRunner.dll:UnityEngine.TestTools.TestRunner.Callbacks.PlayModeRunnerCallback
 96d0fbde9fd209878a0a291f82c9bcdd UnityEngine.TestRunner.dll:UnityEngine.TestTools.TestRunner.PlaymodeTestsController
 64eb32cc721b1cc68a91ed57461e188c UnityEngine.TestRunner.dll:UnityEngine.TestTools.TestRunner.Callbacks.RemoteTestResultSender

@@ -47,11 +47,17 @@ public class MngScenes : MonoBehaviour {
 		    case "SelectAlineacion":
 			    SceneManager.LoadScene("pruebas");
 			break;
+            case "opciones":
+                SceneManager.LoadScene("controles");
+                break;
             default:
                 SceneManager.LoadScene("menu");
                 break;
         }
 
+    }
+    public void creditos() {
+        SceneManager.LoadScene("creditos");
     }
     public void multi()
     {
@@ -91,12 +97,17 @@ public class MngScenes : MonoBehaviour {
             case "SelectAliMulti2":
                 SceneManager.LoadScene("SelectSelecMulti2");
                 break;
+
         }
     }
 
-    public void options()
+    public void crontroles()
     {
-        SceneManager.LoadScene("options");
+        SceneManager.LoadScene("controles");
+    }
+    public void opciones()
+    {
+        SceneManager.LoadScene("opciones");
     }
     public void Back()
     {
@@ -110,6 +121,12 @@ public class MngScenes : MonoBehaviour {
                 break;
             default:
                 SceneManager.LoadScene("menu");
+                break;
+            case "opciones":
+                SceneManager.LoadScene("menu");
+                break;
+            case "controles":
+                SceneManager.LoadScene("opciones");
                 break;
         }
     }

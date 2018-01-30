@@ -24,6 +24,7 @@ public class PorteroV2 : MonoBehaviour {
 	            balonPies = true;
 	            selector = true;
 	            balon.ultimoTocado = true;
+                
 	            if (!balonGolpeado)
 	            {
 	                balon.interceptado = true;

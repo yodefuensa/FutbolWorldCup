@@ -11,9 +11,6 @@ public class ManagerPersonajes : MonoBehaviour {
     void Start(){
     }
 
-	void Update () {		
-	}
-
     private void setPosInicial()
     {
         //FUCK ESTABLECE LA ZONA DE ACCION Y POSICION INICAL

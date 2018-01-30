@@ -18,7 +18,7 @@ EditorBuildSettings:
     path: Assets/Scenes/SelectSeleccion.unity
     guid: 17ae5d0dcf83541b8a30ecfc1fc9c890
   - enabled: 1
-    path: Assets/Scenes/options.unity
+    path: Assets/Scenes/controles.unity
     guid: 826cb100065a9d641a7a77c6cbda5c5a
   - enabled: 1
     path: Assets/Scenes/SelectAliMulti2.unity
@@ -33,5 +33,11 @@ EditorBuildSettings:
     path: Assets/Scenes/SelectSelecMulti2.unity
     guid: 3d6e554df1f7b374898fc8f6706de2c3
   - enabled: 1
+    path: Assets/Scenes/creditos.unity
+    guid: 23d85e999f23d1a4396f261bd1b491ef
+  - enabled: 1
     path: Assets/Scenes/Multi.unity
     guid: bb462d26b0255864a8521d1d0cd048a7
+  - enabled: 1
+    path: Assets/Scenes/opciones.unity
+    guid: 6348a6db7b18a9644a2aafecb26df90c

@@ -260,6 +260,7 @@ public class Jugador : MonoBehaviour {
 			balon.ultimoTocado = true;
 
 		}
+        
     }
 
 }
