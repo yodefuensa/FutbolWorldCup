@@ -8,7 +8,7 @@ public class Rival : MonoBehaviour {
     public Balon ball;
     public bool balonGolpeado = false;
     public bool balonPies = false;
-    private int vel = 12;
+    private int vel = 0;
     private int fuerzaGolpeo = 15;
     public GameObject porteriaRival;
     public Vector2 posInicial;
@@ -26,6 +26,7 @@ public class Rival : MonoBehaviour {
     public bool flipY = false;
 	public Selector seguidor;
     private Animator ar;
+	private float lastPosition = 0;
 
     //public bool fakeInputSpace;
 
@@ -33,6 +34,7 @@ public class Rival : MonoBehaviour {
         fakeInputC = false;
         falta = false;
 		selector = false;
+		ar = GetComponent<Animator>();
 	}
     // Update is called once per frame
     void Update()
@@ -72,6 +74,7 @@ public class Rival : MonoBehaviour {
     {//tiempo de robo, momento que haces falta y se te bloquea la direcion
         yield return new WaitForSeconds(0.7f);
         tRobo = false;
+		ar.SetBool ("falta", false);
     }
 
     private void movimiento()
@@ -81,20 +84,10 @@ public class Rival : MonoBehaviour {
             if (Input.GetAxisRaw("VerticalP2") > 0)
             {
                 transform.position += Vector3.up * Time.deltaTime * vel;
-                if (flipY)
-                {
-                    transform.localScale = new Vector3(transform.localScale.x, -transform.localScale.y);
-                    flipY = false;
-                }
             }
             if (Input.GetAxisRaw("VerticalP2") < 0)
             {
                 transform.position += Vector3.down * Time.deltaTime * vel;
-                if (!flipY)
-                {
-                    transform.localScale = new Vector3(transform.localScale.x, -transform.localScale.y);
-                    flipY = true;
-                }
             }
 
             if (Input.GetAxisRaw("HorizontalP2") > 0)
@@ -107,7 +100,6 @@ public class Rival : MonoBehaviour {
             }
             if (Input.GetButtonDown("GolpeoP2") && balonPies && !balonGolpeado && !ball.ultimoTocado)
             {
-                Debug.Log("NO ME JODAS!!!!!!!!!!!!!!!!!");
                 ball.ultimoTocado = false;
                 balonPies = false;
                 balonGolpeado = true;
@@ -126,44 +118,33 @@ public class Rival : MonoBehaviour {
 		} 
 		Vector3 dist = transform.position - posicionAl.transform.position;
 		Vector3 distBalon = posicionAl.transform.position - ball.transform.position;
-		if ((dist.magnitude < 17f) && (!selector)&& ball.ultimoTocado&&!balonPies) {
+		if ((dist.magnitude < 17f) && (!selector) && ball.ultimoTocado && !balonPies) {
 			//si estamos dentro de la zona de accion  y ellos tienen el balon
 			if ((transform.position.y > ball.transform.position.y + 1 || transform.position.y < ball.transform.position.y - 1
-				|| transform.position.x > ball.transform.position.x + 1 || transform.position.x < ball.transform.position.x - 1) && distBalon.magnitude<16f) {
+			    || transform.position.x > ball.transform.position.x + 1 || transform.position.x < ball.transform.position.x - 1) && distBalon.magnitude < 16f) {
 				//vamos a por el balon
 				Vector3 distanciaBalon = ball.transform.position - transform.position;
 				transform.position += distanciaBalon.normalized * Time.deltaTime * vel;
-				if (distanciaBalon.magnitude < 4f) {
+				if ((distanciaBalon.magnitude < 4f) && (ball.interceptado)) {
+					ar.SetBool ("falta", true);
 					hacerFalta (distanciaBalon.normalized);
 				}
-
 			}
-			if ((dist.magnitude < 17f) && (!ball.ultimoTocado) && !balonPies) {//zona de accion y yo tengo el balon
-                Debug.Log("now now");
-				if (transform.position.y > ball.transform.position.y) {
-					transform.position += Vector3.down * Time.deltaTime * vel;
-				}
-				if (transform.position.y < ball.transform.position.y)
-					transform.position += Vector3.up * Time.deltaTime * vel;
-			}
-				
 		}
-
+		if ((dist.magnitude < 17f) && (!ball.ultimoTocado) && !balonPies) {//zona de accion y yo tengo el balon
+			if (transform.position.y > ball.transform.position.y) {
+				transform.position += Vector3.down * Time.deltaTime * vel;
+			}
+			if (transform.position.y < ball.transform.position.y)
+				transform.position += Vector3.up * Time.deltaTime * vel;
+		}
 		if (!ball.ultimoTocado && balonPies && !MngScenes.multijugador) {
 			Vector3 distancia = porteriaRival.transform.position - transform.position;
 			transform.position += distancia.normalized * Time.deltaTime * vel;
-
 		}
 
-		if ((dist.magnitude > 17f) && (!selector)&& !balonPies) {//si estamos fuera de la zona y no somos el selector
-			if (transform.position.y < posicionAl.transform.position.y)
-				transform.position += Vector3.up * Time.deltaTime * vel;
-			if (transform.position.y > posicionAl.transform.position.y)
-				transform.position += Vector3.down * Time.deltaTime * vel;
-			if (transform.position.x < posicionAl.transform.position.x)
-				transform.position += Vector3.right * Time.deltaTime * vel;
-			if (transform.position.x > posicionAl.transform.position.x)
-				transform.position += Vector3.left * Time.deltaTime * vel;
+		if ((dist.magnitude > 16f) && (!selector)&& !balonPies) {//si estamos fuera de la zona y no somos el selector
+			transform.position -= dist.normalized * Time.deltaTime * vel;
 		}
 
 
@@ -191,15 +172,41 @@ public class Rival : MonoBehaviour {
         }     
     
     }
+	private void animatorObserver (){
+		if (lastPosition == transform.position.y)
+			ar.SetBool ("corriendo", false);
+		if (lastPosition > transform.position.y) {
+			ar.SetBool ("corriendo", true);
+			if (flipY) {
+				transform.localScale = new Vector3 (transform.localScale.x, -transform.localScale.y);
+				flipY = false;
+			}
+			lastPosition = transform.position.y;
+		}
+		if (lastPosition < transform.position.y) {
+			ar.SetBool ("corriendo", true);
+			if (!flipY) {
+				transform.localScale = new Vector3 (transform.localScale.x, -transform.localScale.y);
+				flipY = true;
+			}
+			lastPosition = transform.position.y;
+		}
 
+	}
 
     public void conducirBalon()
     {
-        if (balonPies && !balonGolpeado)
-        {
-            Vector3 posbal = new Vector3(transform.position.x, transform.position.y + 0.5f);
-            ball.setPosicion(posbal);
-        }
+		if (balonPies && !balonGolpeado)
+		{ 
+			if (flipY) {
+				Vector3 posbal = new Vector3 (transform.position.x, transform.position.y + 0.5f);
+				ball.setPosicion (posbal);
+			}
+			if (!flipY){
+				Vector3 posbal = new Vector3 (transform.position.x, transform.position.y - 0.5f);
+				ball.setPosicion (posbal);
+			}
+		}
     }
 
 
@@ -211,7 +218,7 @@ public class Rival : MonoBehaviour {
 	}
 
 	public void golpearPelota(){
-		if (balonPies) {
+		if ((balonPies)&&(!MngScenes.multijugador)) {
 			Vector3 distanciaPorteria = new Vector3();
 			distanciaPorteria = porteriaRival.transform.position - transform.position;
 			if (distanciaPorteria.magnitude < 17) {
@@ -239,6 +246,7 @@ public class Rival : MonoBehaviour {
 
     public void FixedUpdate()
     {
+		animatorObserver ();
         Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, 1f);
         if (!falta)
         {
@@ -251,6 +259,7 @@ public class Rival : MonoBehaviour {
                     if (!balonGolpeado)
                     {
                         ball.interceptado = true;
+						StopCoroutine ("balon.setBalonTiempoFalse");
                     }
 
                 }
@@ -259,6 +268,8 @@ public class Rival : MonoBehaviour {
             }
             
         }
+		if (!MngScenes.multijugador)
+			selector = false;
 
         if (!balonPies)
             this.tag = "Rival";

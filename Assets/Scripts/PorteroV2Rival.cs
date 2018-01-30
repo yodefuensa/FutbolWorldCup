@@ -43,16 +43,16 @@ public class PorteroV2Rival : MonoBehaviour {
 
     private void movimiento()
     {
-        Vector3 zonaBalon = posicion.transform.position - balon.transform.position;
-        Vector3 zona = posicion.transform.position - transform.position;
-        Vector3 balonDist = balon.transform.position - transform.position;
-        if (zonaBalon.magnitude < 10f)
-        {
-            transform.position += balonDist.normalized * Time.deltaTime * vel;
-        }
-        else if ((zona.magnitude > 2f) && !balonPies)
-            transform.position += zona.normalized * Time.deltaTime * vel;
-    }
+		if (!balonPies) {
+			Vector3 zonaBalon = posicion.transform.position - balon.transform.position;
+			Vector3 zona = posicion.transform.position - transform.position;
+			Vector3 balonDist = balon.transform.position - transform.position;
+			if (zonaBalon.magnitude < 10f)
+				transform.position += balonDist.normalized * Time.deltaTime * vel;
+			else if ((zona.magnitude > 2f) && !balonPies)
+				transform.position += zona.normalized * Time.deltaTime * vel;
+		}
+	}
 
     private void mngPortero(){
 		if (balonPies) {

@@ -56,8 +56,7 @@ public class MngRival : MonoBehaviour {
 			}
 		}
 	}
-
-
+		
 
     public void cambiarJugador()
     {//si pulsas la tecla "control" selecciona el jugador mas cercano
@@ -114,8 +113,7 @@ public class MngRival : MonoBehaviour {
 
     private void FixedUpdate()
     {
-        //int cercano = rivalCercano();
-        //Rival[cercano].perseguir(); 
+
 		cambiarJugador ();
 		escanerSelector ();
 

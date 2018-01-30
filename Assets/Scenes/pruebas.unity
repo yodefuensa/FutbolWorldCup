@@ -632,7 +632,7 @@ MonoBehaviour:
   AliA: {fileID: 1883809869232378, guid: 6125b3ce9b1ac1543aae9fc736686ac5, type: 2}
   AliB: {fileID: 1522551214521194, guid: 4890db4bb546ca14abbaafc311a8a0dd, type: 2}
   AlRiv: {fileID: 1699469696191488, guid: 0e2da6524e524d24b877da92f71e0c80, type: 2}
-  rival: {fileID: 1828212457870702, guid: 19cd0b78f7e1823428a0105c08b5705e, type: 2}
+  rival: {fileID: 1918073928847306, guid: 8336d8a70ef9f714c9d5cd3035cab838, type: 2}
   portero: {fileID: 1604623276513526, guid: 7049886b857e243ffa65c2a551cf62bc, type: 2}
   porteroR: {fileID: 1112776497496400, guid: d3e560366c3314bf197ecededf33944e, type: 2}
 --- !u!4 &694733775

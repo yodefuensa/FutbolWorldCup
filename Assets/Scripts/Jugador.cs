@@ -27,6 +27,7 @@ public class Jugador : MonoBehaviour {
 	public Selector seguidor;
    // public GameObject equipoRivalGO;
     public MngRival equipoRival;
+	private float lastPosition = 0;
 
     private void Awake()
     {
@@ -60,6 +61,7 @@ public class Jugador : MonoBehaviour {
                     balonPies = true;
                     selector = true;
                     balon.interceptado = true;
+					StopCoroutine ("balon.setBalonTiempoFalse");
 
                 }
                 if (hit.tag == "balonPies")
@@ -118,7 +120,6 @@ public class Jugador : MonoBehaviour {
             }
 			if (Input.GetButtonDown("Golpeo") && balonPies && !balonGolpeado && balon.ultimoTocado)
             {
-                Debug.Log("NOOOOOOOOOOOOOOOOOOOOOO");
                 balon.ultimoTocado = true;
                 balonPies = false;
                 balonGolpeado = true;
@@ -133,14 +134,9 @@ public class Jugador : MonoBehaviour {
             }
 			if (Input.GetButtonDown ("Falta")) {
 				ar.SetBool ("falta", true);
-				hacerFalta (new Vector2 (Input.GetAxisRaw ("Horizontal"), Input.GetAxisRaw ("Vertical")));
+				hacerFalta (new Vector3 (Input.GetAxisRaw ("Horizontal"), Input.GetAxisRaw ("Vertical")));
 			}
 
-        }
-        else
-        {
-            ar.SetBool("corriendo", false);
-            ar.SetBool("falta", false);
         }
         Vector3 dist = transform.position - posicion.transform.position;
 		Vector3 distBalon = posicion.transform.position - balon.transform.position;
@@ -156,6 +152,7 @@ public class Jugador : MonoBehaviour {
 					Vector3 distanciaBalon = balon.transform.position - transform.position;
 					transform.position += distanciaBalon.normalized * Time.deltaTime * vel;
 					if (distanciaBalon.magnitude < 4f) {
+						ar.SetBool ("falta", true);
 						hacerFalta (distanciaBalon.normalized);
 					}
                 }
@@ -172,18 +169,31 @@ public class Jugador : MonoBehaviour {
         }
         if ((dist.magnitude>16f) &&(!selector)) 
         {//si estamos fuera de la zona y no somos el selector
-            if (transform.position.y < posicion.transform.position.y)
-                transform.position += Vector3.up * Time.deltaTime * vel;
-            if (transform.position.y > posicion.transform.position.y)
-                transform.position += Vector3.down * Time.deltaTime * vel;
-            if (transform.position.x < posicion.transform.position.x)
-                transform.position += Vector3.right * Time.deltaTime * vel;
-            if (transform.position.x > posicion.transform.position.x)
-                transform.position += Vector3.left * Time.deltaTime * vel;
+			transform.position -= dist.normalized * Time.deltaTime * vel;
         }
 
 
     }
+	private void animatorObserver (){
+		if (lastPosition == transform.position.y)
+			ar.SetBool ("corriendo", false);
+		if (lastPosition < transform.position.y) {
+			ar.SetBool ("corriendo", true);
+			if (flipY) {
+				transform.localScale = new Vector3 (transform.localScale.x, -transform.localScale.y);
+				flipY = false;
+			}
+			lastPosition = transform.position.y;
+		}
+		if (lastPosition > transform.position.y) {
+			ar.SetBool ("corriendo", true);
+			if (!flipY) {
+				transform.localScale = new Vector3 (transform.localScale.x, -transform.localScale.y);
+				flipY = true;
+			}
+			lastPosition = transform.position.y;
+		}
+	}
 
 	public IEnumerator setBalonGolpeadoFalse()
 	{//para no tocar el balon al golpearlo
@@ -199,9 +209,9 @@ public class Jugador : MonoBehaviour {
 			StartCoroutine (setTRoboFalse ());
 			Vector3 distancia = new Vector3 (3, 3);
 			GameObject jugadorConPelota = GameObject.FindGameObjectWithTag ("balonPies");
-            if (jugadorConPelota != null){
-                distancia = jugadorConPelota.transform.position - transform.position;
-			    transform.position += dirFalta * Time.deltaTime * vel/5;
+			transform.position += dirFalta * Time.deltaTime * vel/3;
+			if (jugadorConPelota != null){
+                distancia = jugadorConPelota.transform.position - transform.position;  
                 if (distancia.magnitude < 2f){
                     equipoRival.Rival[equipoRival.rivalCercano()].balonPies = false;
                     equipoRival.Rival[equipoRival.rivalCercano()].falta = true;
@@ -216,32 +226,17 @@ public class Jugador : MonoBehaviour {
 	public void conducirBalon()
 	{
 		if (balonPies && !balonGolpeado)
-		{
-			Vector3 posbal = new Vector3(transform.position.x, transform.position.y + 0.5f);
-			balon.setPosicion(posbal);
+		{ 
+			if (flipY) {
+				Vector3 posbal = new Vector3 (transform.position.x, transform.position.y - 0.5f);
+				balon.setPosicion (posbal);
+			}
+			if (!flipY){
+				Vector3 posbal = new Vector3 (transform.position.x, transform.position.y + 0.5f);
+				balon.setPosicion (posbal);
+			}
 		}
 	}
-		
-
-    public void Entrada()
-    {//pal Fixed
-		if ((Input.GetButtonDown("Falta"))&&(selector))
-       {
-            dirFalta = new Vector3(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-            tRobo = true;
-			ar.SetBool ("falta", true);
-            StartCoroutine(setTRoboFalse());
-            if (robo)
-            {
-                equipoRival.limpiarBalonPies();
-                equipoRival.Rival[equipoRival.rivalCercano()].falta = true;
-                StartCoroutine (equipoRival.Rival[equipoRival.rivalCercano()].setFaltaFalse());
-                balonPies = true;
-
-            }
-       }
-
-    }
 
 	private void marcar() {
 		if (selector){
@@ -253,13 +248,11 @@ public class Jugador : MonoBehaviour {
 
 	void FixedUpdate()
 	{
-
+		if (!selector)
+			animatorObserver ();
 
         if (!balonPies)
-        {
-			Entrada();
             this.tag = "Jugador";
-        }
         else
         {
             this.tag = "balonPies";

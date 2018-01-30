@@ -123,7 +123,7 @@ public class mngCargarMulti : MonoBehaviour {
             rival8 = Instantiate(usaR, new Vector2(transform.position.x + 10f, transform.position.y + 35f), Quaternion.identity);
             rival9 = Instantiate(usaR, new Vector2(transform.position.x + 20f, transform.position.y + 35f), Quaternion.identity);
         }
-        if (MngScenes.p2pais == "alemnia")
+        if (MngScenes.p2pais == "alemania")
         {
             rival0 = Instantiate(alemaniaR, new Vector2(transform.position.x + 6f, transform.position.y + 6f), Quaternion.identity);
             rival1 = Instantiate(alemaniaR, new Vector2(transform.position.x - 6f, transform.position.y + 6f), Quaternion.identity);
@@ -162,6 +162,32 @@ public class mngCargarMulti : MonoBehaviour {
             rival8 = Instantiate(rusiaR, new Vector2(transform.position.x + 10f, transform.position.y + 35f), Quaternion.identity);
             rival9 = Instantiate(rusiaR, new Vector2(transform.position.x + 20f, transform.position.y + 35f), Quaternion.identity);
         }
+		if (MngScenes.p2pais == "china")
+		{
+			rival0 = Instantiate(chinaR, new Vector2(transform.position.x + 6f, transform.position.y + 6f), Quaternion.identity);
+			rival1 = Instantiate(chinaR, new Vector2(transform.position.x - 6f, transform.position.y + 6f), Quaternion.identity);
+			rival2 = Instantiate(chinaR, new Vector2(transform.position.x - 20f, transform.position.y + 15f), Quaternion.identity);
+			rival3 = Instantiate(chinaR, new Vector2(transform.position.x - 10f, transform.position.y + 15f), Quaternion.identity);
+			rival4 = Instantiate(chinaR, new Vector2(transform.position.x + 10f, transform.position.y + 15f), Quaternion.identity);
+			rival5 = Instantiate(chinaR, new Vector2(transform.position.x + 20f, transform.position.y + 15f), Quaternion.identity);
+			rival6 = Instantiate(chinaR, new Vector2(transform.position.x - 20f, transform.position.y + 35f), Quaternion.identity);
+			rival7 = Instantiate(chinaR, new Vector2(transform.position.x - 10f, transform.position.y + 35f), Quaternion.identity);
+			rival8 = Instantiate(chinaR, new Vector2(transform.position.x + 10f, transform.position.y + 35f), Quaternion.identity);
+			rival9 = Instantiate(chinaR, new Vector2(transform.position.x + 20f, transform.position.y + 35f), Quaternion.identity);
+		}
+		if (MngScenes.p2pais == "spain")
+		{
+			jugador0 = Instantiate(spainR, new Vector2(transform.position.x + 3f, transform.position.y - 3f), Quaternion.identity);
+			jugador1 = Instantiate(spainR, new Vector2(transform.position.x - 3f, transform.position.y - 3f), Quaternion.identity);
+			jugador2 = Instantiate(spainR, new Vector2(transform.position.x - 20f, transform.position.y - 15f), Quaternion.identity);
+			jugador3 = Instantiate(spainR, new Vector2(transform.position.x - 10f, transform.position.y - 15f), Quaternion.identity);
+			jugador4 = Instantiate(spainR, new Vector2(transform.position.x + 10f, transform.position.y - 15f), Quaternion.identity);
+			jugador5 = Instantiate(spainR, new Vector2(transform.position.x + 20f, transform.position.y - 15f), Quaternion.identity);
+			jugador6 = Instantiate(spainR, new Vector2(transform.position.x - 20f, transform.position.y - 35f), Quaternion.identity);
+			jugador7 = Instantiate(spainR, new Vector2(transform.position.x - 10f, transform.position.y - 35f), Quaternion.identity);
+			jugador8 = Instantiate(spainR, new Vector2(transform.position.x + 10f, transform.position.y - 35f), Quaternion.identity);
+			jugador9 = Instantiate(spainR, new Vector2(transform.position.x + 20f, transform.position.y - 35f), Quaternion.identity);
+		}
 
         if (MngScenes.p1pais == "spain")
         {
