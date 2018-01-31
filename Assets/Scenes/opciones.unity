@@ -245,7 +245,6 @@ MonoBehaviour:
   resolution: {fileID: 1596203646}
   fullscreen: {fileID: 1975314359}
   mute: {fileID: 1461149050}
-  audiosource: {fileID: 0}
 --- !u!4 &158220991
 Transform:
   m_ObjectHideFlags: 0
@@ -2661,7 +2660,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Mute
+  m_Text: Mute Music
 --- !u!222 &1987429965
 CanvasRenderer:
   m_ObjectHideFlags: 0

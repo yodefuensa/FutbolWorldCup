@@ -1049,6 +1049,8 @@ MonoBehaviour:
   win: {fileID: 1728657607}
   lose: {fileID: 1758941491}
   extraTime: {fileID: 1191409620}
+  goal: {fileID: 8300000, guid: abbe79853533c4b10937c4cc5bb45f63, type: 3}
+  arbitro: {fileID: 8300000, guid: a49100fdac45049a4b031b7bedb8e99b, type: 3}
 --- !u!4 &971038049
 Transform:
   m_ObjectHideFlags: 0

@@ -8,7 +8,7 @@ public class Rival : MonoBehaviour {
     public Balon ball;
     public bool balonGolpeado = false;
     public bool balonPies = false;
-    private int vel = 4;
+    private int vel = 12;
     private int fuerzaGolpeo = 15;
     public GameObject porteriaRival;
     public Vector2 posInicial;

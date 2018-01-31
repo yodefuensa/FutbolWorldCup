@@ -28,6 +28,7 @@ public class MngPartido : MonoBehaviour {
     public static bool visible;
 	private float time;
 	private float min;
+	public AudioClip goal, arbitro;
 
 
 
@@ -38,10 +39,8 @@ public class MngPartido : MonoBehaviour {
         ObGol2 = 0;
 		min = 0;
         visible = false;
+		mngAudio.instance.playSfxClip (arbitro);
     }
-	
-	void Update () {		
-	}
 
 	public void ordeanar()
 	{//ordenado la propiedad jugadores de mngEqui, en base a la propiedad magnitud de los jugadores,
@@ -165,7 +164,7 @@ public class MngPartido : MonoBehaviour {
 
     private void saquesBanda()
     {
-
+		int aux=0;
 		if (((balon.transform.position.x < esquina1.transform.position.x) || (balon.transform.position.x > esquina4.transform.position.x)) && !balon.balonFuera)
 		{
 			Debug.Log ("esta fuera hostias");
@@ -178,13 +177,25 @@ public class MngPartido : MonoBehaviour {
 					distancia = mngRiv.Rival[n].transform.position - balon.transform.position;
 					mngRiv.Rival[n].magnitud = distancia.magnitude;
 				}
+				for (int m = 0; m < mngEqui.jugadores.Length - 1; m++) {
+					if (mngEqui.jugadores [m].balonPies == true)
+						aux = m;
+				}
 				ordeanar2();
 				if (balon.transform.position.x > 36f) {
 					mngRiv.Rival[0].transform.position = new Vector2 (balonPosicionSaque.x + .7f, balonPosicionSaque.y);
+					mngEqui.jugadores [aux].balonPies = false;
+					mngEqui.jugadores [aux].transform.position =new Vector2 (mngEqui.jugadores [aux].transform.position .x - 3f, mngEqui.jugadores [aux].transform.position .y);
+					mngRiv.Rival [0].balonPies = true;
+					mngRiv.Rival [0].selector = true;
 					balon.transform.position = new Vector2 (balonPosicionSaque.x, balonPosicionSaque.y);
 				}
 				if (balon.transform.position.x < -36f) {
 					mngRiv.Rival [0].transform.position = new Vector2 (balonPosicionSaque.x - .7f, balonPosicionSaque.y);
+					mngEqui.jugadores [aux].balonPies = false;
+					mngEqui.jugadores [aux].transform.position =new Vector2 (mngEqui.jugadores [aux].transform.position .x + 3f, mngEqui.jugadores [aux].transform.position .y);
+					mngRiv.Rival [0].balonPies = true;
+					mngRiv.Rival [0].selector = true;
 					balon.transform.position = new Vector2 (balonPosicionSaque.x, balonPosicionSaque.y);
 				}
 
@@ -196,14 +207,25 @@ public class MngPartido : MonoBehaviour {
 					distancia = mngEqui.jugadores[n].transform.position - balon.transform.position;
 					mngEqui.jugadores[n].magnitud = distancia.magnitude;
 				}
+				for (int m = 0; m < mngRiv.Rival.Length - 1; m++) {
+					if (mngRiv.Rival[m].balonPies == true)
+						aux = m;
+				}
 				ordeanar ();
 				if (balon.transform.position.x > 36f) {
 					mngEqui.jugadores [0].transform.position = new Vector2 (balonPosicionSaque.x + .7f, balonPosicionSaque.y);
+					mngRiv.Rival [aux].balonPies = false;
+					mngRiv.Rival [aux].transform.position =new Vector2 (mngRiv.Rival [aux].transform.position .x - 3f,mngRiv.Rival [aux].transform.position .y);
 					balon.transform.position = new Vector2 (balonPosicionSaque.x, balonPosicionSaque.y);
+					mngEqui.jugadores [0].balonPies = true;
+
 				}
 				if (balon.transform.position.x < -36f) {
 					mngEqui.jugadores [0].transform.position = new Vector2 (balonPosicionSaque.x - .7f, balonPosicionSaque.y);
+					mngRiv.Rival [aux].balonPies = false;
+					mngRiv.Rival [aux].transform.position =new Vector2 (mngRiv.Rival [aux].transform.position .x - 3f,mngRiv.Rival [aux].transform.position .y);
 					balon.transform.position = new Vector2 (balonPosicionSaque.x, balonPosicionSaque.y);
+					mngEqui.jugadores [0].balonPies = true;
 				}
 			}
 
@@ -353,6 +375,7 @@ public class MngPartido : MonoBehaviour {
 		if (marcador.text != gol + " - " + golesRivales) 
 		{
 			marcador.text = gol + " - " + golesRivales;
+			mngAudio.instance.playSfxClip (goal);
 		}	
 	
 	}

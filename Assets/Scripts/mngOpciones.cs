@@ -8,28 +8,18 @@ public class mngOpciones : MonoBehaviour {
     public Dropdown resolution;
     public Toggle fullscreen;
     public Toggle mute;
-    public AudioSource audiosource;
+	mngAudio music;
 
     private Resolution[] resolutions;
     private bool FullScreen;
     private static bool MuteSound;
 
-
-
-    // Use this for initialization
-    void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
     private void Awake()
     {
         resolutions = Screen.resolutions;
         fullscreen.isOn = FullScreen = Screen.fullScreen;
-        //mute.isOn = MuteSound = audiosource.mute;
+		mute.isOn = MuteSound = mngAudio.instance.musicSource.mute; 
+
 
         for (int i = 0; i < resolutions.Length; i++)
         {
@@ -53,6 +43,6 @@ public class mngOpciones : MonoBehaviour {
 
     public void changeMute()
     {
-        MuteSound = audiosource.mute = mute.isOn;
+		MuteSound = mngAudio.instance.musicSource.mute = mute.isOn;
     }
 }

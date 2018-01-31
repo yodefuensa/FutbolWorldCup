@@ -54,9 +54,11 @@
      <Compile Include="Assets\Scripts\Balon.cs" />
      <Compile Include="Assets\Scripts\Jugador.cs" />
      <Compile Include="Assets\Scripts\ManagerPersonajes.cs" />
+     <Compile Include="Assets\Scripts\mngAudio.cs" />
      <Compile Include="Assets\Scripts\MngCamera.cs" />
      <Compile Include="Assets\Scripts\MngCargar.cs" />
      <Compile Include="Assets\Scripts\mngCargarMulti.cs" />
+     <Compile Include="Assets\Scripts\mngOpciones.cs" />
      <Compile Include="Assets\Scripts\MngPartido.cs" />
      <Compile Include="Assets\Scripts\MngRival.cs" />
      <Compile Include="Assets\Scripts\MngScenes.cs" />
