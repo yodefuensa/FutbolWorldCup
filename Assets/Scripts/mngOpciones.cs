@@ -8,7 +8,7 @@ public class mngOpciones : MonoBehaviour {
     public Dropdown resolution;
     public Toggle fullscreen;
     public Toggle mute;
-	mngAudio music;
+
 
     private Resolution[] resolutions;
     private bool FullScreen;

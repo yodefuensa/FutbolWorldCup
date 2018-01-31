@@ -9,7 +9,7 @@ public class Jugador : MonoBehaviour {
 	public bool balonGolpeado = false;
 	public bool balonPies = false;
 	public bool selector = false;
-	private int vel = 4;
+	private int vel = 12;
 	private int fuerzaGolpeo = 15;
     //robo es para saber si podremos robar la pelota
     public bool robo;
@@ -89,36 +89,44 @@ public class Jugador : MonoBehaviour {
     {
         if ((selector) && (!falta) && (!tRobo))
         {
-            if (Input.GetAxisRaw("Vertical") > 0)
-            {
-                transform.position += Vector3.up * Time.deltaTime * vel;
-                ar.SetBool("corriendo", true);
-                if (flipY)
+           // Vector3 noMove = balon.
+            if (!balon.balonFuera) { 
+                if (Input.GetAxisRaw("Vertical") > 0)
                 {
-                    transform.localScale = new Vector3(transform.localScale.x, -transform.localScale.y);
-                    flipY = false;
+                    transform.position += Vector3.up * Time.deltaTime * vel;
+                    ar.SetBool("corriendo", true);
+                    if (flipY)
+                    {
+                        transform.localScale = new Vector3(transform.localScale.x, -transform.localScale.y);
+                        flipY = false;
+                    }
                 }
-            }
-            if (Input.GetAxisRaw("Vertical") < 0)
-            {
-                transform.position += Vector3.down * Time.deltaTime * vel;
-                ar.SetBool("corriendo", true);
-                if (!flipY)
+                if (Input.GetAxisRaw("Vertical") < 0)
                 {
-                    transform.localScale = new Vector3(transform.localScale.x, -transform.localScale.y);
-                    flipY = true;
+                    transform.position += Vector3.down * Time.deltaTime * vel;
+                    ar.SetBool("corriendo", true);
+                    if (!flipY)
+                    {
+                        transform.localScale = new Vector3(transform.localScale.x, -transform.localScale.y);
+                        flipY = true;
+                    }
                 }
-            }
 
-            if (Input.GetAxisRaw("Horizontal") > 0)
-            {
-                transform.position += new Vector3(1, 0) * Time.deltaTime * vel;
+                if (Input.GetAxisRaw("Horizontal") > 0)
+                {
+                    transform.position += new Vector3(1, 0) * Time.deltaTime * vel;
+                }
+                if (Input.GetAxisRaw("Horizontal") < 0)
+                {
+                    transform.position -= new Vector3(1, 0) * Time.deltaTime * vel;
+                }
+                if (Input.GetButtonDown("Falta"))
+                {
+                    ar.SetBool("falta", true);
+                    hacerFalta(new Vector3(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")));
+                }
             }
-            if (Input.GetAxisRaw("Horizontal") < 0)
-            {
-                transform.position -= new Vector3(1, 0) * Time.deltaTime * vel;
-            }
-			if (Input.GetButtonDown("Golpeo") && balonPies && !balonGolpeado && balon.ultimoTocado)
+            if (Input.GetButtonDown("Golpeo") && balonPies && !balonGolpeado && balon.ultimoTocado)
             {
                 balon.ultimoTocado = true;
                 balonPies = false;
@@ -132,10 +140,7 @@ public class Jugador : MonoBehaviour {
                 StartCoroutine(balon.setBalonTiempoFalse());
 
             }
-			if (Input.GetButtonDown ("Falta")) {
-				ar.SetBool ("falta", true);
-				hacerFalta (new Vector3 (Input.GetAxisRaw ("Horizontal"), Input.GetAxisRaw ("Vertical")));
-			}
+
 
         }
         Vector3 dist = transform.position - posicion.transform.position;
@@ -151,7 +156,7 @@ public class Jugador : MonoBehaviour {
                 {//vamos a por el balon
 					Vector3 distanciaBalon = balon.transform.position - transform.position;
 					transform.position += distanciaBalon.normalized * Time.deltaTime * vel;
-					if (distanciaBalon.magnitude < 4f) {
+					if ((distanciaBalon.magnitude < 4f)&& balon.interceptado && !balon.balonFuera&& !PorteroV2Rival.esPortero) {
 						ar.SetBool ("falta", true);
 						hacerFalta (distanciaBalon.normalized);
 					}

@@ -874,6 +874,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   balon: {fileID: 1276751586}
+  esquina1: {fileID: 1824970262}
+  esquina4: {fileID: 2067253909}
 --- !u!1 &802312655
 GameObject:
   m_ObjectHideFlags: 0

@@ -81,22 +81,29 @@ public class Rival : MonoBehaviour {
     {
         if ((selector) && (!falta) && (!tRobo)&& MngScenes.multijugador)
         {
-            if (Input.GetAxisRaw("VerticalP2") > 0)
+            if (!ball.balonFuera)
             {
-                transform.position += Vector3.up * Time.deltaTime * vel;
-            }
-            if (Input.GetAxisRaw("VerticalP2") < 0)
-            {
-                transform.position += Vector3.down * Time.deltaTime * vel;
-            }
+                if (Input.GetAxisRaw("VerticalP2") > 0)
+                {
+                    transform.position += Vector3.up * Time.deltaTime * vel;
+                }
+                if (Input.GetAxisRaw("VerticalP2") < 0)
+                {
+                    transform.position += Vector3.down * Time.deltaTime * vel;
+                }
 
-            if (Input.GetAxisRaw("HorizontalP2") > 0)
-            {
-                transform.position += new Vector3(1, 0) * Time.deltaTime * vel;
-            }
-            if (Input.GetAxisRaw("HorizontalP2") < 0)
-            {
-                transform.position -= new Vector3(1, 0) * Time.deltaTime * vel;
+                if (Input.GetAxisRaw("HorizontalP2") > 0)
+                {
+                    transform.position += new Vector3(1, 0) * Time.deltaTime * vel;
+                }
+                if (Input.GetAxisRaw("HorizontalP2") < 0)
+                {
+                    transform.position -= new Vector3(1, 0) * Time.deltaTime * vel;
+                }
+                if (Input.GetButtonDown("FaltaP2"))
+                {
+                    hacerFalta(new Vector2(Input.GetAxisRaw("HorizontalP2"), Input.GetAxisRaw("VerticalP2")));
+                }
             }
             if (Input.GetButtonDown("GolpeoP2") && balonPies && !balonGolpeado && !ball.ultimoTocado)
             {
@@ -112,9 +119,7 @@ public class Rival : MonoBehaviour {
                 StartCoroutine(ball.setBalonTiempoFalse());
 
             }
-			if (Input.GetButtonDown("FaltaP2")){
-				hacerFalta(new Vector2(Input.GetAxisRaw("HorizontalP2"), Input.GetAxisRaw("VerticalP2")));
-			}
+
 		} 
 		Vector3 dist = transform.position - posicionAl.transform.position;
 		Vector3 distBalon = posicionAl.transform.position - ball.transform.position;
@@ -125,7 +130,7 @@ public class Rival : MonoBehaviour {
 				//vamos a por el balon
 				Vector3 distanciaBalon = ball.transform.position - transform.position;
 				transform.position += distanciaBalon.normalized * Time.deltaTime * vel;
-				if ((distanciaBalon.magnitude < 4f) && (ball.interceptado)) {
+				if ((distanciaBalon.magnitude < 4f) && (ball.interceptado)&& !ball.balonFuera&&!PorteroV2.esPortero) {
 					ar.SetBool ("falta", true);
 					hacerFalta (distanciaBalon.normalized);
 				}

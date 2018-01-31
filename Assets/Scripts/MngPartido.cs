@@ -135,31 +135,27 @@ public class MngPartido : MonoBehaviour {
         {
             colocarPersonajesSaque();
             balon.setPosicion(new Vector3(0f, 0f));
-            for (int n = 0; n < 10; n++)
-            {
+            for (int n = 0; n < 10; n++){
                 mngEqui.jugadores[n].transform.position = mngEqui.jugadores[n].posicionInicial;
             }
-            for (int m = 0; m < 10; m++)
-            {
+            for (int m = 0; m < 10; m++){
                 mngRiv.Rival[m].transform.position = mngRiv.Rival[m].posInicial;
             }
             balon.direccion = new Vector3(0, 0);
-
-        }else {
+            balon.interceptado = false;
+        }
+        else {
             colocarPersonajesSaqueRival();
             balon.setPosicion(new Vector3(0f, 0f));
-            for (int n = 0; n < 10; n++)
-            {
+            for (int n = 0; n < 10; n++){
                 mngEqui.jugadores[n].transform.position = mngEqui.jugadores[n].posicionInicial;
             }
-            for (int m = 0; m < 10; m++)
-            {
+            for (int m = 0; m < 10; m++)            {
                 mngRiv.Rival[m].transform.position = mngRiv.Rival[m].posInicial;
             }
             balon.direccion = new Vector3(0, 0);
-
+            balon.interceptado = false;
         }
-
     }
 
     private void saquesBanda()
@@ -236,49 +232,87 @@ public class MngPartido : MonoBehaviour {
     }
     public void corner()
     {
+        int aux = 0;
         if ((balon.transform.position.y < esquina4.transform.position.y) && balon.ultimoTocado){
+            //saca el equipo rival
             balon.balonFuera = true;
-            balon.transform.position = esquina4.transform.position;
+           
 			for (int n = 0; n < mngRiv.Rival.Length - 1; n++) {	
 				Vector3 distancia = new Vector3 (3, 3); 
 				distancia = mngRiv.Rival [n].transform.position - balon.transform.position;
 				mngRiv.Rival [n].magnitud = distancia.magnitude;
 			}
             ordeanar2();
-			mngRiv.Rival[0].transform.position = new Vector2(balon.transform.position.x + .7f, balon.transform.position.y);
+            for (int m = 0; m < mngEqui.jugadores.Length - 1; m++)
+            {
+                if (mngEqui.jugadores[m].balonPies == true)
+                    aux = m;
+            }
+            mngEqui.jugadores[aux].balonPies = false;
+            mngEqui.jugadores[aux].transform.position = new Vector2(mngEqui.jugadores[aux].transform.position.x - 5f, mngEqui.jugadores[aux].transform.position.y - 5f);
+            balon.transform.position = new Vector2(esquina4.transform.position.x + .01f, esquina4.transform.position.y+.01f);
+            mngRiv.Rival[0].transform.position = new Vector2(balon.transform.position.x + .7f, balon.transform.position.y);
+            mngRiv.Rival[0].balonPies = true;
+            mngRiv.Rival[0].selector = true;
         }
         if ((balon.transform.position.y > esquina1.transform.position.y) && !balon.ultimoTocado)
-        {
-            balon.balonFuera = true;
-            balon.transform.position = esquina1.transform.position;
+        {// saca tu equipo
+            balon.balonFuera = true;         
 			for (int n = 0; n < mngEqui.jugadores.Length -1; n++){	
 				Vector3 distancia = new Vector3(3, 3); 
 				distancia = mngEqui.jugadores[n].transform.position - balon.transform.position;
 				mngEqui.jugadores[n].magnitud = distancia.magnitude;
 			}
+            for (int m = 0; m < mngRiv.Rival.Length - 1; m++)
+            {
+                if (mngRiv.Rival[m].balonPies == true)
+                    aux = m;
+            }
             ordeanar();
+            mngRiv.Rival[aux].balonPies = false;
+            balon.transform.position = new Vector2(esquina1.transform.position.x - .01f, esquina1.transform.position.y);
             mngEqui.jugadores[0].transform.position = new Vector2(balon.transform.position.x - .7f, balon.transform.position.y);
+            mngEqui.jugadores[0].balonPies = true;
         }
     }
 
 	public void saquePorteria(){
-		if ((balon.transform.position.y > esquina1.transform.position.y) && !balon.balonFuera) {
+        int aux = 0;
+		if ((balon.transform.position.y > esquina1.transform.position.y) && !balon.balonFuera && balon.ultimoTocado) {
 			Debug.Log ("esta fuera hostias Portero");
 			balon.balonFuera = true;
-			if (balon.ultimoTocado) {
-				//saca equipo rival
-				mngRiv.benji.transform.position = new Vector3 (esquina1.transform.position.x + 15f, esquina1.transform.position.y - .7f);
-				balon.transform.position = new Vector2 (esquina1.transform.position.x + 15f, esquina1.transform.position.y - 1.4f);
-		}if ((balon.transform.position.y < esquina4.transform.position.y) && !balon.balonFuera){
-			balon.balonFuera = true;
-				if (!balon.ultimoTocado) {
-					mngEqui.benji.transform.position = new Vector3 (esquina4.transform.position.x - 15f, esquina4.transform.position.y + .7f);
-					balon.transform.position = new Vector2 (esquina4.transform.position.x-15f, esquina4.transform.position.y + 1.4f);
-				}
+            for (int m = 0; m < mngEqui.jugadores.Length - 1; m++)
+            {
+                if (mngEqui.jugadores[m].balonPies == true)
+                    aux = m;
+            }
+            //saca equipo rival
+            mngEqui.jugadores[aux].balonPies = false;
+            balon.transform.position = new Vector2(esquina1.transform.position.x + 15f, esquina1.transform.position.y - 1.4f);
+            mngRiv.benji.transform.position = new Vector3(esquina1.transform.position.x + 15f, esquina1.transform.position.y - .7f);
+            mngRiv.benji.balonPies = true;
+            
 		}
-		//	balon.balonFuera = false;
-		}
+        if ((balon.transform.position.y < esquina4.transform.position.y) && !balon.balonFuera && !balon.ultimoTocado)
+        {
+            Debug.Log("esta fuera hostias Portero");
+            balon.balonFuera = true;
+            for (int m = 0; m < mngRiv.Rival.Length - 1; m++)
+            {
+                if (mngRiv.Rival[m].balonPies == true)
+                    aux = m;
+            }
+            balon.balonFuera = true;
+            mngRiv.Rival[aux].balonPies = false;
+            mngEqui.benji.transform.position = new Vector3(esquina4.transform.position.x - 15f, esquina4.transform.position.y + .7f);
+            balon.transform.position = new Vector2(esquina4.transform.position.x - 15f, esquina4.transform.position.y + 1.4f);
+            mngEqui.benji.balonPies = true;
+            
+        }
 	}
+	//	balon.balonFuera = false;
+
+
 
     public void menuPause()
     {
@@ -409,6 +443,31 @@ public class MngPartido : MonoBehaviour {
         }
 
     }
+    private void limpiarBugBalonEnMasDeUnPutoPie()
+    {
+        int count = 0;
+        for (int n = 0; n < mngEqui.jugadores.Length; n++)
+        {
+            if (mngEqui.jugadores[n].balonPies == true)
+                count++;
+        }
+        for (int n = 0; n < mngRiv.Rival.Length; n++)
+        {
+            if (mngRiv.Rival[n].balonPies == true)
+                count++;
+        }
+        if (count > 1){
+            Debug.Log("la que has liado pollito");
+            for (int m = 0; m < mngEqui.jugadores.Length; m++){
+                mngEqui.jugadores[m].balonPies = false;
+            }
+            for (int n = 0; n < mngRiv.Rival.Length; n++){
+                mngRiv.Rival[n].balonPies = false;
+            }
+            balon.interceptado = false;
+        }
+        
+    }
 
     private void FixedUpdate()
     {
@@ -423,6 +482,7 @@ public class MngPartido : MonoBehaviour {
         corner();
         fin();
         balonPorteroPies();
+        limpiarBugBalonEnMasDeUnPutoPie();
     }
 
 }

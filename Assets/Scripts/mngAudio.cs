@@ -20,7 +20,6 @@ public class mngAudio : MonoBehaviour {
 
 	IEnumerator Start()
 	{
-		//musicSource = GetComponent<AudioSource> ();
 		musicSource.Play ();
 		yield return new WaitForSeconds (musicSource.clip.length);
 		int n = Random.Range (0, 3);

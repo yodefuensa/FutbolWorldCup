@@ -10,9 +10,10 @@ public class PorteroV2Rival : MonoBehaviour {
 	public bool balonPies = false;
 	public bool selector = false;
 	private int vel = 6;
-	public int fuerzaGolpeo = 20;
+	public int fuerzaGolpeo = 10;
 	public bool inputFalsoEspacio;
 	public GameObject posicion;
+    public static bool esPortero;
 
 	void Start () {
 	}
@@ -68,7 +69,6 @@ public class PorteroV2Rival : MonoBehaviour {
             balon.fuerzaL = fuerzaGolpeo;
             balon.direccion = Vector3.down;
             balon.golpeoV2();
-            //StartCoroutine(balon.Golpeo(fuerzaGolpeo));
             StartCoroutine(setBalonGolpeadoFalse());
             StartCoroutine(balon.setBalonTiempoFalse());
         }
@@ -97,7 +97,11 @@ public class PorteroV2Rival : MonoBehaviour {
 	void FixedUpdate()
 	{
 		movimiento();
-		conducirBalon();        
-	}
+		conducirBalon();
+        if (balonPies)
+            esPortero = true;
+        else
+            esPortero = false;
+    }
 
 }

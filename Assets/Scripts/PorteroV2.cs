@@ -9,7 +9,8 @@ public class PorteroV2 : MonoBehaviour {
 	public bool balonPies = false;
 	public bool selector = false;
 	private int vel = 6;
-	public int fuerzaGolpeo = 20;
+	public int fuerzaGolpeo = 10;
+    public static bool esPortero;
 
 	public GameObject posicion;
 
@@ -87,7 +88,10 @@ public class PorteroV2 : MonoBehaviour {
 	{
 
 		conducirBalon();
-
+        if (balonPies)
+            esPortero = true;
+        else
+            esPortero = false;
     }
 
 }
