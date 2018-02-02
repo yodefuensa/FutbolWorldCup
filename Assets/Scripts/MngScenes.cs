@@ -130,6 +130,10 @@ public class MngScenes : MonoBehaviour {
                 break;
         }
     }
+    public void pruebas()
+    {
+        SceneManager.LoadScene("pruebasV2");
+    }
 	public void multiON(){
 		multijugador = true;
 	}

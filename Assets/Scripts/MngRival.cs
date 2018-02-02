@@ -7,15 +7,9 @@ public class MngRival : MonoBehaviour {
     public Rival[] Rival;
     public PorteroV2Rival benji;
     public Balon balon;
-	public GameObject porteria;
-	public GameObject porteriaRival;
+//	public GameObject porteria;
+//	public GameObject porteriaRival;
 	public bool inputFalsoEspacio;
-
-    void Start () {		
-	}
-
-	void Update () {
-	}
 
     private void limpiarSelector()
     {

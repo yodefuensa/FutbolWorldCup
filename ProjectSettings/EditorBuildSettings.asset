@@ -27,6 +27,9 @@ EditorBuildSettings:
     path: Assets/Scenes/SelectAliMulti1.unity
     guid: 01d7aed355cedcb42b1bb2876c57dd88
   - enabled: 1
+    path: Assets/Scenes/pruebasV2.unity
+    guid: c6bdee76b423ae64e87bc44cc880a852
+  - enabled: 1
     path: Assets/Scenes/SelectSelecMulti1.unity
     guid: 8fb5b1e95fa1f034487f98c69981e6b5
   - enabled: 1
