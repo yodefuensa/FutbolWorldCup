@@ -74,7 +74,12 @@ public class MngCargarV2 : MonoBehaviour {
 
     private void Awake()
     {//antes de cargar la escena
-		rival0 = Instantiate (rival, new Vector2(transform.position.x+6f,transform.position.y+6f), Quaternion.identity);
+
+        MngScenes.multijugador = false;
+        GameObject PosicionesDeLosCojones = Instantiate(AliB, transform.position, Quaternion.identity);
+        GameObject PosicionRival = Instantiate(AlRiv, transform.position, Quaternion.identity);
+
+        rival0 = Instantiate (rival, new Vector2(transform.position.x+6f,transform.position.y+6f), Quaternion.identity);
 		rival1 = Instantiate (rival, new Vector2( transform.position.x-6f,transform.position.y+6f), Quaternion.identity);
 		rival2 = Instantiate (rival, new Vector2(transform.position.x-20f,transform.position.y+15f), Quaternion.identity);
 		rival3 = Instantiate (rival, new Vector2( transform.position.x-10f,transform.position.y+15f), Quaternion.identity);
@@ -159,6 +164,7 @@ public class MngCargarV2 : MonoBehaviour {
 		equiRiv.GetComponent<MngEquiV2> ().jugadores[8] = rival8.GetComponent <JugadorV2> ();
 		equiRiv.GetComponent<MngEquiV2> ().jugadores[9] = rival9.GetComponent <JugadorV2> ();
 		equiRiv.GetComponent<MngEquiV2> ().benji = porteroR.GetComponent <PorteroV2> ();
+        equiRiv.GetComponent<MngEquiV2>().balon = balon.GetComponent<Balon>();
 
 		rival0.GetComponent<JugadorV2> ().balon = balon.GetComponent<Balon> ();
 		rival1.GetComponent<JugadorV2> ().balon = balon.GetComponent<Balon> ();
@@ -216,25 +222,22 @@ public class MngCargarV2 : MonoBehaviour {
         jugador9.GetComponent<JugadorV2>().equipo = true;
 
 
-		rival1.GetComponent<Jugador> ().seguidor = guia2.GetComponent<Selector> ();
-		rival2.GetComponent<Jugador> ().seguidor = guia2.GetComponent<Selector> ();
-		rival3.GetComponent<Jugador> ().seguidor = guia2.GetComponent<Selector> ();
-		rival4.GetComponent<Jugador> ().seguidor = guia2.GetComponent<Selector> ();
-		rival5.GetComponent<Jugador> ().seguidor = guia2.GetComponent<Selector> ();
-		rival6.GetComponent<Jugador> ().seguidor = guia2.GetComponent<Selector> ();
-		rival7.GetComponent<Jugador> ().seguidor = guia2.GetComponent<Selector> ();
-		rival8.GetComponent<Jugador> ().seguidor = guia2.GetComponent<Selector> ();
-		rival9.GetComponent<Jugador> ().seguidor = guia2.GetComponent<Selector> ();
-		rival0.GetComponent<Jugador> ().seguidor = guia2.GetComponent<Selector> ();
+		rival1.GetComponent<JugadorV2> ().seguidor = guia2.GetComponent<Selector> ();
+        rival2.GetComponent<JugadorV2> ().seguidor = guia2.GetComponent<Selector> ();
+		rival3.GetComponent<JugadorV2> ().seguidor = guia2.GetComponent<Selector> ();
+		rival4.GetComponent<JugadorV2> ().seguidor = guia2.GetComponent<Selector> ();
+		rival5.GetComponent<JugadorV2> ().seguidor = guia2.GetComponent<Selector> ();
+		rival6.GetComponent<JugadorV2> ().seguidor = guia2.GetComponent<Selector> ();
+		rival7.GetComponent<JugadorV2> ().seguidor = guia2.GetComponent<Selector> ();
+		rival8.GetComponent<JugadorV2> ().seguidor = guia2.GetComponent<Selector> ();
+		rival9.GetComponent<JugadorV2> ().seguidor = guia2.GetComponent<Selector> ();
+		rival0.GetComponent<JugadorV2> ().seguidor = guia2.GetComponent<Selector> ();
 
         portero.GetComponent<PorteroV2>().balon = balon.GetComponent<Balon> ();
 		portero.GetComponent<PorteroV2> ().posicion = GameObject.Find ("porteria");
 		porteroR.GetComponent<PorteroV2>().balon = balon.GetComponent<Balon> ();
 		porteroR.GetComponent<PorteroV2>().posicion = GameObject.Find ("porteria2");
 
-		GameObject PosicionesDeLosCojones = Instantiate (AliB, transform.position, Quaternion.identity);
-		
-        GameObject PosicionRival = Instantiate(AlRiv, transform.position, Quaternion.identity);
 
 
     }

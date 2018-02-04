@@ -624,6 +624,7 @@ MonoBehaviour:
   alemania: {fileID: 0}
   balon: {fileID: 1276751586}
   guia: {fileID: 478424442}
+  guia2: {fileID: 1482823770}
   equiRiv: {fileID: 246119102}
   mngJugadores: {fileID: 736067490}
   AliA: {fileID: 1883809869232378, guid: 6125b3ce9b1ac1543aae9fc736686ac5, type: 2}

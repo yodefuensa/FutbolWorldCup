@@ -98,8 +98,18 @@ public class MngEquiV2 : MonoBehaviour {
                 jugadores[pos].balonPies = true;
             }
         }
-    }
 
+
+
+    }
+    public JugadorV2 jugadorBalon()
+    {
+        int aux = 0;
+        for (int n = 0; n < jugadores.Length; n++)
+            if (jugadores[n].balonPies == true)
+                aux = n;
+        return jugadores[aux];
+    }
 
 
 

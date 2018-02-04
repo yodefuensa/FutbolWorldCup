@@ -46,6 +46,7 @@ public class JugadorV2 : MonoBehaviour {
         if (!falta)
         {
             movimiento();
+            movimientoP2();
             stupidAI();
             conducirBalon();
         }
@@ -132,7 +133,7 @@ public class JugadorV2 : MonoBehaviour {
                     hacerFalta(distanciaBalon.normalized);
                 }
             }
-            if (Input.GetButtonDown("Golpeo") && balonPies && !balonGolpeado && balon.ultimoTocado)
+            if (Input.GetButtonDown("Golpeo") && balonPies && !balonGolpeado)
             {
                 if (equipo)
                     balon.ultimoTocado = true;
@@ -153,9 +154,8 @@ public class JugadorV2 : MonoBehaviour {
     }
     private void movimientoP2()
     {
-        if ((selector) && (!falta) && (!tRobo)&& !equipo)
+        if ((selector) && (!falta) && (!tRobo) && !equipo&& MngScenes.multijugador)
         {
-            // Vector3 noMove = balon.
             if (!balon.balonFuera)
             {
                 if (Input.GetAxisRaw("VerticalP2") > 0)
@@ -172,7 +172,7 @@ public class JugadorV2 : MonoBehaviour {
                     hacerFalta(distanciaBalon.normalized);
                 }
             }
-            if (Input.GetButtonDown("GolpeoP2") && balonPies && !balonGolpeado && balon.ultimoTocado)
+            if (Input.GetButtonDown("GolpeoP2") && balonPies && !balonGolpeado)
             {
                 if (equipo)
                     balon.ultimoTocado = true;
@@ -183,7 +183,7 @@ public class JugadorV2 : MonoBehaviour {
                 balon.interceptado = false;
                 balon.tiempo = true;
                 balon.fuerzaL = fuerzaGolpeo;
-                balon.direccion = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+                balon.direccion = new Vector2(Input.GetAxisRaw("HorizontalP2"), Input.GetAxisRaw("VerticalP2"));
                 balon.golpeoV2();
                 StartCoroutine(setBalonGolpeadoFalse());
                 StartCoroutine(balon.setBalonTiempoFalse());
@@ -193,32 +193,41 @@ public class JugadorV2 : MonoBehaviour {
     }
 
     private void stupidAI(){
-        GameObject tieneBalon = GameObject.FindGameObjectWithTag("balonPies");
+        bool team = false;
+        if (GameObject.FindGameObjectWithTag("balonPies") != null)
+        {
+            team = GameObject.FindGameObjectWithTag("balonPies").GetComponent<JugadorV2>().equipo;
+        }
         Vector3 dist = transform.position - posicion.transform.position;
         Vector3 distBalon = posicion.transform.position - balon.transform.position;
         if ((dist.magnitude < 17f) && (!selector))
-        {
-            //si estamos dentro de la zona de accion
-            if (!balon.ultimoTocado)
-            {// y ellos tienen el balon
-                if ((transform.position.y > balon.transform.position.y + 1 || transform.position.y < balon.transform.position.y - 1
-                    || transform.position.x > balon.transform.position.x + 1 || transform.position.x < balon.transform.position.x - 1) && distBalon.magnitude < 16f)
-                {//vamos a por el balon
+        {//si estamos dentro de la zona de accion
+            if (!balon.interceptado)
+            {
+                Vector3 distanciaBalon = balon.transform.position - transform.position;
+                transform.position += distanciaBalon.normalized * Time.deltaTime * vel;            
+            }else
+            {
+                if (team != equipo)
+                {
                     Vector3 distanciaBalon = balon.transform.position - transform.position;
                     transform.position += distanciaBalon.normalized * Time.deltaTime * vel;
-                    if ((distanciaBalon.magnitude < 4f) && balon.interceptado && !balon.balonFuera && !PorteroV2Rival.esPortero)
+                    if ((distanciaBalon.magnitude < 4f) && balon.interceptado && !balon.balonFuera && !PorteroV2.esPortero)
                     {
                         ar.SetBool("falta", true);
                         hacerFalta(distanciaBalon.normalized);
                     }
                 }
             }
-            if (!balon.ultimoTocado && balonPies && !MngScenes.multijugador)
+
+            
+            if ( balonPies && !MngScenes.multijugador&& !equipo)
             {
                 Vector3 distancia = porteriaRival.transform.position - transform.position;
                 transform.position += distancia.normalized * Time.deltaTime * vel;
             }
-            if ((dist.magnitude < 17f) && (!selector) && (balon.ultimoTocado))
+
+            if ((dist.magnitude < 17f) && (!selector) && team == equipo)
             {//zona de accion y yo tengo el balon
                 if (transform.position.y > balon.transform.position.y)
                 {

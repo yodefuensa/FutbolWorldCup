@@ -40,8 +40,7 @@ public class MngPartidoV2 : MonoBehaviour {
 		min = 0;
         visible = false;
 		mngAudio.instance.playSfxClip (arbitro);
-        //por ahora
-        MngScenes.multijugador = true;
+        
     }
 
 	public void ordeanar()
