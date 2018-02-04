@@ -14,6 +14,7 @@ public class MngCargarV2 : MonoBehaviour {
 	public GameObject alemania;
     public GameObject balon;
 	public GameObject guia;
+	public GameObject guia2;
 	public GameObject equiRiv;
 	public GameObject mngJugadores;
 	public GameObject AliA;
@@ -214,10 +215,22 @@ public class MngCargarV2 : MonoBehaviour {
         jugador8.GetComponent<JugadorV2>().equipo = true;
         jugador9.GetComponent<JugadorV2>().equipo = true;
 
+
+		rival1.GetComponent<Jugador> ().seguidor = guia2.GetComponent<Selector> ();
+		rival2.GetComponent<Jugador> ().seguidor = guia2.GetComponent<Selector> ();
+		rival3.GetComponent<Jugador> ().seguidor = guia2.GetComponent<Selector> ();
+		rival4.GetComponent<Jugador> ().seguidor = guia2.GetComponent<Selector> ();
+		rival5.GetComponent<Jugador> ().seguidor = guia2.GetComponent<Selector> ();
+		rival6.GetComponent<Jugador> ().seguidor = guia2.GetComponent<Selector> ();
+		rival7.GetComponent<Jugador> ().seguidor = guia2.GetComponent<Selector> ();
+		rival8.GetComponent<Jugador> ().seguidor = guia2.GetComponent<Selector> ();
+		rival9.GetComponent<Jugador> ().seguidor = guia2.GetComponent<Selector> ();
+		rival0.GetComponent<Jugador> ().seguidor = guia2.GetComponent<Selector> ();
+
         portero.GetComponent<PorteroV2>().balon = balon.GetComponent<Balon> ();
 		portero.GetComponent<PorteroV2> ().posicion = GameObject.Find ("porteria");
-		//porteroR.GetComponent<PorteroV2>().balon = balon.GetComponent<Balon> ();
-		//porteroR.GetComponent<PorteroV2>().posicion = GameObject.Find ("porteria2");
+		porteroR.GetComponent<PorteroV2>().balon = balon.GetComponent<Balon> ();
+		porteroR.GetComponent<PorteroV2>().posicion = GameObject.Find ("porteria2");
 
 		GameObject PosicionesDeLosCojones = Instantiate (AliB, transform.position, Quaternion.identity);
 		

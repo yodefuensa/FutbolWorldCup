@@ -114,7 +114,7 @@ public class JugadorV2 : MonoBehaviour {
     }
 
     private void movimiento(){
-        if ((selector) && (!falta) && (!tRobo)&&equipo)
+        if ((selector) && (!falta) && (!tRobo)&& equipo)
         {
            // Vector3 noMove = balon.
             if (!balon.balonFuera) { 
@@ -192,10 +192,8 @@ public class JugadorV2 : MonoBehaviour {
 
     }
 
-
-
-
     private void stupidAI(){
+        GameObject tieneBalon = GameObject.FindGameObjectWithTag("balonPies");
         Vector3 dist = transform.position - posicion.transform.position;
         Vector3 distBalon = posicion.transform.position - balon.transform.position;
         if ((dist.magnitude < 17f) && (!selector))
