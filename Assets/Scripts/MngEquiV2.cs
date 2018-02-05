@@ -64,6 +64,7 @@ public class MngEquiV2 : MonoBehaviour {
         }
         return posicion;
     }
+
     private void escanerSelector()
     {
         //impide que haya mas de un jugador seleccionado
@@ -98,8 +99,9 @@ public class MngEquiV2 : MonoBehaviour {
                 jugadores[pos].balonPies = true;
             }
         }
-
-
+        if (benji.balonPies)
+            for (int n = 0; n < jugadores.Length; n++)
+                jugadores[n].balonPies = false;
 
     }
     public JugadorV2 jugadorBalon()

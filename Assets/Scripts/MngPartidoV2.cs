@@ -40,10 +40,27 @@ public class MngPartidoV2 : MonoBehaviour {
 		min = 0;
         visible = false;
 		mngAudio.instance.playSfxClip (arbitro);
-        
+
     }
 
-	public void ordeanar()
+    private void FixedUpdate()
+    {
+        gol = gol + palo1.Marcar();
+        golesRivales = golesRivales + palo3.Marcar();
+        saquesBanda();
+        observador();
+        saquePorteria();
+        actualizarMarcador();
+        actualizarTiempo();
+        menuPause();
+        corner();
+        fin();
+        balonPorteroPies();
+        limpiarBugBalonEnMasDeUnPutoPie();
+    }
+
+
+    public void ordeanar()
 	{//ordenado la propiedad jugadores de mngEqui, en base a la propiedad magnitud de los jugadores,
 		for (int x = 0; x < mngEqui.jugadores.Length-1; x++)
 		{
@@ -468,20 +485,5 @@ public class MngPartidoV2 : MonoBehaviour {
         
     }
 
-    private void FixedUpdate()
-    {
-        gol = gol + palo1.Marcar();
-        golesRivales = golesRivales + palo3.Marcar();
-		saquesBanda ();
-        observador();
-		saquePorteria ();
-		actualizarMarcador ();
-		actualizarTiempo ();
-		menuPause ();
-        corner();
-        fin();
-        balonPorteroPies();
-        limpiarBugBalonEnMasDeUnPutoPie();
-    }
 
 }

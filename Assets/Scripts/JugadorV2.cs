@@ -9,7 +9,7 @@ public class JugadorV2 : MonoBehaviour {
 	public bool balonGolpeado = false;
 	public bool balonPies = false;
 	public bool selector = false;
-	private int vel = 12;
+	public int vel = 12;
 	private int fuerzaGolpeo = 15;
     //robo es para saber si podremos robar la pelota
     public bool robo;
@@ -53,7 +53,7 @@ public class JugadorV2 : MonoBehaviour {
         marcar();
         hit();
 
-	}
+    }
     void FixedUpdate(){
         if (!selector)
             animatorObserver();
@@ -154,7 +154,7 @@ public class JugadorV2 : MonoBehaviour {
     }
     private void movimientoP2()
     {
-        if ((selector) && (!falta) && (!tRobo) && !equipo&& MngScenes.multijugador)
+        if ((selector) && (!falta) && (!tRobo) && !equipo && MngScenes.multijugador)
         {
             if (!balon.balonFuera)
             {
@@ -195,11 +195,16 @@ public class JugadorV2 : MonoBehaviour {
     private void stupidAI(){
         bool team = false;
         if (GameObject.FindGameObjectWithTag("balonPies") != null)
-        {
             team = GameObject.FindGameObjectWithTag("balonPies").GetComponent<JugadorV2>().equipo;
-        }
+
+
         Vector3 dist = transform.position - posicion.transform.position;
         Vector3 distBalon = posicion.transform.position - balon.transform.position;
+        if (balonPies && !MngScenes.multijugador && !equipo)
+        {//no es multi, tenemos el balon en los pies y somos la ia corremos a porteria
+            Vector3 distancia = porteriaRival.transform.position - transform.position;
+            transform.position += distancia.normalized * Time.deltaTime * vel;
+        }
         if ((dist.magnitude < 17f) && (!selector))
         {//si estamos dentro de la zona de accion
             if (!balon.interceptado)
@@ -208,33 +213,29 @@ public class JugadorV2 : MonoBehaviour {
                 transform.position += distanciaBalon.normalized * Time.deltaTime * vel;            
             }else
             {
-                if (team != equipo)
+                if ((team != equipo)&& !PorteroV2.esPortero)
                 {
                     Vector3 distanciaBalon = balon.transform.position - transform.position;
                     transform.position += distanciaBalon.normalized * Time.deltaTime * vel;
-                    if ((distanciaBalon.magnitude < 4f) && balon.interceptado && !balon.balonFuera && !PorteroV2.esPortero)
+                    if ((distanciaBalon.magnitude < 4f) && balon.interceptado && !balon.balonFuera && team != equipo)
                     {
                         ar.SetBool("falta", true);
                         hacerFalta(distanciaBalon.normalized);
                     }
-                }
-            }
-
-            
-            if ( balonPies && !MngScenes.multijugador&& !equipo)
-            {
-                Vector3 distancia = porteriaRival.transform.position - transform.position;
-                transform.position += distancia.normalized * Time.deltaTime * vel;
+                    
+                }   
+                
             }
 
             if ((dist.magnitude < 17f) && (!selector) && team == equipo)
             {//zona de accion y yo tengo el balon
-                if (transform.position.y > balon.transform.position.y)
-                {
-                    transform.position += Vector3.down * Time.deltaTime * vel;
+                if (!PorteroV2.esPortero) { 
+                    if (transform.position.y > balon.transform.position.y)
+                        transform.position += Vector3.down * Time.deltaTime * vel;
+                    
+                    if (transform.position.y < balon.transform.position.y)
+                        transform.position += Vector3.up * Time.deltaTime * vel;
                 }
-                if (transform.position.y < balon.transform.position.y)
-                    transform.position += Vector3.up * Time.deltaTime * vel;
             }
         }
         if ((dist.magnitude > 16f) && (!selector))

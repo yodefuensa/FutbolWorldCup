@@ -70,7 +70,19 @@ public class MngCargarV2 : MonoBehaviour {
 		rival8.GetComponent<JugadorV2> ().posicion = GameObject.Find ("posicion9R");
 		rival9.GetComponent<JugadorV2> ().posicion = GameObject.Find ("posicion10R");
 
-	}
+
+        rival9.GetComponent<JugadorV2>().vel = 0;
+        rival8.GetComponent<JugadorV2>().vel = 0;
+        rival7.GetComponent<JugadorV2>().vel = 0;
+        rival6.GetComponent<JugadorV2>().vel = 0;
+        rival5.GetComponent<JugadorV2>().vel = 0;
+        rival4.GetComponent<JugadorV2>().vel = 0;
+        rival3.GetComponent<JugadorV2>().vel = 0;
+        rival2.GetComponent<JugadorV2>().vel = 0;
+        rival1.GetComponent<JugadorV2>().vel = 0;
+        rival0.GetComponent<JugadorV2>().vel = 0;
+
+    }
 
     private void Awake()
     {//antes de cargar la escena
@@ -235,9 +247,10 @@ public class MngCargarV2 : MonoBehaviour {
 
         portero.GetComponent<PorteroV2>().balon = balon.GetComponent<Balon> ();
 		portero.GetComponent<PorteroV2> ().posicion = GameObject.Find ("porteria");
-		porteroR.GetComponent<PorteroV2>().balon = balon.GetComponent<Balon> ();
+        portero.GetComponent<PorteroV2>().equipo = true;
+ 		porteroR.GetComponent<PorteroV2>().balon = balon.GetComponent<Balon> ();
 		porteroR.GetComponent<PorteroV2>().posicion = GameObject.Find ("porteria2");
-
+        porteroR.GetComponent<PorteroV2>().equipo = false;
 
 
     }
