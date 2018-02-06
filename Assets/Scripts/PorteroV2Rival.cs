@@ -23,7 +23,7 @@ public class PorteroV2Rival : MonoBehaviour {
 		Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, 1f);
 		if (hits.Length > 1) {
 			foreach (Collider2D hit in hits) {
-				if (hit.name == "balon") {
+				if ((hit.name == "balon") && (!balonGolpeado)) {
 					balonPies = true;
 					selector = true;
 					if (!balonGolpeado) {

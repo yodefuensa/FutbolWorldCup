@@ -96,15 +96,13 @@ public class JugadorV2 : MonoBehaviour {
         robo = false;
         if (!falta)
         {
-            foreach (Collider2D hit in hits)
-            {
-                if ((hit.name == "balon") && (!balon.interceptado) && (!balonGolpeado))
+            foreach (Collider2D hit in hits){
+                if ((hit.name == "balon") && (!balon.interceptado) &&  (!balonGolpeado))
                 {
                     balonPies = true;
                     selector = true;
                     balon.interceptado = true;
                     StopCoroutine("balon.setBalonTiempoFalse");
-
                 }
                 if (hit.tag == "balonPies")
                 {

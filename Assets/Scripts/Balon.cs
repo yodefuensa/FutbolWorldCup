@@ -22,18 +22,13 @@ public class Balon : MonoBehaviour
 
 	void awake(){
 		balonFuera = false;
-
 	}	
 
-	void Update(){
-	}
-
-	private void FixedUpdate(){
+	private void Update(){
 		golpeoV2 ();
 	}
 
-	public void setDireccion(Vector3 direccion,int fuerza)
-	{
+	public void setDireccion(Vector3 direccion,int fuerza){
 		transform.position = direccion * fuerza; 
 	}
 
@@ -68,13 +63,17 @@ public class Balon : MonoBehaviour
 		if ((!interceptado) && (tiempo))
         {
 			transform.position += direccion * Time.deltaTime * fuerzaL;
-			interceptado = false;
+			//interceptado = false;
 	    }
 		
 	}
+    public void golpeoV3(int fuerzaGolpeo, Vector3 dir){
+        if ((!interceptado) && (tiempo)){
+            transform.position += dir * Time.deltaTime * fuerzaGolpeo;
+        }
+    }
 
-
-	public IEnumerator setBalonTiempoFalse()
+    public IEnumerator setBalonTiempoFalse()
 	{//para no tocar el balon al golpearlo
 		for (int n = 0; n < 50; n++)
 		{            

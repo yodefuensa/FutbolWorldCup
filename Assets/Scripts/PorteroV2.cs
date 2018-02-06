@@ -19,8 +19,6 @@ public class PorteroV2 : MonoBehaviour {
         conducirBalon();
         if (balonPies)
             esPortero = true;
-     //   else
-     //       esPortero = false;
     }
 
 
@@ -29,11 +27,18 @@ public class PorteroV2 : MonoBehaviour {
         movimiento();
     }
 
+    public IEnumerator setBalonGolpeadoFalse()
+    {//para no tocar el balon al golpearlo
+        yield return new WaitForSeconds(.5f);
+        balonGolpeado = false;
+        balonPies = false;
+    }
+
     public void hit(){
         Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, 1f);
         foreach (Collider2D hit in hits)
         {
-            if (hit.name == "balon")
+            if ((hit.name == "balon") && (!balonGolpeado))
             {
                 balonPies = true;
                 selector = true;
@@ -79,15 +84,6 @@ public class PorteroV2 : MonoBehaviour {
             StartCoroutine(balon.setBalonTiempoFalse());
         }
 
-	}
-
-	public IEnumerator setBalonGolpeadoFalse()
-	{//para no tocar el balon al golpearlo
-		for (int n = 0; n < 10; n++) {            
-			yield return new WaitForSeconds(.1f);
-		}
-		balonGolpeado = false;
-		balonPies = false;
 	}
 
 	public void conducirBalon()

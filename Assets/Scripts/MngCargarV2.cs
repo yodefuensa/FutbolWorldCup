@@ -70,7 +70,7 @@ public class MngCargarV2 : MonoBehaviour {
 		rival8.GetComponent<JugadorV2> ().posicion = GameObject.Find ("posicion9R");
 		rival9.GetComponent<JugadorV2> ().posicion = GameObject.Find ("posicion10R");
 
-
+        /*
         rival9.GetComponent<JugadorV2>().vel = 0;
         rival8.GetComponent<JugadorV2>().vel = 0;
         rival7.GetComponent<JugadorV2>().vel = 0;
@@ -81,7 +81,7 @@ public class MngCargarV2 : MonoBehaviour {
         rival2.GetComponent<JugadorV2>().vel = 0;
         rival1.GetComponent<JugadorV2>().vel = 0;
         rival0.GetComponent<JugadorV2>().vel = 0;
-
+        */
     }
 
     private void Awake()

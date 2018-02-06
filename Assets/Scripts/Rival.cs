@@ -151,9 +151,6 @@ public class Rival : MonoBehaviour {
 		if ((dist.magnitude > 16f) && (!selector)&& !balonPies) {//si estamos fuera de la zona y no somos el selector
 			transform.position -= dist.normalized * Time.deltaTime * vel;
 		}
-
-
-
     }
 
 
