@@ -55,8 +55,7 @@ public class JugadorV2 : MonoBehaviour {
 
     }
     void FixedUpdate(){
-        if (!selector)
-            animatorObserver();
+        animatorObserver();
         if ((!balonPies) && (equipo))
             this.tag = "Jugador";
         else if ((!balonPies) && (!equipo))
@@ -195,7 +194,6 @@ public class JugadorV2 : MonoBehaviour {
         if (GameObject.FindGameObjectWithTag("balonPies") != null)
             team = GameObject.FindGameObjectWithTag("balonPies").GetComponent<JugadorV2>().equipo;
 
-
         Vector3 dist = transform.position - posicion.transform.position;
         Vector3 distBalon = posicion.transform.position - balon.transform.position;
         if (balonPies && !MngScenes.multijugador && !equipo)
@@ -215,14 +213,11 @@ public class JugadorV2 : MonoBehaviour {
                 {
                     Vector3 distanciaBalon = balon.transform.position - transform.position;
                     transform.position += distanciaBalon.normalized * Time.deltaTime * vel;
-                    if ((distanciaBalon.magnitude < 4f) && balon.interceptado && !balon.balonFuera && team != equipo)
-                    {
+                    if ((distanciaBalon.magnitude < 4f) && balon.interceptado && !balon.balonFuera && team != equipo){
                         ar.SetBool("falta", true);
                         hacerFalta(distanciaBalon.normalized);
                     }
-                    
-                }   
-                
+                }                  
             }
 
             if ((dist.magnitude < 17f) && (!selector) && team == equipo)
@@ -241,28 +236,7 @@ public class JugadorV2 : MonoBehaviour {
             transform.position -= dist.normalized * Time.deltaTime * vel;
         }
     }
-
-	private void animatorObserver (){
-		if (lastPosition == transform.position.y)
-			ar.SetBool ("corriendo", false);
-		if (lastPosition < transform.position.y) {
-			ar.SetBool ("corriendo", true);
-			if (flipY) {
-				transform.localScale = new Vector3 (transform.localScale.x, -transform.localScale.y);
-				flipY = false;
-			}
-			lastPosition = transform.position.y;
-		}
-		if (lastPosition > transform.position.y) {
-			ar.SetBool ("corriendo", true);
-			if (!flipY) {
-				transform.localScale = new Vector3 (transform.localScale.x, -transform.localScale.y);
-				flipY = true;
-			}
-			lastPosition = transform.position.y;
-		}
-	}
-
+	
 	public void hacerFalta(Vector3 dirFalta)
 	{//vector normalizado 
 		tRobo = true;
@@ -283,11 +257,9 @@ public class JugadorV2 : MonoBehaviour {
 		}  
 	}
 
-
-	public void conducirBalon()
-	{
+	public void conducirBalon(){
 		if (balonPies && !balonGolpeado)
-		{ 
+		{ Debug.Log("conducirbalon");
 			if (flipY) {
 				Vector3 posbal = new Vector3 (transform.position.x, transform.position.y - 0.5f);
 				balon.setPosicion (posbal);
@@ -299,6 +271,27 @@ public class JugadorV2 : MonoBehaviour {
 		}
 	}
 
+    private void animatorObserver (){
+		if (lastPosition == transform.position.y)
+			ar.SetBool ("corriendo", false);
+		if (lastPosition < transform.position.y) {
+			ar.SetBool ("corriendo", true);
+			if (flipY) {
+				transform.localScale = new Vector3 (transform.localScale.x, -transform.localScale.y);
+				flipY = false;
+			}
+			lastPosition = transform.position.y;
+		}
+		if (lastPosition > transform.position.y){
+			ar.SetBool ("corriendo", true);
+			if (!flipY) {
+				transform.localScale = new Vector3 (transform.localScale.x, -transform.localScale.y);
+				flipY = true;
+			}
+			lastPosition = transform.position.y;
+		}
+	}
+    
 	private void marcar() {
 		if (selector){
 			Vector3 posicionNuestra = new Vector3(transform.position.x, transform.position.y);
