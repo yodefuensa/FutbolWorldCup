@@ -54,6 +54,7 @@ public class JugadorV2 : MonoBehaviour {
         hit();
 
     }
+
     void FixedUpdate(){
         animatorObserver();
         if ((!balonPies) && (equipo))
@@ -149,6 +150,7 @@ public class JugadorV2 : MonoBehaviour {
         }
 
     }
+
     private void movimientoP2()
     {
         if ((selector) && (!falta) && (!tRobo) && !equipo && MngScenes.multijugador)
