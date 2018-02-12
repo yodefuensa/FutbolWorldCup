@@ -615,13 +615,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spain: {fileID: 1358616183337232, guid: e96ff03a3204797409767eabbb403d0d, type: 2}
-  brasil: {fileID: 0}
-  usa: {fileID: 0}
-  argentina: {fileID: 0}
-  japon: {fileID: 0}
-  china: {fileID: 0}
-  rusia: {fileID: 0}
-  alemania: {fileID: 0}
+  brasil: {fileID: 1917639139076228, guid: 0e12f57ac58254dd8a70faf2e1fb7c3e, type: 2}
+  usa: {fileID: 1982863944638636, guid: f10665a22759a43b581ccaf7ab59f95e, type: 2}
+  argentina: {fileID: 1917639139076228, guid: 3f3b3222d59eb4cd9bbdf52f55d2aacf, type: 2}
+  japon: {fileID: 1540656462032214, guid: 1139bb07a3f59499c88e12cee33aa563, type: 2}
+  china: {fileID: 1452588897721420, guid: 39a2e4e23701d4b16949934b4d0e88d3, type: 2}
+  rusia: {fileID: 1737886321891702, guid: 178046bc6b29b49889cb7e50785fff95, type: 2}
+  alemania: {fileID: 1917639139076228, guid: 9705dfb02aca247b0b431a8803218483, type: 2}
   balon: {fileID: 1276751586}
   guia: {fileID: 478424442}
   guia2: {fileID: 1482823770}

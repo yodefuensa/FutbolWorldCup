@@ -20,9 +20,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4089285931993940}
   - component: {fileID: 212616852645676952}
-  - component: {fileID: 114627965538364874}
   - component: {fileID: 61270525774399634}
   - component: {fileID: 95847993614194716}
+  - component: {fileID: 114171352815121890}
   m_Layer: 0
   m_Name: jugadorV2
   m_TagString: Jugador
@@ -85,7 +85,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114627965538364874
+--- !u!114 &114171352815121890
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -93,13 +93,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1917639139076228}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 11c84fdbbaaa6f74187c088e39b8363d, type: 3}
+  m_Script: {fileID: 11500000, guid: f4499d971a75e544c826da4dc67e2e82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   balon: {fileID: 0}
   balonGolpeado: 0
   balonPies: 0
   selector: 0
+  vel: 12
   robo: 0
   tRobo: 0
   falta: 0
@@ -110,6 +111,8 @@ MonoBehaviour:
   flipY: 0
   seguidor: {fileID: 0}
   equipoRival: {fileID: 0}
+  equipo: 0
+  porteriaRival: {fileID: 0}
 --- !u!212 &212616852645676952
 SpriteRenderer:
   m_ObjectHideFlags: 1

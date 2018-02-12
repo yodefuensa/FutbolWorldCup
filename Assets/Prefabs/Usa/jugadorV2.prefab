@@ -21,8 +21,8 @@ GameObject:
   - component: {fileID: 4451409774991792}
   - component: {fileID: 212828333093251260}
   - component: {fileID: 61030662733421762}
+  - component: {fileID: 114934670574158746}
   - component: {fileID: 95544123002049622}
-  - component: {fileID: 114469194421004432}
   m_Layer: 0
   m_Name: jugadorV2
   m_TagString: Jugador
@@ -85,7 +85,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114469194421004432
+--- !u!114 &114934670574158746
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -100,6 +100,7 @@ MonoBehaviour:
   balonGolpeado: 0
   balonPies: 0
   selector: 0
+  vel: 12
   robo: 0
   tRobo: 0
   falta: 0

@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4622937650243172}
   - component: {fileID: 212908025703641682}
   - component: {fileID: 114810256921406586}
+  - component: {fileID: 114224495496887682}
   - component: {fileID: 61514211840674528}
   - component: {fileID: 95007982858528896}
   m_Layer: 0
@@ -85,6 +86,34 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114224495496887682
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1540656462032214}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4499d971a75e544c826da4dc67e2e82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  balon: {fileID: 0}
+  balonGolpeado: 0
+  balonPies: 0
+  selector: 0
+  vel: 12
+  robo: 0
+  tRobo: 0
+  falta: 0
+  dirFalta: {x: 0, y: 0, z: 0}
+  magnitud: 0
+  posicionInicial: {x: 0, y: 0, z: 0}
+  posicion: {fileID: 0}
+  flipY: 0
+  seguidor: {fileID: 0}
+  equipoRival: {fileID: 0}
+  equipo: 0
+  porteriaRival: {fileID: 0}
 --- !u!114 &114810256921406586
 MonoBehaviour:
   m_ObjectHideFlags: 1

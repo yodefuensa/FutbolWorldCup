@@ -45,7 +45,7 @@ public class MngScenes : MonoBehaviour {
                 SceneManager.LoadScene("SelectAlineacion");
                 break;
 		    case "SelectAlineacion":
-			    SceneManager.LoadScene("pruebas");
+			    SceneManager.LoadScene("pruebasV2");
 			break;
             case "opciones":
                 SceneManager.LoadScene("controles");

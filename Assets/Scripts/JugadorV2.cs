@@ -82,6 +82,7 @@ public class JugadorV2 : MonoBehaviour {
     {//si te hacen falta poner bloqueo
         yield return new WaitForSeconds(2f);
         falta = false;
+        ar.SetBool("suelo",false);
     }
 
     public IEnumerator setTRoboFalse()
@@ -113,7 +114,7 @@ public class JugadorV2 : MonoBehaviour {
     }
 
     private void movimiento(){
-        if ((selector) && (!falta) && (!tRobo)&& equipo)
+        if ((selector) && (!tRobo) && equipo)
         {
            // Vector3 noMove = balon.
             if (!balon.balonFuera) { 
@@ -153,7 +154,7 @@ public class JugadorV2 : MonoBehaviour {
 
     private void movimientoP2()
     {
-        if ((selector) && (!falta) && (!tRobo) && !equipo && MngScenes.multijugador)
+        if ((selector) && (!tRobo) && !equipo && MngScenes.multijugador)
         {
             if (!balon.balonFuera)
             {
@@ -197,7 +198,6 @@ public class JugadorV2 : MonoBehaviour {
             team = GameObject.FindGameObjectWithTag("balonPies").GetComponent<JugadorV2>().equipo;
 
         Vector3 dist = transform.position - posicion.transform.position;
-        Vector3 distBalon = posicion.transform.position - balon.transform.position;
         if (balonPies && !MngScenes.multijugador && !equipo)
         {//no es multi, tenemos el balon en los pies y somos la ia corremos a porteria
             Vector3 distancia = porteriaRival.transform.position - transform.position;
@@ -251,7 +251,7 @@ public class JugadorV2 : MonoBehaviour {
                 distancia = jugadorConPelota.transform.position - transform.position;  
                 if (distancia.magnitude < 2f){
                     equipoRival.jugadores[equipoRival.jugadorCercano()].balonPies = false;
-                    equipoRival.jugadores[equipoRival.jugadorCercano()].falta = true;
+                    equipoRival.jugadores[equipoRival.jugadorCercano()].falta = true;                 
                     StartCoroutine(equipoRival.jugadores[equipoRival.jugadorCercano()].setFaltaFalse());
                     balon.interceptado = false;
                 }
@@ -261,7 +261,7 @@ public class JugadorV2 : MonoBehaviour {
 
 	public void conducirBalon(){
 		if (balonPies && !balonGolpeado)
-		{ Debug.Log("conducirbalon");
+		{ 
 			if (flipY) {
 				Vector3 posbal = new Vector3 (transform.position.x, transform.position.y - 0.5f);
 				balon.setPosicion (posbal);
@@ -292,6 +292,10 @@ public class JugadorV2 : MonoBehaviour {
 			}
 			lastPosition = transform.position.y;
 		}
+        if (falta){
+            ar.SetBool("suelo",true);
+            Debug.Log ("agh mi puta pierna");
+        }
 	}
     
 	private void marcar() {

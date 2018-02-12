@@ -9,11 +9,19 @@ public class MngEquiV2 : MonoBehaviour {
     public PorteroV2 benji;
     public Balon balon;
 
-    private void LateUpdate()
-    {
+    private void LateUpdate(){
         cambiarJugador();
         escanerSelector();
     }
+
+    private void update(){
+
+        if ((jugadores[0].equipo==false) &&  !MngScenes.multijugador)
+            Debug.Log("limpiar selector");
+            limpiarSelector();
+
+    }
+
     public void limpiarBalonPies()
     {
         for (int n = 0; n < jugadores.Length; n++)
