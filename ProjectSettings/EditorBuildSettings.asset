@@ -8,9 +8,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/menu.unity
     guid: 2a48a1fea8c8a4d2b89c15656c3ee567
-  - enabled: 1
-    path: Assets/Scenes/pruebas.unity
-    guid: 033d86b6d4b7eb944be90e7f3c7919dd
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/SelectAlineacion.unity
     guid: 1a03e9de422324cb4b1abfdd798d66c4
@@ -38,9 +38,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/creditos.unity
     guid: 23d85e999f23d1a4396f261bd1b491ef
-  - enabled: 1
-    path: Assets/Scenes/Multi.unity
-    guid: bb462d26b0255864a8521d1d0cd048a7
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/opciones.unity
     guid: 6348a6db7b18a9644a2aafecb26df90c

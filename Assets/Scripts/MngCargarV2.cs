@@ -89,7 +89,7 @@ public class MngCargarV2 : MonoBehaviour {
     private void Awake()
     {//antes de cargar la escena
 
-        MngScenes.multijugador = false;
+        MngScenes.multijugador = true;
         if (MngScenes.alineacion == "A") {
 			GameObject PosicionesDeLosCojones = Instantiate (AliA, transform.position, Quaternion.identity);
 		}
