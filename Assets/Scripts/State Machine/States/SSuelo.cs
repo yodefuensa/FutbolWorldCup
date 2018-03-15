@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class correr : MonoBehaviour {
+public class SSuelo : State {
 
 	// Use this for initialization
 	void Start () {

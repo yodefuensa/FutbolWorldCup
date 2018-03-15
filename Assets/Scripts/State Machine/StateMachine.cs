@@ -4,13 +4,25 @@ using UnityEngine;
 
 public class StateMachine : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+	public State initialState;
+    public State currentState;
+
+    void Awake()
+    {
+        currentState = initialState;
+        currentState.enabled = true;
+    }
+
+    protected void BackInitialState()
+    {
+        ChangeState(initialState);
+    }
+
+    public void ChangeState(State newState)
+    {
+        currentState.enabled = false;
+        currentState = newState;
+        currentState.enabled = true;
+    }
+
 }

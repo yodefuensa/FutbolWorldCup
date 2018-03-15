@@ -12,24 +12,24 @@ public class JugadorV2 : MonoBehaviour {
 	public int vel = 12;
 	private int fuerzaGolpeo = 15;
     //robo es para saber si podremos robar la pelota
-    public bool robo;
+  public bool robo;
     //cuando se pulse C bloqueamos el movimiento y le damos la direccion de la falta
-    public bool tRobo;
+  public bool tRobo;
     //zasca te han hecho falta te caes al suelo no te puedes mover durante X tiempo
-    public bool falta;
+  public bool falta;
     //magnitud se usa en el manager partido, para saber que jugadores estaran mas cerca al salir la pelota
-    public Vector3 dirFalta;
+  public Vector3 dirFalta;
 	public float magnitud = 0;
-    public Vector3 posicionInicial;
+  public Vector3 posicionInicial;
 	public GameObject posicion;
 	private Animator ar;
 	public bool flipY = false;
 	public Selector seguidor;
    // public GameObject equipoRivalGO;
-    public MngEquiV2 equipoRival;
+  public MngEquiV2 equipoRival;
 	private float lastPosition = 0;
-    public bool equipo;
-    public GameObject porteriaRival;
+  public bool equipo;
+  public GameObject porteriaRival;
 
     private void Awake(){
 		posicionInicial = new Vector2 (transform.position.x, transform.position.y);
@@ -117,7 +117,7 @@ public class JugadorV2 : MonoBehaviour {
         if ((selector) && (!tRobo) && equipo)
         {
            // Vector3 noMove = balon.
-            if (!balon.balonFuera) { 
+            if (!balon.balonFuera) {
                 if (Input.GetAxisRaw("Vertical") > 0)
                     transform.position += Vector3.up * Time.deltaTime * vel;
                 if (Input.GetAxisRaw("Vertical") < 0)
@@ -208,7 +208,7 @@ public class JugadorV2 : MonoBehaviour {
             if (!balon.interceptado)
             {
                 Vector3 distanciaBalon = balon.transform.position - transform.position;
-                transform.position += distanciaBalon.normalized * Time.deltaTime * vel;            
+                transform.position += distanciaBalon.normalized * Time.deltaTime * vel;
             }else
             {
                 if ((team != equipo)&& !PorteroV2.esPortero)
@@ -219,15 +219,15 @@ public class JugadorV2 : MonoBehaviour {
                         ar.SetBool("falta", true);
                         hacerFalta(distanciaBalon.normalized);
                     }
-                }                  
+                }
             }
 
             if ((dist.magnitude < 17f) && (!selector) && team == equipo)
             {//zona de accion y yo tengo el balon
-                if (!PorteroV2.esPortero) { 
+                if (!PorteroV2.esPortero) {
                     if (transform.position.y > balon.transform.position.y)
                         transform.position += Vector3.down * Time.deltaTime * vel;
-                    
+
                     if (transform.position.y < balon.transform.position.y)
                         transform.position += Vector3.up * Time.deltaTime * vel;
                 }
@@ -238,9 +238,9 @@ public class JugadorV2 : MonoBehaviour {
             transform.position -= dist.normalized * Time.deltaTime * vel;
         }
     }
-	
+
 	public void hacerFalta(Vector3 dirFalta)
-	{//vector normalizado 
+	{//vector normalizado
 		tRobo = true;
 		if (tRobo) {
 			StartCoroutine (setTRoboFalse ());
@@ -248,20 +248,20 @@ public class JugadorV2 : MonoBehaviour {
 			GameObject jugadorConPelota = GameObject.FindGameObjectWithTag ("balonPies");
 			transform.position += dirFalta * Time.deltaTime * vel/3;
 			if (jugadorConPelota != null){
-                distancia = jugadorConPelota.transform.position - transform.position;  
+                distancia = jugadorConPelota.transform.position - transform.position;
                 if (distancia.magnitude < 2f){
                     equipoRival.jugadores[equipoRival.jugadorCercano()].balonPies = false;
-                    equipoRival.jugadores[equipoRival.jugadorCercano()].falta = true;                 
+                    equipoRival.jugadores[equipoRival.jugadorCercano()].falta = true;
                     StartCoroutine(equipoRival.jugadores[equipoRival.jugadorCercano()].setFaltaFalse());
                     balon.interceptado = false;
                 }
 			}
-		}  
+		}
 	}
 
 	public void conducirBalon(){
 		if (balonPies && !balonGolpeado)
-		{ 
+		{
 			if (flipY) {
 				Vector3 posbal = new Vector3 (transform.position.x, transform.position.y - 0.5f);
 				balon.setPosicion (posbal);
@@ -297,7 +297,7 @@ public class JugadorV2 : MonoBehaviour {
             Debug.Log ("agh mi puta pierna");
         }
 	}
-    
+
 	private void marcar() {
 		if (selector){
 			Vector3 posicionNuestra = new Vector3(transform.position.x, transform.position.y);

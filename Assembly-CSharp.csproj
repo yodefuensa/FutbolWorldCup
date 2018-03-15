@@ -65,11 +65,11 @@
      <Compile Include="Assets\Scripts\Selector.cs" />
      <Compile Include="Assets\Scripts\State Machine\State.cs" />
      <Compile Include="Assets\Scripts\State Machine\StateMachine.cs" />
-     <Compile Include="Assets\Scripts\State Machine\States\balonPies.cs" />
-     <Compile Include="Assets\Scripts\State Machine\States\correr.cs" />
-     <Compile Include="Assets\Scripts\State Machine\States\falta.cs" />
-     <Compile Include="Assets\Scripts\State Machine\States\parado.cs" />
-     <Compile Include="Assets\Scripts\State Machine\States\suelo.cs" />
+     <Compile Include="Assets\Scripts\State Machine\States\SBalonPies.cs" />
+     <Compile Include="Assets\Scripts\State Machine\States\SCorrer.cs" />
+     <Compile Include="Assets\Scripts\State Machine\States\SFalta.cs" />
+     <Compile Include="Assets\Scripts\State Machine\States\SParado.cs" />
+     <Compile Include="Assets\Scripts\State Machine\States\SSuelo.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>/opt/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
