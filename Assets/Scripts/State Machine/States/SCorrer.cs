@@ -4,21 +4,60 @@ using UnityEngine;
 
 public class SCorrer : State {
 
+    public Balon balon;
+    private float lastPosition = 0;
+    public GameObject posicion;
+    public bool flipY = false;
+    //robo es para saber si podremos robar la pelota
+    public bool robo;
+
     [Header("Estados a los que puede ir")]
     public State stParado;
     public State stFalta;
     public State stBalonPies;
+ 
 
 	void Start () {
-		
-	}
+        balon = GameObject.FindObjectOfType<Balon>();
+        ar = GetComponent<Animator>();
+    }
 	
 	// Update is called once per frame
 	void Update () {
-		
+        movimiento();
+        animatorObserver();
+        stupidAI();
+        marcar();
+        hit();
 	}
-    
-	private void movimiento(){
+
+    void FixedUpdate()
+    {
+        animatorObserver();
+        if (equipo)
+            this.tag = "Jugador";
+        else if (!equipo)
+            this.tag = "Rival";
+    }
+
+    private void hit()
+    {
+        Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, 1f);
+        foreach (Collider2D hit in hits)
+        {
+            if ((hit.name == "balon") && (!balon.interceptado)/*balon cuenta atras && (!balonGolpeado)*/)
+            {
+                selector = true;
+                balon.interceptado = true;
+                StopCoroutine("balon.setBalonTiempoFalse");
+                st.ChangeState(stBalonPies);
+            }
+
+        }
+        
+    }
+
+    private void movimiento(){
 		if ((selector) && equipo){
 			// Vector3 noMove = balon.
 			if (!balon.balonFuera) { 
@@ -31,14 +70,13 @@ public class SCorrer : State {
 				if (Input.GetAxisRaw("Horizontal") < 0)
 					transform.position -= new Vector3(1, 0) * Time.deltaTime * vel;
 				if (Input.GetButtonDown("Falta")){
-                    StateMachine.ChangeState(stFalta);                    
+                    st.ChangeState(stFalta);                    
                 }
 			}
-			if (Input.GetButtonDown("Golpeo")){}
 		}
 
     }
-
+    
     private void movimientoP2()
     {
         if ((selector) && !equipo && MngScenes.multijugador)
@@ -53,9 +91,10 @@ public class SCorrer : State {
                     transform.position += new Vector3(1, 0) * Time.deltaTime * vel;
                 if (Input.GetAxisRaw("HorizontalP2") < 0)
                     transform.position -= new Vector3(1, 0) * Time.deltaTime * vel;
-                if (Input.GetButtonDown("FaltaP2")){}
+                if (Input.GetButtonDown("FaltaP2")){
+                    st.ChangeState(stFalta);
+                }
             }
-            if (Input.GetButtonDown("GolpeoP2") && balonPies && !balonGolpeado){}
         }
 
     }
@@ -68,11 +107,6 @@ public class SCorrer : State {
             team = GameObject.FindGameObjectWithTag("balonPies").GetComponent<JugadorV2>().equipo;
 
         Vector3 dist = transform.position - posicion.transform.position;
-        if (balonPies && !MngScenes.multijugador && !equipo)
-        {//no es multi, tenemos el balon en los pies y somos la ia corremos a porteria
-            Vector3 distancia = porteriaRival.transform.position - transform.position;
-            transform.position += distancia.normalized * Time.deltaTime * vel;
-        }
         if ((dist.magnitude < 17f) && (!selector))
         {//si estamos dentro de la zona de accion
             if (!balon.interceptado)
@@ -86,10 +120,20 @@ public class SCorrer : State {
                     Vector3 distanciaBalon = balon.transform.position - transform.position;
                     transform.position += distanciaBalon.normalized * Time.deltaTime * vel;
                     if ((distanciaBalon.magnitude < 4f) && balon.interceptado && !balon.balonFuera && team != equipo){
-                        ar.SetBool("falta", true);
-                        hacerFalta(distanciaBalon.normalized);
+                        st.ChangeState(stFalta);
                     }
                 }                  
+            }
+            if ((dist.magnitude < 17f) && (!selector) && team == equipo)
+            {//zona de accion y yo tengo el balon
+                if (!PorteroV2.esPortero)
+                {
+                    if (transform.position.y > balon.transform.position.y)
+                        transform.position += Vector3.down * Time.deltaTime * vel;
+
+                    if (transform.position.y < balon.transform.position.y)
+                        transform.position += Vector3.up * Time.deltaTime * vel;
+                }
             }
         }
 
@@ -118,6 +162,8 @@ public class SCorrer : State {
 		}
 
 	}
+
+ 
 
 
 

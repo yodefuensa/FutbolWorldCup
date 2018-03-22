@@ -10,6 +10,8 @@ TagManager:
   - ZonaCaliente
   - palo
   - balonPies
+  - porteria2
+  - porteria
   layers:
   - Default
   - TransparentFX

@@ -22,7 +22,13 @@ GameObject:
   - component: {fileID: 212206458109659976}
   - component: {fileID: 61386504676546746}
   - component: {fileID: 95854319468859898}
+  - component: {fileID: 114562738253095860}
   - component: {fileID: 114830705720239922}
+  - component: {fileID: 114910527032955286}
+  - component: {fileID: 114657082276533514}
+  - component: {fileID: 114995905961919334}
+  - component: {fileID: 114457109037661302}
+  - component: {fileID: 114052558945479942}
   m_Layer: 0
   m_Name: jugadorV3
   m_TagString: Jugador
@@ -38,7 +44,7 @@ Transform:
   m_GameObject: {fileID: 1358616183337232}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 27.12, y: 33.84, z: 0.034640685}
-  m_LocalScale: {x: 7, y: 7, z: 1}
+  m_LocalScale: {x: 4, y: 4, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -85,6 +91,125 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114052558945479942
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1358616183337232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df3d76077488d4ddf96fe9f7710b994a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  balon: {fileID: 0}
+  balonGolpeado: 0
+  balonPies: 0
+  selector: 0
+  vel: 12
+  robo: 0
+  tRobo: 0
+  falta: 0
+  dirFalta: {x: 0, y: 0, z: 0}
+  magnitud: 0
+  posicionInicial: {x: 0, y: 0, z: 0}
+  posicion: {fileID: 0}
+  flipY: 0
+  seguidor: {fileID: 0}
+  equipoRival: {fileID: 0}
+  equipo: 0
+  porteriaRival: {fileID: 0}
+  st: {fileID: 0}
+--- !u!114 &114457109037661302
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1358616183337232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82b7755489e204248b40306131e85f04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  balon: {fileID: 0}
+  balonGolpeado: 0
+  balonPies: 0
+  selector: 0
+  vel: 12
+  robo: 0
+  tRobo: 0
+  falta: 0
+  dirFalta: {x: 0, y: 0, z: 0}
+  magnitud: 0
+  posicionInicial: {x: 0, y: 0, z: 0}
+  posicion: {fileID: 0}
+  flipY: 0
+  seguidor: {fileID: 0}
+  equipoRival: {fileID: 0}
+  equipo: 0
+  porteriaRival: {fileID: 0}
+  st: {fileID: 0}
+  stParado: {fileID: 0}
+  stFalta: {fileID: 0}
+  stBalonPies: {fileID: 0}
+--- !u!114 &114562738253095860
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1358616183337232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efb5ea3e71de347239192e24723d16bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  balon: {fileID: 0}
+  balonGolpeado: 0
+  balonPies: 0
+  selector: 0
+  vel: 12
+  robo: 0
+  tRobo: 0
+  falta: 0
+  dirFalta: {x: 0, y: 0, z: 0}
+  magnitud: 0
+  posicionInicial: {x: 0, y: 0, z: 0}
+  posicion: {fileID: 0}
+  flipY: 0
+  seguidor: {fileID: 0}
+  equipoRival: {fileID: 0}
+  equipo: 0
+  porteriaRival: {fileID: 0}
+  st: {fileID: 0}
+--- !u!114 &114657082276533514
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1358616183337232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7991810b2002d4bd68be4005ddbc7f96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  balon: {fileID: 0}
+  balonGolpeado: 0
+  balonPies: 0
+  selector: 0
+  vel: 12
+  robo: 0
+  tRobo: 0
+  falta: 0
+  dirFalta: {x: 0, y: 0, z: 0}
+  magnitud: 0
+  posicionInicial: {x: 0, y: 0, z: 0}
+  posicion: {fileID: 0}
+  flipY: 0
+  seguidor: {fileID: 0}
+  equipoRival: {fileID: 0}
+  equipo: 0
+  porteriaRival: {fileID: 0}
+  st: {fileID: 0}
 --- !u!114 &114830705720239922
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -96,12 +221,66 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 560b72e78a7a145ef94612216c8e19d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SBalonPies: {fileID: 0}
-  SFalta: {fileID: 0}
-  SParado: {fileID: 0}
-  SSuelo: {fileID: 0}
-  SCorrer: {fileID: 0}
-  SIncial: {fileID: 0}
+  initialState: {fileID: 114657082276533514}
+  currentState: {fileID: 114657082276533514}
+--- !u!114 &114910527032955286
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1358616183337232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f864570bc4264ab3a6039b64a7abd50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  balon: {fileID: 0}
+  balonGolpeado: 0
+  balonPies: 0
+  selector: 0
+  vel: 12
+  robo: 0
+  tRobo: 0
+  falta: 0
+  dirFalta: {x: 0, y: 0, z: 0}
+  magnitud: 0
+  posicionInicial: {x: 0, y: 0, z: 0}
+  posicion: {fileID: 0}
+  flipY: 0
+  seguidor: {fileID: 0}
+  equipoRival: {fileID: 0}
+  equipo: 0
+  porteriaRival: {fileID: 0}
+  st: {fileID: 0}
+--- !u!114 &114995905961919334
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1358616183337232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba099ee46edd44c598c867315592df05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  balon: {fileID: 0}
+  balonGolpeado: 0
+  balonPies: 0
+  selector: 0
+  vel: 12
+  robo: 0
+  tRobo: 0
+  falta: 0
+  dirFalta: {x: 0, y: 0, z: 0}
+  magnitud: 0
+  posicionInicial: {x: 0, y: 0, z: 0}
+  posicion: {fileID: 0}
+  flipY: 0
+  seguidor: {fileID: 0}
+  equipoRival: {fileID: 0}
+  equipo: 0
+  porteriaRival: {fileID: 0}
+  st: {fileID: 0}
 --- !u!212 &212206458109659976
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -294,7 +294,6 @@ public class JugadorV2 : MonoBehaviour {
 		}
         if (falta){
             ar.SetBool("suelo",true);
-            Debug.Log ("agh mi puta pierna");
         }
 	}
 
