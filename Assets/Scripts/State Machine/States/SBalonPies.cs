@@ -5,33 +5,43 @@ using UnityEngine;
 public class SBalonPies : State {
 
     public Balon balon;
-    public bool flipY = false;
     private float lastPosition = 0;
     public GameObject porteriaRival;
+    public bool cazado;
 
     [Header("Estados a los que puede ir")]
     public State stParado;
-    public State stFalta;
-    public State stBalonPies;
+    public State stSuelo;
 
     void Start()
     {
+        Debug.Log("balon pies");
         balon = GameObject.FindObjectOfType<Balon>();
         ar = GetComponent<Animator>();
+        cazado = false;
         if (equipo)
             porteriaRival = GameObject.Find("porteria2");
         if (!equipo)
             porteriaRival = GameObject.Find("porteria");
     }
 
-    void Update()
-    {
+    void Update(){
+        if (reinicio==0)
+        {
+            cazado = false;
+        } 
+        this.tag = "balonPies";
         movimiento();
         animatorObserver();
         stupidAI();
         conducirBalon();
         marcar();
+        if (cazado){
+            st.ChangeState(stSuelo,equipo,selector,flipY,0);
+        }
+        reinicio++;
     }
+    
 
     private void movimiento()
     {

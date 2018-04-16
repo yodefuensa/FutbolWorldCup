@@ -7,9 +7,6 @@ public class SCorrer : State {
     public Balon balon;
     private float lastPosition = 0;
     public GameObject posicion;
-    public bool flipY = false;
-    //robo es para saber si podremos robar la pelota
-    public bool robo;
 
     [Header("Estados a los que puede ir")]
     public State stParado;
@@ -18,6 +15,7 @@ public class SCorrer : State {
  
 
 	void Start () {
+        Debug.Log("correr");
         balon = GameObject.FindObjectOfType<Balon>();
         ar = GetComponent<Animator>();
     }
@@ -31,8 +29,7 @@ public class SCorrer : State {
         hit();
 	}
 
-    void FixedUpdate()
-    {
+    void FixedUpdate(){
         animatorObserver();
         if (equipo)
             this.tag = "Jugador";
@@ -50,7 +47,7 @@ public class SCorrer : State {
                 selector = true;
                 balon.interceptado = true;
                 StopCoroutine("balon.setBalonTiempoFalse");
-                st.ChangeState(stBalonPies);
+                st.ChangeState(stBalonPies,equipo,selector,flipY,0);
             }
 
         }
@@ -70,7 +67,7 @@ public class SCorrer : State {
 				if (Input.GetAxisRaw("Horizontal") < 0)
 					transform.position -= new Vector3(1, 0) * Time.deltaTime * vel;
 				if (Input.GetButtonDown("Falta")){
-                    st.ChangeState(stFalta);                    
+                    st.ChangeState(stFalta,equipo,selector,flipY,0);                    
                 }
 			}
 		}
@@ -92,7 +89,7 @@ public class SCorrer : State {
                 if (Input.GetAxisRaw("HorizontalP2") < 0)
                     transform.position -= new Vector3(1, 0) * Time.deltaTime * vel;
                 if (Input.GetButtonDown("FaltaP2")){
-                    st.ChangeState(stFalta);
+                    st.ChangeState(stFalta,equipo,selector,flipY,0);
                 }
             }
         }
@@ -104,7 +101,7 @@ public class SCorrer : State {
         bool team = false;
 		//team variable a la que asignamos true o false para saber quien tiene la pelota si nuestro equipo o el rival
         if (GameObject.FindGameObjectWithTag("balonPies") != null)
-            team = GameObject.FindGameObjectWithTag("balonPies").GetComponent<JugadorV2>().equipo;
+            team = GameObject.FindGameObjectWithTag("balonPies").GetComponent<State>().equipo;
 
         Vector3 dist = transform.position - posicion.transform.position;
         if ((dist.magnitude < 17f) && (!selector))
@@ -120,7 +117,7 @@ public class SCorrer : State {
                     Vector3 distanciaBalon = balon.transform.position - transform.position;
                     transform.position += distanciaBalon.normalized * Time.deltaTime * vel;
                     if ((distanciaBalon.magnitude < 4f) && balon.interceptado && !balon.balonFuera && team != equipo){
-                        st.ChangeState(stFalta);
+                        st.ChangeState(stFalta,equipo,selector,flipY,0);
                     }
                 }                  
             }

@@ -9,10 +9,13 @@ public class State : MonoBehaviour
 	public int vel = 12;
 	protected int fuerzaGolpeo = 15;
     public bool selector = false;
+    public bool flipY = false;
+    public int reinicio;
     //cuando se pulse C bloqueamos el movimiento y le damos la direccion de la falt
 	protected Animator ar;
 	public Selector seguidor;
     public bool equipo;
+    
 
 
     public StateMachine st;
