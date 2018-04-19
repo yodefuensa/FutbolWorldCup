@@ -207,7 +207,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 684bd52db5cbbfb4dbc7e14bb02cc19e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  balon: {fileID: 425956813}
+  balon: {fileID: 0}
   pausa: 0
 --- !u!58 &222569614
 CircleCollider2D:
@@ -501,6 +501,21 @@ Prefab:
       propertyPath: equipo
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114052558945479942, guid: 3eb3f5e94e3f8425ebc1a13ac5085bbb,
+        type: 2}
+      propertyPath: balon
+      value: 
+      objectReference: {fileID: 425956813}
+    - target: {fileID: 114995905961919334, guid: 3eb3f5e94e3f8425ebc1a13ac5085bbb,
+        type: 2}
+      propertyPath: balon
+      value: 
+      objectReference: {fileID: 425956813}
+    - target: {fileID: 114995905961919334, guid: 3eb3f5e94e3f8425ebc1a13ac5085bbb,
+        type: 2}
+      propertyPath: st
+      value: 
+      objectReference: {fileID: 215728863}
     m_RemovedComponents:
     - {fileID: 114562738253095860, guid: 3eb3f5e94e3f8425ebc1a13ac5085bbb, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 3eb3f5e94e3f8425ebc1a13ac5085bbb, type: 2}
@@ -806,7 +821,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 684bd52db5cbbfb4dbc7e14bb02cc19e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  balon: {fileID: 425956813}
+  balon: {fileID: 0}
   pausa: 0
 --- !u!58 &898249508
 CircleCollider2D:
@@ -927,7 +942,7 @@ Prefab:
         type: 2}
       propertyPath: balon
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 425956813}
     - target: {fileID: 114457109037661302, guid: 3eb3f5e94e3f8425ebc1a13ac5085bbb,
         type: 2}
       propertyPath: seguidor
@@ -1007,6 +1022,16 @@ Prefab:
       propertyPath: m_Name
       value: jugadorV3 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 114995905961919334, guid: 3eb3f5e94e3f8425ebc1a13ac5085bbb,
+        type: 2}
+      propertyPath: balon
+      value: 
+      objectReference: {fileID: 425956813}
+    - target: {fileID: 114995905961919334, guid: 3eb3f5e94e3f8425ebc1a13ac5085bbb,
+        type: 2}
+      propertyPath: st
+      value: 
+      objectReference: {fileID: 116298214}
     m_RemovedComponents:
     - {fileID: 114562738253095860, guid: 3eb3f5e94e3f8425ebc1a13ac5085bbb, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 3eb3f5e94e3f8425ebc1a13ac5085bbb, type: 2}
@@ -1119,11 +1144,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4656990878177940, guid: 628d2039e27238b44baa7145a1983a29, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -14.2
       objectReference: {fileID: 0}
     - target: {fileID: 4656990878177940, guid: 628d2039e27238b44baa7145a1983a29, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.24
       objectReference: {fileID: 0}
     - target: {fileID: 4656990878177940, guid: 628d2039e27238b44baa7145a1983a29, type: 2}
       propertyPath: m_LocalPosition.z
@@ -1193,7 +1218,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 684bd52db5cbbfb4dbc7e14bb02cc19e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  balon: {fileID: 425956813}
+  balon: {fileID: 0}
   pausa: 0
 --- !u!58 &1432540173
 CircleCollider2D:
@@ -1365,7 +1390,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 684bd52db5cbbfb4dbc7e14bb02cc19e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  balon: {fileID: 425956813}
+  balon: {fileID: 0}
   pausa: 0
 --- !u!58 &1667107795
 CircleCollider2D:

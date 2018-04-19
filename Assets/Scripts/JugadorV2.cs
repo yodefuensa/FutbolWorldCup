@@ -12,24 +12,24 @@ public class JugadorV2 : MonoBehaviour {
 	public int vel = 12;
 	private int fuerzaGolpeo = 15;
     //robo es para saber si podremos robar la pelota
-  public bool robo;
+    public bool robo;
     //cuando se pulse C bloqueamos el movimiento y le damos la direccion de la falta
-  public bool tRobo;
+    public bool tRobo;
     //zasca te han hecho falta te caes al suelo no te puedes mover durante X tiempo
-  public bool falta;
+    public bool falta;
     //magnitud se usa en el manager partido, para saber que jugadores estaran mas cerca al salir la pelota
-  public Vector3 dirFalta;
+    public Vector3 dirFalta;
 	public float magnitud = 0;
-  public Vector3 posicionInicial;
+    public Vector3 posicionInicial;
 	public GameObject posicion;
 	private Animator ar;
 	public bool flipY = false;
 	public Selector seguidor;
    // public GameObject equipoRivalGO;
-  public MngEquiV2 equipoRival;
+    public MngEquiV2 equipoRival;
 	private float lastPosition = 0;
-  public bool equipo;
-  public GameObject porteriaRival;
+    public bool equipo;
+    public GameObject porteriaRival;
 
     private void Awake(){
 		posicionInicial = new Vector2 (transform.position.x, transform.position.y);

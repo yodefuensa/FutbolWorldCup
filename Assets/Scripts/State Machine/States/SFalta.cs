@@ -9,6 +9,7 @@ public class SFalta : State {
     public State stParado;
     public State stScorrer;
     public State stBalonPies;
+    //private jugadorCazado;
     Vector3 vectorDireccion;
 
 	void start (){                
@@ -25,6 +26,7 @@ public class SFalta : State {
             tRobo = true;
         }
         hacerFalta();
+        hit();
         if (!tRobo){
             st.ChangeState(stScorrer,equipo,selector,flipY,0);
         }
@@ -57,7 +59,11 @@ public class SFalta : State {
             {
                 selector = true;
                 balon.interceptado = true;
-                StopCoroutine("balon.setBalonTiempoFalse");
+                //jugadorCazado.GetComponent<SBalonPies>().cazado = GameObject.FindGameObjectWithTag("balonPies").GetComponent<SBalonPies>().cazado;
+                //StopCoroutine("balon.setBalonTiempoFalse");
+                //jugadorCazado = GameObject.FindGameObjectWithTag("balonPies");
+                //GameObject.FindGameObjectWithTag("balonPies").GetComponent<SBalonPies>().cazado=true;
+                //jugadorCazado.cazado = true;
                 st.ChangeState(stBalonPies,equipo,selector,flipY,0);
             }
         }

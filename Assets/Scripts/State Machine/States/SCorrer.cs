@@ -12,6 +12,7 @@ public class SCorrer : State {
     public State stParado;
     public State stFalta;
     public State stBalonPies;
+    private bool team = false;
  
 
 	void Start () {
@@ -98,10 +99,11 @@ public class SCorrer : State {
 
 
     private void stupidAI(){
-        bool team = false;
 		//team variable a la que asignamos true o false para saber quien tiene la pelota si nuestro equipo o el rival
-        if (GameObject.FindGameObjectWithTag("balonPies") != null)
-            team = GameObject.FindGameObjectWithTag("balonPies").GetComponent<State>().equipo;
+        if (GameObject.FindGameObjectWithTag("balonPies") != null){
+            Debug.Log("not null");
+            team = GameObject.FindGameObjectWithTag("balonPies").GetComponent<SBalonPies>().equipo;
+        }
 
         Vector3 dist = transform.position - posicion.transform.position;
         if ((dist.magnitude < 17f) && (!selector))
