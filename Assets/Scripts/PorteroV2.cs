@@ -79,7 +79,7 @@ public class PorteroV2 : MonoBehaviour {
             balon.fuerzaL = fuerzaGolpeo;
             esPortero = false;
             balon.direccion = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-            balon.golpeoV2();
+            balon.golpeoV2b();
             StartCoroutine(setBalonGolpeadoFalse());
             StartCoroutine(balon.setBalonTiempoFalse());
         }

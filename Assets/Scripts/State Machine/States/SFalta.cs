@@ -41,7 +41,7 @@ public class SFalta : State {
     }
     
     public void hacerFalta(){     
-        transform.position += vectorDireccion * Time.deltaTime * vel/3;
+        transform.position += vectorDireccion * Time.deltaTime * vel;
     }
     
     private void hit(){
@@ -55,15 +55,12 @@ public class SFalta : State {
                 StopCoroutine("balon.setBalonTiempoFalse");
                 st.ChangeState(stBalonPies,equipo,selector,flipY,0);
             }
-            else if ((hit.name == "balon") && ( hit.name=="balonPies"))
+            else if (hit.tag=="balonPies")
             {
+                Debug.Log("toca");
                 selector = true;
                 balon.interceptado = true;
-                //jugadorCazado.GetComponent<SBalonPies>().cazado = GameObject.FindGameObjectWithTag("balonPies").GetComponent<SBalonPies>().cazado;
-                //StopCoroutine("balon.setBalonTiempoFalse");
-                //jugadorCazado = GameObject.FindGameObjectWithTag("balonPies");
-                //GameObject.FindGameObjectWithTag("balonPies").GetComponent<SBalonPies>().cazado=true;
-                //jugadorCazado.cazado = true;
+                GameObject.FindGameObjectWithTag ("balonPies").GetComponent<SBalonPies>().cazado=true;
                 st.ChangeState(stBalonPies,equipo,selector,flipY,0);
             }
         }

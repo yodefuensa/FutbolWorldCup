@@ -144,9 +144,9 @@ public class JugadorV2 : MonoBehaviour {
                 balon.tiempo = true;
                 balon.fuerzaL = fuerzaGolpeo;
                 balon.direccion = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-                balon.golpeoV2();
-                StartCoroutine(setBalonGolpeadoFalse());
-                StartCoroutine(balon.setBalonTiempoFalse());
+                balon.golpeoV2b();
+                //StartCoroutine(setBalonGolpeadoFalse());
+               // StartCoroutine(balon.setBalonTiempoFalse());
             }
         }
 
@@ -184,7 +184,7 @@ public class JugadorV2 : MonoBehaviour {
                 balon.tiempo = true;
                 balon.fuerzaL = fuerzaGolpeo;
                 balon.direccion = new Vector2(Input.GetAxisRaw("HorizontalP2"), Input.GetAxisRaw("VerticalP2"));
-                balon.golpeoV2();
+                balon.golpeoV2b();
                 StartCoroutine(setBalonGolpeadoFalse());
                 StartCoroutine(balon.setBalonTiempoFalse());
             }

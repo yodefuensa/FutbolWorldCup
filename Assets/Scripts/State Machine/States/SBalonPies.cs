@@ -12,6 +12,7 @@ public class SBalonPies : State {
     [Header("Estados a los que puede ir")]
     public State stParado;
     public State stSuelo;
+    public State stScorrer;
 
     void Start()
     {
@@ -58,6 +59,20 @@ public class SBalonPies : State {
                     transform.position += new Vector3(1, 0) * Time.deltaTime * vel;
                 if (Input.GetAxisRaw("Horizontal") < 0)
                     transform.position -= new Vector3(1, 0) * Time.deltaTime * vel;
+                if (Input.GetButtonDown("Golpeo")){
+                    if (equipo)
+                        balon.ultimoTocado = true;
+                    if (!equipo)
+                        balon.ultimoTocado = false;
+                    balon.interceptado = false;
+                    //balon.tiempo = true;
+                    balon.fuerzaL = fuerzaGolpeo;
+                    balon.direccion = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+                    balon.golpeoV2b();
+                    //StartCoroutine(balon.setBalonTiempoFalse());
+                    st.ChangeState(stScorrer,equipo,selector,flipY,0);
+ 
+                }
             }
         }
 
@@ -75,6 +90,19 @@ public class SBalonPies : State {
                 transform.position += new Vector3(1, 0) * Time.deltaTime * vel;
             if (Input.GetAxisRaw("HorizontalP2") < 0)
                 transform.position -= new Vector3(1, 0) * Time.deltaTime * vel;
+            if (Input.GetButtonDown("GolpeoP2")){
+                if (equipo)
+                    balon.ultimoTocado = true;
+                if (!equipo)
+                    balon.ultimoTocado = false;
+                balon.interceptado = false;
+                //balon.tiempo = true;
+                balon.fuerzaL = fuerzaGolpeo;
+                balon.direccion = new Vector2(Input.GetAxisRaw("HorizontalP2"), Input.GetAxisRaw("VerticalP2"));
+                balon.golpeoV2b();
+                st.ChangeState(stScorrer,equipo,selector,flipY,0);
+                //StartCoroutine(balon.setBalonTiempoFalse());
+            }
 
         }
 

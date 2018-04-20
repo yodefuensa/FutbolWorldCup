@@ -7,7 +7,7 @@ public class State : MonoBehaviour
 {
 	
 	public int vel = 12;
-	protected int fuerzaGolpeo = 15;
+	protected int fuerzaGolpeo = 25;
     public bool selector = false;
     public bool flipY = false;
     public int reinicio;

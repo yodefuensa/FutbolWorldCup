@@ -25,13 +25,13 @@ public class Balon : MonoBehaviour
 	}	
 
 	private void Update(){
-		golpeoV2 ();
+		golpeoV2b ();
 	}
 
 	public void setDireccion(Vector3 direccion,int fuerza){
 		transform.position = direccion * fuerza; 
 	}
-
+/* 
 	public Collider2D[] GolpeoBalon()
 	{//palfixed, ver si algo TOCA balon
 		hits = Physics2D.OverlapCircleAll (transform.position, 0.8f);
@@ -45,6 +45,7 @@ public class Balon : MonoBehaviour
 		}
 		return hits;
 	}
+*/
 
 	public Vector3 getPosicion()
 	{
@@ -57,30 +58,23 @@ public class Balon : MonoBehaviour
 		transform.position = posicion;
 	}
 
-
-	public void golpeoV2 ()
+	public void golpeoV2b ()
     {
-		if ((!interceptado) && (tiempo))
+		if (!interceptado )
         {
 			transform.position += direccion * Time.deltaTime * fuerzaL;
-			//interceptado = false;
+			if (fuerzaL>0)
+			StartCoroutine(setBalonTiempoFalse);
 	    }
 		
 	}
-    public void golpeoV3(int fuerzaGolpeo, Vector3 dir){
-        if ((!interceptado) && (tiempo)){
-            transform.position += dir * Time.deltaTime * fuerzaGolpeo;
-        }
-    }
+
 
     public IEnumerator setBalonTiempoFalse()
-	{//para no tocar el balon al golpearlo
-		for (int n = 0; n < 50; n++)
-		{            
-			yield return new WaitForSeconds(.1f);
-		}
-		tiempo = false;
-
+	{//parar balon     
+		fuerzaL--;
+		yield return new WaitForSeconds(.5f);
+		
 	}
 
 

@@ -28,6 +28,7 @@ public class SCorrer : State {
         stupidAI();
         marcar();
         hit();
+        reinicio++;
 	}
 
     void FixedUpdate(){
@@ -43,7 +44,7 @@ public class SCorrer : State {
         Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, 1f);
         foreach (Collider2D hit in hits)
         {
-            if ((hit.name == "balon") && (!balon.interceptado)/*balon cuenta atras && (!balonGolpeado)*/)
+            if ((hit.name == "balon") && (!balon.interceptado)&& (reinicio>8)/*balon cuenta atras && (!balonGolpeado)*/)
             {
                 selector = true;
                 balon.interceptado = true;
@@ -100,10 +101,8 @@ public class SCorrer : State {
 
     private void stupidAI(){
 		//team variable a la que asignamos true o false para saber quien tiene la pelota si nuestro equipo o el rival
-        if (GameObject.FindGameObjectWithTag("balonPies") != null){
-            Debug.Log("not null");
+        if (GameObject.FindGameObjectWithTag("balonPies") != null)
             team = GameObject.FindGameObjectWithTag("balonPies").GetComponent<SBalonPies>().equipo;
-        }
 
         Vector3 dist = transform.position - posicion.transform.position;
         if ((dist.magnitude < 17f) && (!selector))
