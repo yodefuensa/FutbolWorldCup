@@ -64,7 +64,7 @@ public class Balon : MonoBehaviour
         {
 			transform.position += direccion * Time.deltaTime * fuerzaL;
 			if (fuerzaL>0)
-			StartCoroutine(setBalonTiempoFalse);
+    			StartCoroutine(setBalonTiempoFalse());
 	    }
 		
 	}
@@ -72,10 +72,11 @@ public class Balon : MonoBehaviour
 
     public IEnumerator setBalonTiempoFalse()
 	{//parar balon     
-		fuerzaL--;
-		yield return new WaitForSeconds(.5f);
 		
-	}
+		yield return new WaitForSeconds(1f);
+        if (fuerzaL>0)
+            fuerzaL--;
+    }
 
 
 

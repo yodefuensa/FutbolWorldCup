@@ -1045,7 +1045,7 @@ Prefab:
     - target: {fileID: 114457109037661302, guid: 3eb3f5e94e3f8425ebc1a13ac5085bbb,
         type: 2}
       propertyPath: equipo
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114562738253095860, guid: 3eb3f5e94e3f8425ebc1a13ac5085bbb, type: 2}

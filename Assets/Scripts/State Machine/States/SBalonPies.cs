@@ -65,11 +65,9 @@ public class SBalonPies : State {
                     if (!equipo)
                         balon.ultimoTocado = false;
                     balon.interceptado = false;
-                    //balon.tiempo = true;
                     balon.fuerzaL = fuerzaGolpeo;
                     balon.direccion = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
                     balon.golpeoV2b();
-                    //StartCoroutine(balon.setBalonTiempoFalse());
                     st.ChangeState(stScorrer,equipo,selector,flipY,0);
  
                 }
@@ -96,12 +94,10 @@ public class SBalonPies : State {
                 if (!equipo)
                     balon.ultimoTocado = false;
                 balon.interceptado = false;
-                //balon.tiempo = true;
                 balon.fuerzaL = fuerzaGolpeo;
                 balon.direccion = new Vector2(Input.GetAxisRaw("HorizontalP2"), Input.GetAxisRaw("VerticalP2"));
                 balon.golpeoV2b();
                 st.ChangeState(stScorrer,equipo,selector,flipY,0);
-                //StartCoroutine(balon.setBalonTiempoFalse());
             }
 
         }
@@ -129,6 +125,13 @@ public class SBalonPies : State {
         {//no es multi, tenemos el balon en los pies y somos la ia corremos a porteria
             Vector3 distancia = porteriaRival.transform.position - transform.position;
             transform.position += distancia.normalized * Time.deltaTime * vel;
+            if (distancia.magnitude < 12)
+            {
+                Debug.Log(distancia.normalized);
+                balon.direccion = distancia.normalized;
+                balon.golpeoV2b();
+                st.ChangeState(stScorrer, equipo, selector, flipY, 0);
+            }
         }
     }
 
