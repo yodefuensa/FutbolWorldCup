@@ -25,7 +25,6 @@ public class JugadorV2 : MonoBehaviour {
 	private Animator ar;
 	public bool flipY = false;
 	public Selector seguidor;
-   // public GameObject equipoRivalGO;
     public MngEquiV2 equipoRival;
 	private float lastPosition = 0;
     public bool equipo;

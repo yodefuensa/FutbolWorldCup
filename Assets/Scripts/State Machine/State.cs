@@ -15,6 +15,11 @@ public class State : MonoBehaviour
 	protected Animator ar;
 	public Selector seguidor;
     public bool equipo;
+    public GameObject porteriaRival;
+    public Vector3 posicionInicial;
+    public GameObject posicion;
+    public Balon balon;
+    public float magnitud = 0;
     
 
 
