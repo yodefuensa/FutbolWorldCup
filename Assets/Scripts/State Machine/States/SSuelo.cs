@@ -20,6 +20,7 @@ public class SSuelo : State {
 		if (!falta){
 			st.ChangeState(stScorrer,equipo,selector,flipY,0,magnitud);
 		}
+		marcar();
 	}
 	public IEnumerator setFaltaFalse()
     {//si te hacen falta poner bloqueo

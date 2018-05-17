@@ -31,7 +31,7 @@ public class SFalta : State {
             st.ChangeState(stScorrer,equipo,selector,flipY,0,magnitud);
         }
         reinicio++;
-           
+        marcar();
     } 
     
     public IEnumerator setTRoboFalse()

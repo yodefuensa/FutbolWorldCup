@@ -9,8 +9,4 @@ public class SParado : State {
 		
 	}
 	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 }
