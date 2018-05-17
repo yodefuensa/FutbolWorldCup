@@ -6,7 +6,6 @@ public class SCorrer : State {
 
     public Balon balon;
     private float lastPosition = 0;
-    public GameObject posicion;
 
     [Header("Estados a los que puede ir")]
     public State stParado;
@@ -49,7 +48,7 @@ public class SCorrer : State {
                 selector = true;
                 balon.interceptado = true;
                 StopCoroutine("balon.setBalonTiempoFalse");
-                st.ChangeState(stBalonPies,equipo,selector,flipY,0);
+                st.ChangeState(stBalonPies,equipo,selector,flipY,0,magnitud);
             }
 
         }
@@ -69,7 +68,7 @@ public class SCorrer : State {
 				if (Input.GetAxisRaw("Horizontal") < 0)
 					transform.position -= new Vector3(1, 0) * Time.deltaTime * vel;
 				if (Input.GetButtonDown("Falta")){
-                    st.ChangeState(stFalta,equipo,selector,flipY,0);                    
+                    st.ChangeState(stFalta,equipo,selector,flipY,0,magnitud);                    
                 }
 			}
 		}
@@ -91,7 +90,7 @@ public class SCorrer : State {
                 if (Input.GetAxisRaw("HorizontalP2") < 0)
                     transform.position -= new Vector3(1, 0) * Time.deltaTime * vel;
                 if (Input.GetButtonDown("FaltaP2")){
-                    st.ChangeState(stFalta,equipo,selector,flipY,0);
+                    st.ChangeState(stFalta,equipo,selector,flipY,0,magnitud);
                 }
             }
         }
@@ -118,7 +117,7 @@ public class SCorrer : State {
                     Vector3 distanciaBalon = balon.transform.position - transform.position;
                     transform.position += distanciaBalon.normalized * Time.deltaTime * vel;
                     if ((distanciaBalon.magnitude < 4f) && balon.interceptado && !balon.balonFuera && team != equipo){
-                        st.ChangeState(stFalta,equipo,selector,flipY,0);
+                        st.ChangeState(stFalta,equipo,selector,flipY,0,magnitud);
                     }
                 }                  
             }

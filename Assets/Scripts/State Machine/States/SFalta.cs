@@ -28,7 +28,7 @@ public class SFalta : State {
         hacerFalta();
         hit();
         if (!tRobo){
-            st.ChangeState(stScorrer,equipo,selector,flipY,0);
+            st.ChangeState(stScorrer,equipo,selector,flipY,0,magnitud);
         }
         reinicio++;
            
@@ -53,7 +53,7 @@ public class SFalta : State {
                 selector = true;
                 balon.interceptado = true;
                 StopCoroutine("balon.setBalonTiempoFalse");
-                st.ChangeState(stBalonPies,equipo,selector,flipY,0);
+                st.ChangeState(stBalonPies,equipo,selector,flipY,0,magnitud);
             }
             else if (hit.tag=="balonPies")
             {
@@ -61,7 +61,7 @@ public class SFalta : State {
                 selector = true;
                 balon.interceptado = true;
                 GameObject.FindGameObjectWithTag ("balonPies").GetComponent<SBalonPies>().cazado=true;
-                st.ChangeState(stBalonPies,equipo,selector,flipY,0);
+                st.ChangeState(stBalonPies,equipo,selector,flipY,0,magnitud);
             }
         }
         

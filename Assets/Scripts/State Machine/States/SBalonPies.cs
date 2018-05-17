@@ -38,7 +38,7 @@ public class SBalonPies : State {
         conducirBalon();
         marcar();
         if (cazado){
-            st.ChangeState(stSuelo,equipo,selector,flipY,0);
+            st.ChangeState(stSuelo,equipo,selector,flipY,0,magnitud);
         }
         reinicio++;
     }
@@ -68,7 +68,7 @@ public class SBalonPies : State {
                     balon.fuerzaL = fuerzaGolpeo;
                     balon.direccion = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
                     balon.golpeoV2b();
-                    st.ChangeState(stScorrer,equipo,selector,flipY,0);
+                    st.ChangeState(stScorrer,equipo,selector,flipY,0,magnitud);
  
                 }
             }
@@ -97,7 +97,7 @@ public class SBalonPies : State {
                 balon.fuerzaL = fuerzaGolpeo;
                 balon.direccion = new Vector2(Input.GetAxisRaw("HorizontalP2"), Input.GetAxisRaw("VerticalP2"));
                 balon.golpeoV2b();
-                st.ChangeState(stScorrer,equipo,selector,flipY,0);
+                st.ChangeState(stScorrer,equipo,selector,flipY,0,magnitud);
             }
 
         }
@@ -130,7 +130,7 @@ public class SBalonPies : State {
                 Debug.Log(distancia.normalized);
                 balon.direccion = distancia.normalized;
                 balon.golpeoV2b();
-                st.ChangeState(stScorrer, equipo, selector, flipY, 0);
+                st.ChangeState(stScorrer, equipo, selector, flipY, 0,magnitud);
             }
         }
     }

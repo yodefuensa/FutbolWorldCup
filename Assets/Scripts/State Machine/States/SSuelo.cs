@@ -18,7 +18,7 @@ public class SSuelo : State {
 	// Update is called once per frame
 	void Update () {
 		if (!falta){
-			st.ChangeState(stScorrer,equipo,selector,flipY,0);
+			st.ChangeState(stScorrer,equipo,selector,flipY,0,magnitud);
 		}
 	}
 	public IEnumerator setFaltaFalse()

@@ -38,6 +38,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/creditos.unity
     guid: 23d85e999f23d1a4396f261bd1b491ef
+  - enabled: 1
+    path: Assets/Scenes/pruebasV4.unity
+    guid: c4895ae2d214c49f4befdda36c49cd11
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000

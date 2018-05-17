@@ -97,7 +97,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1358616183337232}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: df3d76077488d4ddf96fe9f7710b994a, type: 3}
   m_Name: 
@@ -108,13 +108,16 @@ MonoBehaviour:
   reinicio: 0
   seguidor: {fileID: 0}
   equipo: 0
-  st: {fileID: 0}
+  posicionInicial: {x: 0, y: 0, z: 0}
+  posicion: {fileID: 0}
+  magnitud: 0
+  st: {fileID: 114830705720239922}
   balon: {fileID: 0}
   porteriaRival: {fileID: 0}
   cazado: 0
-  stParado: {fileID: 0}
-  stSuelo: {fileID: 0}
-  stScorrer: {fileID: 0}
+  stParado: {fileID: 114657082276533514}
+  stSuelo: {fileID: 114910527032955286}
+  stScorrer: {fileID: 114457109037661302}
 --- !u!114 &114457109037661302
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -132,12 +135,14 @@ MonoBehaviour:
   reinicio: 0
   seguidor: {fileID: 0}
   equipo: 0
-  st: {fileID: 0}
-  balon: {fileID: 0}
+  posicionInicial: {x: 0, y: 0, z: 0}
   posicion: {fileID: 0}
-  stParado: {fileID: 0}
-  stFalta: {fileID: 0}
-  stBalonPies: {fileID: 0}
+  magnitud: 0
+  st: {fileID: 114830705720239922}
+  balon: {fileID: 0}
+  stParado: {fileID: 114657082276533514}
+  stFalta: {fileID: 114995905961919334}
+  stBalonPies: {fileID: 114052558945479942}
 --- !u!114 &114562738253095860
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -155,14 +160,17 @@ MonoBehaviour:
   reinicio: 0
   seguidor: {fileID: 0}
   equipo: 0
-  st: {fileID: 0}
+  posicionInicial: {x: 0, y: 0, z: 0}
+  posicion: {fileID: 0}
+  magnitud: 0
+  st: {fileID: 114830705720239922}
 --- !u!114 &114657082276533514
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1358616183337232}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7991810b2002d4bd68be4005ddbc7f96, type: 3}
   m_Name: 
@@ -173,7 +181,10 @@ MonoBehaviour:
   reinicio: 0
   seguidor: {fileID: 0}
   equipo: 0
-  st: {fileID: 0}
+  posicionInicial: {x: 0, y: 0, z: 0}
+  posicion: {fileID: 0}
+  magnitud: 0
+  st: {fileID: 114830705720239922}
 --- !u!114 &114830705720239922
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -193,7 +204,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1358616183337232}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3f864570bc4264ab3a6039b64a7abd50, type: 3}
   m_Name: 
@@ -204,15 +215,18 @@ MonoBehaviour:
   reinicio: 0
   seguidor: {fileID: 0}
   equipo: 0
-  st: {fileID: 0}
-  stScorrer: {fileID: 0}
+  posicionInicial: {x: 0, y: 0, z: 0}
+  posicion: {fileID: 0}
+  magnitud: 0
+  st: {fileID: 114830705720239922}
+  stScorrer: {fileID: 114457109037661302}
 --- !u!114 &114995905961919334
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1358616183337232}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ba099ee46edd44c598c867315592df05, type: 3}
   m_Name: 
@@ -223,11 +237,14 @@ MonoBehaviour:
   reinicio: 0
   seguidor: {fileID: 0}
   equipo: 0
-  st: {fileID: 0}
+  posicionInicial: {x: 0, y: 0, z: 0}
+  posicion: {fileID: 0}
+  magnitud: 0
+  st: {fileID: 114830705720239922}
   balon: {fileID: 0}
-  stParado: {fileID: 0}
-  stScorrer: {fileID: 0}
-  stBalonPies: {fileID: 0}
+  stParado: {fileID: 114657082276533514}
+  stScorrer: {fileID: 114457109037661302}
+  stBalonPies: {fileID: 114052558945479942}
 --- !u!212 &212206458109659976
 SpriteRenderer:
   m_ObjectHideFlags: 1

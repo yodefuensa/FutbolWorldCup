@@ -621,8 +621,8 @@ MonoBehaviour:
   japon: {fileID: 1358616183337232, guid: c1111fe9d1e144a6ab8774918d8457c5, type: 2}
   china: {fileID: 1358616183337232, guid: 4211ce9d1581044119770e254a23440a, type: 2}
   rusia: {fileID: 1358616183337232, guid: 731c7ae97847946df85dc00c176f7389, type: 2}
-  alemania: {fileID: 0}
-  balon: {fileID: 0}
+  alemania: {fileID: 1358616183337232, guid: 99aa3d396ac384525ba3a903c926edec, type: 2}
+  balon: {fileID: 1276751586}
   guia: {fileID: 478424442}
   guia2: {fileID: 1482823770}
   equiRiv: {fileID: 246119102}
@@ -630,9 +630,9 @@ MonoBehaviour:
   AliA: {fileID: 1883809869232378, guid: 6125b3ce9b1ac1543aae9fc736686ac5, type: 2}
   AliB: {fileID: 1522551214521194, guid: 4890db4bb546ca14abbaafc311a8a0dd, type: 2}
   AlRiv: {fileID: 1699469696191488, guid: 0e2da6524e524d24b877da92f71e0c80, type: 2}
-  rival: {fileID: 0}
-  portero: {fileID: 0}
-  porteroR: {fileID: 0}
+  rival: {fileID: 1358616183337232, guid: eff17106b831e4a5e839065c875a5c72, type: 2}
+  portero: {fileID: 1604623276513526, guid: 7049886b857e243ffa65c2a551cf62bc, type: 2}
+  porteroR: {fileID: 1604623276513526, guid: 8892a7f2fd93447cf8369f804bffb3d1, type: 2}
 --- !u!4 &694733775
 Transform:
   m_ObjectHideFlags: 0
