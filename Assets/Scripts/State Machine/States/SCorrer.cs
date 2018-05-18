@@ -25,7 +25,8 @@ public class SCorrer : State {
         movimiento();
         animatorObserver();
         stupidAI();
-        marcar();
+        if (selector)
+            marcar();
         hit();
         reinicio++;
 	}

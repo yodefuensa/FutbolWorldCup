@@ -36,7 +36,8 @@ public class SBalonPies : State {
         animatorObserver();
         stupidAI();
         conducirBalon();
-        marcar();
+        if (selector)
+            marcar();
         if (cazado){
             st.ChangeState(stSuelo,equipo,selector,flipY,0,magnitud);
         }
