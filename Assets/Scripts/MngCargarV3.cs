@@ -70,7 +70,19 @@ public class MngCargarV3 : MonoBehaviour {
 		rival8.GetComponent<State> ().posicion = GameObject.Find ("posicion9R");
 		rival9.GetComponent<State> ().posicion = GameObject.Find ("posicion10R");
 
-        
+		rival0.GetComponent<State>().equipo = false;
+		rival1.GetComponent<State>().equipo = false;
+		rival2.GetComponent<State>().equipo = false;
+		rival3.GetComponent<State>().equipo = false;
+		rival4.GetComponent<State>().equipo = false;
+		rival5.GetComponent<State>().equipo = false;
+		rival6.GetComponent<State>().equipo = false;
+		rival7.GetComponent<State>().equipo = false;
+		rival8.GetComponent<State>().equipo = false;
+		rival9.GetComponent<State>().equipo = false;
+
+
+        /* 
 		rival9.GetComponent<State>().vel = 0;
         rival8.GetComponent<State>().vel = 0;
         rival7.GetComponent<State>().vel = 0;
@@ -81,6 +93,7 @@ public class MngCargarV3 : MonoBehaviour {
         rival2.GetComponent<State>().vel = 0;
         rival1.GetComponent<State>().vel = 0;
         rival0.GetComponent<State>().vel = 0;
+		*/
    
         
         
@@ -253,16 +266,16 @@ public class MngCargarV3 : MonoBehaviour {
 		equiRiv.GetComponent<MngEquiV3> ().benji = porteroR.GetComponent <PorteroV2> ();
         equiRiv.GetComponent<MngEquiV3>().balon = balon.GetComponent<Balon>();
 
-        rival0.GetComponent<State>().equipo = false;
-        rival1.GetComponent<State>().equipo = false;
-        rival2.GetComponent<State>().equipo = false;
-        rival3.GetComponent<State>().equipo = false;
-        rival4.GetComponent<State>().equipo = false;
-        rival5.GetComponent<State>().equipo = false;
-        rival6.GetComponent<State>().equipo = false;
-        rival7.GetComponent<State>().equipo = false;
-        rival8.GetComponent<State>().equipo = false;
-        rival9.GetComponent<State>().equipo = false;
+        rival0.GetComponent<SCorrer>().equipo = false;
+        rival1.GetComponent<SCorrer>().equipo = false;
+        rival2.GetComponent<SCorrer>().equipo = false;
+        rival3.GetComponent<SCorrer>().equipo = false;
+        rival4.GetComponent<SCorrer>().equipo = false;
+        rival5.GetComponent<SCorrer>().equipo = false;
+        rival6.GetComponent<SCorrer>().equipo = false;
+        rival7.GetComponent<SCorrer>().equipo = false;
+        rival8.GetComponent<SCorrer>().equipo = false;
+        rival9.GetComponent<SCorrer>().equipo = false;
 
         jugador0.GetComponent<State>().equipo = true;
         jugador1.GetComponent<State>().equipo = true;
@@ -395,6 +408,8 @@ public class MngCargarV3 : MonoBehaviour {
 		rival7.GetComponent<SCorrer> ().posicion = GameObject.Find ("posicion8R");
 		rival8.GetComponent<SCorrer> ().posicion = GameObject.Find ("posicion9R");
 		rival9.GetComponent<SCorrer> ().posicion = GameObject.Find ("posicion10R");
+
+
 
         portero.GetComponent<PorteroV2>().balon = balon.GetComponent<Balon> ();
 		portero.GetComponent<PorteroV2> ().posicion = GameObject.Find ("porteria");

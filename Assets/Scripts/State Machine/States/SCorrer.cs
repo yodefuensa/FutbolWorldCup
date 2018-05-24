@@ -12,6 +12,7 @@ public class SCorrer : State {
     public State stFalta;
     public State stBalonPies;
     private bool team = false;
+    private bool selectorLocal;
  
 
 	void Start () {
@@ -46,10 +47,16 @@ public class SCorrer : State {
         {
             if ((hit.name == "balon") && (!balon.interceptado)&& (reinicio>8)/*balon cuenta atras && (!balonGolpeado)*/)
             {
-                selector = true;
+                Debug.Log ("me cagon en la putisisima madre de todo");
+                Debug.Log(equipo);
+                if (!equipo){
+                    Debug.Log("joder somos rivales hostia");
+                    selector = false;
+                    selectorLocal= selector;
+                }
                 balon.interceptado = true;
                 StopCoroutine("balon.setBalonTiempoFalse");
-                st.ChangeState(stBalonPies,equipo,selector,flipY,0,magnitud);
+                st.ChangeState(stBalonPies,equipo,selectorLocal,flipY,0,magnitud);
             }
 
         }

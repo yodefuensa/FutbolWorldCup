@@ -23,12 +23,10 @@ public class StateMachine : MonoBehaviour {
         currentState.enabled = false;
         currentState = newState;
         currentState.enabled = true;
-        //currentState.selector = sel;
-        //currentState.equipo = team;
-        //currentState.flipY = flyp;
+        currentState.selector = sel;
         currentState.equipo = team;
-        currentState.selector= sel;
         currentState.flipY = flyp;
+        currentState.equipo = team;
         currentState.reinicio = reinicio;
         currentState.magnitud = mag;
     }
