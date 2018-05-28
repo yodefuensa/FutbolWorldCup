@@ -46,40 +46,124 @@ public class MngCargarV3 : MonoBehaviour {
 	private GameObject jugador8;
 	private GameObject jugador9;
 
+	void Update()
+	{
+		mngJugadores.GetComponent<MngEquiV3> ().balon = balon.GetComponent<Balon> ();
+		mngJugadores.GetComponent<MngEquiV3> ().jugadores [0] = jugador0.GetComponent<State> ();
+		mngJugadores.GetComponent<MngEquiV3> ().jugadores [1] = jugador1.GetComponent<State> ();
+		mngJugadores.GetComponent<MngEquiV3> ().jugadores [2] = jugador2.GetComponent<State> ();
+		mngJugadores.GetComponent<MngEquiV3> ().jugadores [3] = jugador3.GetComponent<State> ();
+		mngJugadores.GetComponent<MngEquiV3> ().jugadores [4] = jugador4.GetComponent<State> ();
+		mngJugadores.GetComponent<MngEquiV3> ().jugadores [5] = jugador5.GetComponent<State> ();
+		mngJugadores.GetComponent<MngEquiV3> ().jugadores [6] = jugador6.GetComponent<State> ();
+		mngJugadores.GetComponent<MngEquiV3> ().jugadores [7] = jugador7.GetComponent<State> ();
+		mngJugadores.GetComponent<MngEquiV3> ().jugadores [8] = jugador8.GetComponent<State> ();
+		mngJugadores.GetComponent<MngEquiV3> ().jugadores [9] = jugador9.GetComponent<State> ();
+		mngJugadores.GetComponent<MngEquiV3> ().benji = portero.GetComponent<PorteroV2> ();
+
+		equiRiv.GetComponent<MngEquiV3> ().jugadores[0] = rival0.GetComponent <State> ();
+		equiRiv.GetComponent<MngEquiV3> ().jugadores[1] = rival1.GetComponent <State> ();
+		equiRiv.GetComponent<MngEquiV3> ().jugadores[2] = rival2.GetComponent <State> ();
+		equiRiv.GetComponent<MngEquiV3> ().jugadores[3] = rival3.GetComponent <State> ();
+		equiRiv.GetComponent<MngEquiV3> ().jugadores[4] = rival4.GetComponent <State> ();
+		equiRiv.GetComponent<MngEquiV3> ().jugadores[5] = rival5.GetComponent <State> ();
+		equiRiv.GetComponent<MngEquiV3> ().jugadores[6] = rival6.GetComponent <State> ();
+		equiRiv.GetComponent<MngEquiV3> ().jugadores[7] = rival7.GetComponent <State> ();
+		equiRiv.GetComponent<MngEquiV3> ().jugadores[8] = rival8.GetComponent <State> ();
+		equiRiv.GetComponent<MngEquiV3> ().jugadores[9] = rival9.GetComponent <State> ();
+		equiRiv.GetComponent<MngEquiV3> ().benji = porteroR.GetComponent <PorteroV2> ();
+        equiRiv.GetComponent<MngEquiV3>().balon = balon.GetComponent<Balon>();
+	}
+
 	// Use this for initialization
 	void Start () {
-		jugador0.GetComponent<State> ().posicion = GameObject.Find ("posicion");
-		jugador1.GetComponent<State> ().posicion = GameObject.Find ("posicion2");
-		jugador2.GetComponent<State> ().posicion = GameObject.Find ("posicion3");
-		jugador3.GetComponent<State> ().posicion = GameObject.Find ("posicion4");
-		jugador4.GetComponent<State> ().posicion = GameObject.Find ("posicion5");
-		jugador5.GetComponent<State> ().posicion = GameObject.Find ("posicion6");
-		jugador6.GetComponent<State> ().posicion = GameObject.Find ("posicion7");
-		jugador7.GetComponent<State> ().posicion = GameObject.Find ("posicion8");
-		jugador8.GetComponent<State> ().posicion = GameObject.Find ("posicion9");
-		jugador9.GetComponent<State> ().posicion = GameObject.Find ("posicion10");
+		jugador0.GetComponent<SCorrer> ().posicion = GameObject.Find ("posicion");
+		jugador1.GetComponent<SCorrer> ().posicion = GameObject.Find ("posicion2");
+		jugador2.GetComponent<SCorrer> ().posicion = GameObject.Find ("posicion3");
+		jugador3.GetComponent<SCorrer> ().posicion = GameObject.Find ("posicion4");
+		jugador4.GetComponent<SCorrer> ().posicion = GameObject.Find ("posicion5");
+		jugador5.GetComponent<SCorrer> ().posicion = GameObject.Find ("posicion6");
+		jugador6.GetComponent<SCorrer> ().posicion = GameObject.Find ("posicion7");
+		jugador7.GetComponent<SCorrer> ().posicion = GameObject.Find ("posicion8");
+		jugador8.GetComponent<SCorrer> ().posicion = GameObject.Find ("posicion9");
+		jugador9.GetComponent<SCorrer> ().posicion = GameObject.Find ("posicion10");
 
-		rival0.GetComponent<State> ().posicion = GameObject.Find ("posicionR");
-		rival1.GetComponent<State> ().posicion = GameObject.Find ("posicion2R");
-		rival2.GetComponent<State> ().posicion = GameObject.Find ("posicion3R");
-		rival3.GetComponent<State> ().posicion = GameObject.Find ("posicion4R");
-		rival4.GetComponent<State> ().posicion = GameObject.Find ("posicion5R");
-		rival5.GetComponent<State> ().posicion = GameObject.Find ("posicion6R");
-		rival6.GetComponent<State> ().posicion = GameObject.Find ("posicion7R");
-		rival7.GetComponent<State> ().posicion = GameObject.Find ("posicion8R");
-		rival8.GetComponent<State> ().posicion = GameObject.Find ("posicion9R");
-		rival9.GetComponent<State> ().posicion = GameObject.Find ("posicion10R");
+		rival0.GetComponent<SCorrer> ().posicion = GameObject.Find ("posicionR");
+		rival1.GetComponent<SCorrer> ().posicion = GameObject.Find ("posicion2R");
+		rival2.GetComponent<SCorrer> ().posicion = GameObject.Find ("posicion3R");
+		rival3.GetComponent<SCorrer> ().posicion = GameObject.Find ("posicion4R");
+		rival4.GetComponent<SCorrer> ().posicion = GameObject.Find ("posicion5R");
+		rival5.GetComponent<SCorrer> ().posicion = GameObject.Find ("posicion6R");
+		rival6.GetComponent<SCorrer> ().posicion = GameObject.Find ("posicion7R");
+		rival7.GetComponent<SCorrer> ().posicion = GameObject.Find ("posicion8R");
+		rival8.GetComponent<SCorrer> ().posicion = GameObject.Find ("posicion9R");
+		rival9.GetComponent<SCorrer> ().posicion = GameObject.Find ("posicion10R");
 
-		rival0.GetComponent<State>().equipo = false;
-		rival1.GetComponent<State>().equipo = false;
-		rival2.GetComponent<State>().equipo = false;
-		rival3.GetComponent<State>().equipo = false;
-		rival4.GetComponent<State>().equipo = false;
-		rival5.GetComponent<State>().equipo = false;
-		rival6.GetComponent<State>().equipo = false;
-		rival7.GetComponent<State>().equipo = false;
-		rival8.GetComponent<State>().equipo = false;
-		rival9.GetComponent<State>().equipo = false;
+		jugador0.GetComponent<SBalonPies> ().posicion = GameObject.Find ("posicion");
+		jugador1.GetComponent<SBalonPies> ().posicion = GameObject.Find ("posicion2");
+		jugador2.GetComponent<SBalonPies> ().posicion = GameObject.Find ("posicion3");
+		jugador3.GetComponent<SBalonPies> ().posicion = GameObject.Find ("posicion4");
+		jugador4.GetComponent<SBalonPies> ().posicion = GameObject.Find ("posicion5");
+		jugador5.GetComponent<SBalonPies> ().posicion = GameObject.Find ("posicion6");
+		jugador6.GetComponent<SBalonPies> ().posicion = GameObject.Find ("posicion7");
+		jugador7.GetComponent<SBalonPies> ().posicion = GameObject.Find ("posicion8");
+		jugador8.GetComponent<SBalonPies> ().posicion = GameObject.Find ("posicion9");
+		jugador9.GetComponent<SBalonPies> ().posicion = GameObject.Find ("posicion10");
+
+		rival0.GetComponent<SBalonPies> ().posicion = GameObject.Find ("posicionR");
+		rival1.GetComponent<SBalonPies> ().posicion = GameObject.Find ("posicion2R");
+		rival2.GetComponent<SBalonPies> ().posicion = GameObject.Find ("posicion3R");
+		rival3.GetComponent<SBalonPies> ().posicion = GameObject.Find ("posicion4R");
+		rival4.GetComponent<SBalonPies> ().posicion = GameObject.Find ("posicion5R");
+		rival5.GetComponent<SBalonPies> ().posicion = GameObject.Find ("posicion6R");
+		rival6.GetComponent<SBalonPies> ().posicion = GameObject.Find ("posicion7R");
+		rival7.GetComponent<SBalonPies> ().posicion = GameObject.Find ("posicion8R");
+		rival8.GetComponent<SBalonPies> ().posicion = GameObject.Find ("posicion9R");
+		rival9.GetComponent<SBalonPies> ().posicion = GameObject.Find ("posicion10R");
+
+		jugador0.GetComponent<SFalta> ().posicion = GameObject.Find ("posicion");
+		jugador1.GetComponent<SFalta> ().posicion = GameObject.Find ("posicion2");
+		jugador2.GetComponent<SFalta> ().posicion = GameObject.Find ("posicion3");
+		jugador3.GetComponent<SFalta> ().posicion = GameObject.Find ("posicion4");
+		jugador4.GetComponent<SFalta> ().posicion = GameObject.Find ("posicion5");
+		jugador5.GetComponent<SFalta> ().posicion = GameObject.Find ("posicion6");
+		jugador6.GetComponent<SFalta> ().posicion = GameObject.Find ("posicion7");
+		jugador7.GetComponent<SFalta> ().posicion = GameObject.Find ("posicion8");
+		jugador8.GetComponent<SFalta> ().posicion = GameObject.Find ("posicion9");
+		jugador9.GetComponent<SFalta> ().posicion = GameObject.Find ("posicion10");
+
+		rival0.GetComponent<SFalta> ().posicion = GameObject.Find ("posicionR");
+		rival1.GetComponent<SFalta> ().posicion = GameObject.Find ("posicion2R");
+		rival2.GetComponent<SFalta> ().posicion = GameObject.Find ("posicion3R");
+		rival3.GetComponent<SFalta> ().posicion = GameObject.Find ("posicion4R");
+		rival4.GetComponent<SFalta> ().posicion = GameObject.Find ("posicion5R");
+		rival5.GetComponent<SFalta> ().posicion = GameObject.Find ("posicion6R");
+		rival6.GetComponent<SFalta> ().posicion = GameObject.Find ("posicion7R");
+		rival7.GetComponent<SFalta> ().posicion = GameObject.Find ("posicion8R");
+		rival8.GetComponent<SFalta> ().posicion = GameObject.Find ("posicion9R");
+		rival9.GetComponent<SFalta> ().posicion = GameObject.Find ("posicion10R");
+
+		rival0.GetComponent<SCorrer>().equipo = false;
+		rival1.GetComponent<SCorrer>().equipo = false;
+		rival2.GetComponent<SCorrer>().equipo = false;
+		rival3.GetComponent<SCorrer>().equipo = false;
+		rival4.GetComponent<SCorrer>().equipo = false;
+		rival5.GetComponent<SCorrer>().equipo = false;
+		rival6.GetComponent<SCorrer>().equipo = false;
+		rival7.GetComponent<SCorrer>().equipo = false;
+		rival8.GetComponent<SCorrer>().equipo = false;
+		rival9.GetComponent<SCorrer>().equipo = false;
+
+		jugador0.GetComponent<SCorrer>().equipo = true;
+		jugador1.GetComponent<SCorrer>().equipo = true;
+		jugador2.GetComponent<SCorrer>().equipo = true;
+		jugador3.GetComponent<SCorrer>().equipo = true;
+		jugador4.GetComponent<SCorrer>().equipo = true;
+		jugador5.GetComponent<SCorrer>().equipo = true;
+		jugador6.GetComponent<SCorrer>().equipo = true;
+		jugador7.GetComponent<SCorrer>().equipo = true;
+		jugador8.GetComponent<SCorrer>().equipo = true;
+		jugador9.GetComponent<SCorrer>().equipo = true;
 
 
         /* 
@@ -96,6 +180,169 @@ public class MngCargarV3 : MonoBehaviour {
 		*/
    
         
+		jugador0.GetComponent<SCorrer> ().selector = true;
+		jugador0.GetComponent<SCorrer> ().seguidor = guia.GetComponent<Selector> ();
+		jugador1.GetComponent<SCorrer> ().seguidor = guia.GetComponent<Selector> ();
+		jugador2.GetComponent<SCorrer> ().seguidor = guia.GetComponent<Selector> ();
+		jugador3.GetComponent<SCorrer> ().seguidor = guia.GetComponent<Selector> ();
+		jugador4.GetComponent<SCorrer> ().seguidor = guia.GetComponent<Selector> ();
+		jugador5.GetComponent<SCorrer> ().seguidor = guia.GetComponent<Selector> ();
+		jugador6.GetComponent<SCorrer> ().seguidor = guia.GetComponent<Selector> ();
+		jugador7.GetComponent<SCorrer> ().seguidor = guia.GetComponent<Selector> ();
+		jugador8.GetComponent<SCorrer> ().seguidor = guia.GetComponent<Selector> ();
+		jugador9.GetComponent<SCorrer> ().seguidor = guia.GetComponent<Selector> ();
+
+		rival1.GetComponent<SCorrer> ().seguidor = guia2.GetComponent<Selector> ();
+        rival2.GetComponent<SCorrer> ().seguidor = guia2.GetComponent<Selector> ();
+		rival3.GetComponent<SCorrer> ().seguidor = guia2.GetComponent<Selector> ();
+		rival4.GetComponent<SCorrer> ().seguidor = guia2.GetComponent<Selector> ();
+		rival5.GetComponent<SCorrer> ().seguidor = guia2.GetComponent<Selector> ();
+		rival6.GetComponent<SCorrer> ().seguidor = guia2.GetComponent<Selector> ();
+		rival7.GetComponent<SCorrer> ().seguidor = guia2.GetComponent<Selector> ();
+		rival8.GetComponent<SCorrer> ().seguidor = guia2.GetComponent<Selector> ();
+		rival9.GetComponent<SCorrer> ().seguidor = guia2.GetComponent<Selector> ();
+		rival0.GetComponent<SCorrer> ().seguidor = guia2.GetComponent<Selector> ();
+
+		jugador0.GetComponent<SBalonPies> ().seguidor = guia.GetComponent<Selector> ();
+		jugador1.GetComponent<SBalonPies> ().seguidor = guia.GetComponent<Selector> ();
+		jugador2.GetComponent<SBalonPies> ().seguidor = guia.GetComponent<Selector> ();
+		jugador3.GetComponent<SBalonPies> ().seguidor = guia.GetComponent<Selector> ();
+		jugador4.GetComponent<SBalonPies> ().seguidor = guia.GetComponent<Selector> ();
+		jugador5.GetComponent<SBalonPies> ().seguidor = guia.GetComponent<Selector> ();
+		jugador6.GetComponent<SBalonPies> ().seguidor = guia.GetComponent<Selector> ();
+		jugador7.GetComponent<SBalonPies> ().seguidor = guia.GetComponent<Selector> ();
+		jugador8.GetComponent<SBalonPies> ().seguidor = guia.GetComponent<Selector> ();
+		jugador9.GetComponent<SBalonPies> ().seguidor = guia.GetComponent<Selector> ();
+
+		rival1.GetComponent<SBalonPies> ().seguidor = guia2.GetComponent<Selector> ();
+        rival2.GetComponent<SBalonPies> ().seguidor = guia2.GetComponent<Selector> ();
+		rival3.GetComponent<SBalonPies> ().seguidor = guia2.GetComponent<Selector> ();
+		rival4.GetComponent<SBalonPies> ().seguidor = guia2.GetComponent<Selector> ();
+		rival5.GetComponent<SBalonPies> ().seguidor = guia2.GetComponent<Selector> ();
+		rival6.GetComponent<SBalonPies> ().seguidor = guia2.GetComponent<Selector> ();
+		rival7.GetComponent<SBalonPies> ().seguidor = guia2.GetComponent<Selector> ();
+		rival8.GetComponent<SBalonPies> ().seguidor = guia2.GetComponent<Selector> ();
+		rival9.GetComponent<SBalonPies> ().seguidor = guia2.GetComponent<Selector> ();
+		rival0.GetComponent<SBalonPies> ().seguidor = guia2.GetComponent<Selector> ();
+
+		jugador0.GetComponent<SFalta> ().seguidor = guia.GetComponent<Selector> ();
+		jugador1.GetComponent<SFalta> ().seguidor = guia.GetComponent<Selector> ();
+		jugador2.GetComponent<SFalta> ().seguidor = guia.GetComponent<Selector> ();
+		jugador3.GetComponent<SFalta> ().seguidor = guia.GetComponent<Selector> ();
+		jugador4.GetComponent<SFalta> ().seguidor = guia.GetComponent<Selector> ();
+		jugador5.GetComponent<SFalta> ().seguidor = guia.GetComponent<Selector> ();
+		jugador6.GetComponent<SFalta> ().seguidor = guia.GetComponent<Selector> ();
+		jugador7.GetComponent<SFalta> ().seguidor = guia.GetComponent<Selector> ();
+		jugador8.GetComponent<SFalta> ().seguidor = guia.GetComponent<Selector> ();
+		jugador9.GetComponent<SFalta> ().seguidor = guia.GetComponent<Selector> ();
+
+		rival1.GetComponent<SFalta> ().seguidor = guia2.GetComponent<Selector> ();
+        rival2.GetComponent<SFalta> ().seguidor = guia2.GetComponent<Selector> ();
+		rival3.GetComponent<SFalta> ().seguidor = guia2.GetComponent<Selector> ();
+		rival4.GetComponent<SFalta> ().seguidor = guia2.GetComponent<Selector> ();
+		rival5.GetComponent<SFalta> ().seguidor = guia2.GetComponent<Selector> ();
+		rival6.GetComponent<SFalta> ().seguidor = guia2.GetComponent<Selector> ();
+		rival7.GetComponent<SFalta> ().seguidor = guia2.GetComponent<Selector> ();
+		rival8.GetComponent<SFalta> ().seguidor = guia2.GetComponent<Selector> ();
+		rival9.GetComponent<SFalta> ().seguidor = guia2.GetComponent<Selector> ();
+		rival0.GetComponent<SFalta> ().seguidor = guia2.GetComponent<Selector> ();
+
+		jugador0.GetComponent<SParado>().enabled = false;
+		jugador1.GetComponent<SParado>().enabled = false;
+		jugador2.GetComponent<SParado>().enabled = false;
+		jugador3.GetComponent<SParado>().enabled = false;
+		jugador4.GetComponent<SParado>().enabled = false;
+		jugador5.GetComponent<SParado>().enabled = false;
+		jugador6.GetComponent<SParado>().enabled = false;
+		jugador7.GetComponent<SParado>().enabled = false;
+		jugador8.GetComponent<SParado>().enabled = false;
+		jugador9.GetComponent<SParado>().enabled = false;
+
+		jugador0.GetComponent<SFalta>().enabled = false;
+		jugador1.GetComponent<SFalta>().enabled = false;
+		jugador2.GetComponent<SFalta>().enabled = false;
+		jugador3.GetComponent<SFalta>().enabled = false;
+		jugador4.GetComponent<SFalta>().enabled = false;
+		jugador5.GetComponent<SFalta>().enabled = false;
+		jugador6.GetComponent<SFalta>().enabled = false;
+		jugador7.GetComponent<SFalta>().enabled = false;
+		jugador8.GetComponent<SFalta>().enabled = false;
+		jugador9.GetComponent<SFalta>().enabled = false;
+
+		jugador0.GetComponent<SSuelo>().enabled = false;
+		jugador1.GetComponent<SSuelo>().enabled = false;
+		jugador2.GetComponent<SSuelo>().enabled = false;
+		jugador3.GetComponent<SSuelo>().enabled = false;
+		jugador4.GetComponent<SSuelo>().enabled = false;
+		jugador5.GetComponent<SSuelo>().enabled = false;
+		jugador6.GetComponent<SSuelo>().enabled = false;
+		jugador7.GetComponent<SSuelo>().enabled = false;
+		jugador8.GetComponent<SSuelo>().enabled = false;
+		jugador9.GetComponent<SSuelo>().enabled = false;
+		
+		jugador0.GetComponent<SBalonPies>().enabled = false;
+		jugador1.GetComponent<SBalonPies>().enabled = false;
+		jugador2.GetComponent<SBalonPies>().enabled = false;
+		jugador3.GetComponent<SBalonPies>().enabled = false;
+		jugador4.GetComponent<SBalonPies>().enabled = false;
+		jugador5.GetComponent<SBalonPies>().enabled = false;
+		jugador6.GetComponent<SBalonPies>().enabled = false;
+		jugador7.GetComponent<SBalonPies>().enabled = false;
+		jugador8.GetComponent<SBalonPies>().enabled = false;
+		jugador9.GetComponent<SBalonPies>().enabled = false;
+
+		rival0.GetComponent<SParado>().enabled = false;
+		rival1.GetComponent<SParado>().enabled = false;
+		rival2.GetComponent<SParado>().enabled = false;
+		rival3.GetComponent<SParado>().enabled = false;
+		rival4.GetComponent<SParado>().enabled = false;
+		rival5.GetComponent<SParado>().enabled = false;
+		rival6.GetComponent<SParado>().enabled = false;
+		rival7.GetComponent<SParado>().enabled = false;
+		rival8.GetComponent<SParado>().enabled = false;
+		rival9.GetComponent<SParado>().enabled = false;
+
+		rival0.GetComponent<SFalta>().enabled = false;
+		rival1.GetComponent<SFalta>().enabled = false;
+		rival2.GetComponent<SFalta>().enabled = false;
+		rival3.GetComponent<SFalta>().enabled = false;
+		rival4.GetComponent<SFalta>().enabled = false;
+		rival5.GetComponent<SFalta>().enabled = false;
+		rival6.GetComponent<SFalta>().enabled = false;
+		rival7.GetComponent<SFalta>().enabled = false;
+		rival8.GetComponent<SFalta>().enabled = false;
+		rival9.GetComponent<SFalta>().enabled = false;
+
+		rival0.GetComponent<SSuelo>().enabled = false;
+		rival1.GetComponent<SSuelo>().enabled = false;
+		rival2.GetComponent<SSuelo>().enabled = false;
+		rival3.GetComponent<SSuelo>().enabled = false;
+		rival4.GetComponent<SSuelo>().enabled = false;
+		rival5.GetComponent<SSuelo>().enabled = false;
+		rival6.GetComponent<SSuelo>().enabled = false;
+		rival7.GetComponent<SSuelo>().enabled = false;
+		rival8.GetComponent<SSuelo>().enabled = false;
+		rival9.GetComponent<SSuelo>().enabled = false;
+		
+		rival0.GetComponent<SBalonPies>().enabled = false;
+		rival1.GetComponent<SBalonPies>().enabled = false;
+		rival2.GetComponent<SBalonPies>().enabled = false;
+		rival3.GetComponent<SBalonPies>().enabled = false;
+		rival4.GetComponent<SBalonPies>().enabled = false;
+		rival5.GetComponent<SBalonPies>().enabled = false;
+		rival6.GetComponent<SBalonPies>().enabled = false;
+		rival7.GetComponent<SBalonPies>().enabled = false;
+		rival8.GetComponent<SBalonPies>().enabled = false;
+		rival9.GetComponent<SBalonPies>().enabled = false;
+
+
+        portero.GetComponent<PorteroV2>().balon = balon.GetComponent<Balon> ();
+		portero.GetComponent<PorteroV2> ().posicion = GameObject.Find ("porteria");
+        portero.GetComponent<PorteroV2>().equipo = true;
+ 		porteroR.GetComponent<PorteroV2>().balon = balon.GetComponent<Balon> ();
+		porteroR.GetComponent<PorteroV2>().posicion = GameObject.Find ("porteria2");
+        porteroR.GetComponent<PorteroV2>().equipo = false;
+
         
     }
 
@@ -227,196 +474,6 @@ public class MngCargarV3 : MonoBehaviour {
 
 		
 
-
-		jugador0.GetComponent<SCorrer> ().selector = true;
-		jugador0.GetComponent<SCorrer> ().seguidor = guia.GetComponent<Selector> ();
-		jugador1.GetComponent<SCorrer> ().seguidor = guia.GetComponent<Selector> ();
-		jugador2.GetComponent<SCorrer> ().seguidor = guia.GetComponent<Selector> ();
-		jugador3.GetComponent<SCorrer> ().seguidor = guia.GetComponent<Selector> ();
-		jugador4.GetComponent<SCorrer> ().seguidor = guia.GetComponent<Selector> ();
-		jugador5.GetComponent<SCorrer> ().seguidor = guia.GetComponent<Selector> ();
-		jugador6.GetComponent<SCorrer> ().seguidor = guia.GetComponent<Selector> ();
-		jugador7.GetComponent<SCorrer> ().seguidor = guia.GetComponent<Selector> ();
-		jugador8.GetComponent<SCorrer> ().seguidor = guia.GetComponent<Selector> ();
-		jugador9.GetComponent<SCorrer> ().seguidor = guia.GetComponent<Selector> ();
-
-		mngJugadores.GetComponent<MngEquiV3> ().balon = balon.GetComponent<Balon> ();
-		mngJugadores.GetComponent<MngEquiV3> ().jugadores [0] = jugador0.GetComponent<State> ();
-		mngJugadores.GetComponent<MngEquiV3> ().jugadores [1] = jugador1.GetComponent<State> ();
-		mngJugadores.GetComponent<MngEquiV3> ().jugadores [2] = jugador2.GetComponent<State> ();
-		mngJugadores.GetComponent<MngEquiV3> ().jugadores [3] = jugador3.GetComponent<State> ();
-		mngJugadores.GetComponent<MngEquiV3> ().jugadores [4] = jugador4.GetComponent<State> ();
-		mngJugadores.GetComponent<MngEquiV3> ().jugadores [5] = jugador5.GetComponent<State> ();
-		mngJugadores.GetComponent<MngEquiV3> ().jugadores [6] = jugador6.GetComponent<State> ();
-		mngJugadores.GetComponent<MngEquiV3> ().jugadores [7] = jugador7.GetComponent<State> ();
-		mngJugadores.GetComponent<MngEquiV3> ().jugadores [8] = jugador8.GetComponent<State> ();
-		mngJugadores.GetComponent<MngEquiV3> ().jugadores [9] = jugador9.GetComponent<State> ();
-		mngJugadores.GetComponent<MngEquiV3> ().benji = portero.GetComponent<PorteroV2> ();
-
-		equiRiv.GetComponent<MngEquiV3> ().jugadores[0] = rival0.GetComponent <State> ();
-		equiRiv.GetComponent<MngEquiV3> ().jugadores[1] = rival1.GetComponent <State> ();
-		equiRiv.GetComponent<MngEquiV3> ().jugadores[2] = rival2.GetComponent <State> ();
-		equiRiv.GetComponent<MngEquiV3> ().jugadores[3] = rival3.GetComponent <State> ();
-		equiRiv.GetComponent<MngEquiV3> ().jugadores[4] = rival4.GetComponent <State> ();
-		equiRiv.GetComponent<MngEquiV3> ().jugadores[5] = rival5.GetComponent <State> ();
-		equiRiv.GetComponent<MngEquiV3> ().jugadores[6] = rival6.GetComponent <State> ();
-		equiRiv.GetComponent<MngEquiV3> ().jugadores[7] = rival7.GetComponent <State> ();
-		equiRiv.GetComponent<MngEquiV3> ().jugadores[8] = rival8.GetComponent <State> ();
-		equiRiv.GetComponent<MngEquiV3> ().jugadores[9] = rival9.GetComponent <State> ();
-		equiRiv.GetComponent<MngEquiV3> ().benji = porteroR.GetComponent <PorteroV2> ();
-        equiRiv.GetComponent<MngEquiV3>().balon = balon.GetComponent<Balon>();
-
-        rival0.GetComponent<SCorrer>().equipo = false;
-        rival1.GetComponent<SCorrer>().equipo = false;
-        rival2.GetComponent<SCorrer>().equipo = false;
-        rival3.GetComponent<SCorrer>().equipo = false;
-        rival4.GetComponent<SCorrer>().equipo = false;
-        rival5.GetComponent<SCorrer>().equipo = false;
-        rival6.GetComponent<SCorrer>().equipo = false;
-        rival7.GetComponent<SCorrer>().equipo = false;
-        rival8.GetComponent<SCorrer>().equipo = false;
-        rival9.GetComponent<SCorrer>().equipo = false;
-
-        jugador0.GetComponent<State>().equipo = true;
-        jugador1.GetComponent<State>().equipo = true;
-        jugador2.GetComponent<State>().equipo = true;
-        jugador3.GetComponent<State>().equipo = true;
-        jugador4.GetComponent<State>().equipo = true;
-        jugador5.GetComponent<State>().equipo = true;
-        jugador6.GetComponent<State>().equipo = true;
-        jugador7.GetComponent<State>().equipo = true;
-        jugador8.GetComponent<State>().equipo = true;
-        jugador9.GetComponent<State>().equipo = true;
-
-		rival1.GetComponent<SCorrer> ().seguidor = guia2.GetComponent<Selector> ();
-        rival2.GetComponent<SCorrer> ().seguidor = guia2.GetComponent<Selector> ();
-		rival3.GetComponent<SCorrer> ().seguidor = guia2.GetComponent<Selector> ();
-		rival4.GetComponent<SCorrer> ().seguidor = guia2.GetComponent<Selector> ();
-		rival5.GetComponent<SCorrer> ().seguidor = guia2.GetComponent<Selector> ();
-		rival6.GetComponent<SCorrer> ().seguidor = guia2.GetComponent<Selector> ();
-		rival7.GetComponent<SCorrer> ().seguidor = guia2.GetComponent<Selector> ();
-		rival8.GetComponent<SCorrer> ().seguidor = guia2.GetComponent<Selector> ();
-		rival9.GetComponent<SCorrer> ().seguidor = guia2.GetComponent<Selector> ();
-		rival0.GetComponent<SCorrer> ().seguidor = guia2.GetComponent<Selector> ();
-
-		jugador0.GetComponent<SParado>().enabled = false;
-		jugador1.GetComponent<SParado>().enabled = false;
-		jugador2.GetComponent<SParado>().enabled = false;
-		jugador3.GetComponent<SParado>().enabled = false;
-		jugador4.GetComponent<SParado>().enabled = false;
-		jugador5.GetComponent<SParado>().enabled = false;
-		jugador6.GetComponent<SParado>().enabled = false;
-		jugador7.GetComponent<SParado>().enabled = false;
-		jugador8.GetComponent<SParado>().enabled = false;
-		jugador9.GetComponent<SParado>().enabled = false;
-
-		jugador0.GetComponent<SFalta>().enabled = false;
-		jugador1.GetComponent<SFalta>().enabled = false;
-		jugador2.GetComponent<SFalta>().enabled = false;
-		jugador3.GetComponent<SFalta>().enabled = false;
-		jugador4.GetComponent<SFalta>().enabled = false;
-		jugador5.GetComponent<SFalta>().enabled = false;
-		jugador6.GetComponent<SFalta>().enabled = false;
-		jugador7.GetComponent<SFalta>().enabled = false;
-		jugador8.GetComponent<SFalta>().enabled = false;
-		jugador9.GetComponent<SFalta>().enabled = false;
-
-		jugador0.GetComponent<SSuelo>().enabled = false;
-		jugador1.GetComponent<SSuelo>().enabled = false;
-		jugador2.GetComponent<SSuelo>().enabled = false;
-		jugador3.GetComponent<SSuelo>().enabled = false;
-		jugador4.GetComponent<SSuelo>().enabled = false;
-		jugador5.GetComponent<SSuelo>().enabled = false;
-		jugador6.GetComponent<SSuelo>().enabled = false;
-		jugador7.GetComponent<SSuelo>().enabled = false;
-		jugador8.GetComponent<SSuelo>().enabled = false;
-		jugador9.GetComponent<SSuelo>().enabled = false;
-		
-		jugador0.GetComponent<SBalonPies>().enabled = false;
-		jugador1.GetComponent<SBalonPies>().enabled = false;
-		jugador2.GetComponent<SBalonPies>().enabled = false;
-		jugador3.GetComponent<SBalonPies>().enabled = false;
-		jugador4.GetComponent<SBalonPies>().enabled = false;
-		jugador5.GetComponent<SBalonPies>().enabled = false;
-		jugador6.GetComponent<SBalonPies>().enabled = false;
-		jugador7.GetComponent<SBalonPies>().enabled = false;
-		jugador8.GetComponent<SBalonPies>().enabled = false;
-		jugador9.GetComponent<SBalonPies>().enabled = false;
-
-		rival0.GetComponent<SParado>().enabled = false;
-		rival1.GetComponent<SParado>().enabled = false;
-		rival2.GetComponent<SParado>().enabled = false;
-		rival3.GetComponent<SParado>().enabled = false;
-		rival4.GetComponent<SParado>().enabled = false;
-		rival5.GetComponent<SParado>().enabled = false;
-		rival6.GetComponent<SParado>().enabled = false;
-		rival7.GetComponent<SParado>().enabled = false;
-		rival8.GetComponent<SParado>().enabled = false;
-		rival9.GetComponent<SParado>().enabled = false;
-
-		rival0.GetComponent<SFalta>().enabled = false;
-		rival1.GetComponent<SFalta>().enabled = false;
-		rival2.GetComponent<SFalta>().enabled = false;
-		rival3.GetComponent<SFalta>().enabled = false;
-		rival4.GetComponent<SFalta>().enabled = false;
-		rival5.GetComponent<SFalta>().enabled = false;
-		rival6.GetComponent<SFalta>().enabled = false;
-		rival7.GetComponent<SFalta>().enabled = false;
-		rival8.GetComponent<SFalta>().enabled = false;
-		rival9.GetComponent<SFalta>().enabled = false;
-
-		rival0.GetComponent<SSuelo>().enabled = false;
-		rival1.GetComponent<SSuelo>().enabled = false;
-		rival2.GetComponent<SSuelo>().enabled = false;
-		rival3.GetComponent<SSuelo>().enabled = false;
-		rival4.GetComponent<SSuelo>().enabled = false;
-		rival5.GetComponent<SSuelo>().enabled = false;
-		rival6.GetComponent<SSuelo>().enabled = false;
-		rival7.GetComponent<SSuelo>().enabled = false;
-		rival8.GetComponent<SSuelo>().enabled = false;
-		rival9.GetComponent<SSuelo>().enabled = false;
-		
-		rival0.GetComponent<SBalonPies>().enabled = false;
-		rival1.GetComponent<SBalonPies>().enabled = false;
-		rival2.GetComponent<SBalonPies>().enabled = false;
-		rival3.GetComponent<SBalonPies>().enabled = false;
-		rival4.GetComponent<SBalonPies>().enabled = false;
-		rival5.GetComponent<SBalonPies>().enabled = false;
-		rival6.GetComponent<SBalonPies>().enabled = false;
-		rival7.GetComponent<SBalonPies>().enabled = false;
-		rival8.GetComponent<SBalonPies>().enabled = false;
-		rival9.GetComponent<SBalonPies>().enabled = false;
-
-		jugador0.GetComponent<SCorrer> ().posicion = GameObject.Find ("posicion");
-		jugador1.GetComponent<SCorrer> ().posicion = GameObject.Find ("posicion2");
-		jugador2.GetComponent<SCorrer> ().posicion = GameObject.Find ("posicion3");
-		jugador3.GetComponent<SCorrer> ().posicion = GameObject.Find ("posicion4");
-		jugador4.GetComponent<SCorrer> ().posicion = GameObject.Find ("posicion5");
-		jugador5.GetComponent<SCorrer> ().posicion = GameObject.Find ("posicion6");
-		jugador6.GetComponent<SCorrer> ().posicion = GameObject.Find ("posicion7");
-		jugador7.GetComponent<SCorrer> ().posicion = GameObject.Find ("posicion8");
-		jugador8.GetComponent<SCorrer> ().posicion = GameObject.Find ("posicion9");
-		jugador9.GetComponent<SCorrer> ().posicion = GameObject.Find ("posicion10");
-
-		rival0.GetComponent<SCorrer> ().posicion = GameObject.Find ("posicionR");
-		rival1.GetComponent<SCorrer> ().posicion = GameObject.Find ("posicion2R");
-		rival2.GetComponent<SCorrer> ().posicion = GameObject.Find ("posicion3R");
-		rival3.GetComponent<SCorrer> ().posicion = GameObject.Find ("posicion4R");
-		rival4.GetComponent<SCorrer> ().posicion = GameObject.Find ("posicion5R");
-		rival5.GetComponent<SCorrer> ().posicion = GameObject.Find ("posicion6R");
-		rival6.GetComponent<SCorrer> ().posicion = GameObject.Find ("posicion7R");
-		rival7.GetComponent<SCorrer> ().posicion = GameObject.Find ("posicion8R");
-		rival8.GetComponent<SCorrer> ().posicion = GameObject.Find ("posicion9R");
-		rival9.GetComponent<SCorrer> ().posicion = GameObject.Find ("posicion10R");
-
-
-
-        portero.GetComponent<PorteroV2>().balon = balon.GetComponent<Balon> ();
-		portero.GetComponent<PorteroV2> ().posicion = GameObject.Find ("porteria");
-        portero.GetComponent<PorteroV2>().equipo = true;
- 		porteroR.GetComponent<PorteroV2>().balon = balon.GetComponent<Balon> ();
-		porteroR.GetComponent<PorteroV2>().posicion = GameObject.Find ("porteria2");
-        porteroR.GetComponent<PorteroV2>().equipo = false;
 
 
     }

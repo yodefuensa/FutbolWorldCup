@@ -9,6 +9,11 @@ public class MngEquiV3 : MonoBehaviour {
     public PorteroV2 benji;
     public Balon balon;
 
+    void Update()
+    {
+        limpiarSelector();
+    }
+
     private void LateUpdate(){
         cambiarJugador();
     }

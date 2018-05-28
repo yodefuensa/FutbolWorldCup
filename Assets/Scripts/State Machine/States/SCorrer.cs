@@ -16,7 +16,6 @@ public class SCorrer : State {
  
 
 	void Start () {
-        Debug.Log("correr");
         balon = GameObject.FindObjectOfType<Balon>();
         ar = GetComponent<Animator>();
     }
@@ -47,10 +46,7 @@ public class SCorrer : State {
         {
             if ((hit.name == "balon") && (!balon.interceptado)&& (reinicio>8)/*balon cuenta atras && (!balonGolpeado)*/)
             {
-                Debug.Log ("me cagon en la putisisima madre de todo");
-                Debug.Log(equipo);
                 if (!equipo){
-                    Debug.Log("joder somos rivales hostia");
                     selector = false;
                     selectorLocal= selector;
                 }

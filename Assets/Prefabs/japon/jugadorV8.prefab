@@ -90,13 +90,14 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &114052558945479942
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1358616183337232}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: df3d76077488d4ddf96fe9f7710b994a, type: 3}
   m_Name: 
@@ -148,7 +149,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1358616183337232}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7991810b2002d4bd68be4005ddbc7f96, type: 3}
   m_Name: 
@@ -174,15 +175,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 560b72e78a7a145ef94612216c8e19d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialState: {fileID: 114657082276533514}
-  currentState: {fileID: 114657082276533514}
+  initialState: {fileID: 114457109037661302}
+  currentState: {fileID: 114457109037661302}
 --- !u!114 &114910527032955286
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1358616183337232}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3f864570bc4264ab3a6039b64a7abd50, type: 3}
   m_Name: 
@@ -204,7 +205,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1358616183337232}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ba099ee46edd44c598c867315592df05, type: 3}
   m_Name: 
@@ -236,6 +237,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:

@@ -6,7 +6,7 @@ public class StateMachine : MonoBehaviour {
 
 	public State initialState;
     public State currentState;
-
+ 
     void Awake()
     {
         currentState = initialState;
@@ -20,6 +20,8 @@ public class StateMachine : MonoBehaviour {
 
     public void ChangeState(State newState, bool team, bool sel, bool flyp, int reinicio, float mag)
     {
+        Debug.Log(currentState.selector + gameObject.name);
+        Debug.Log(sel+ gameObject.name);
         currentState.enabled = false;
         currentState = newState;
         currentState.enabled = true;

@@ -346,6 +346,36 @@ Prefab:
       propertyPath: balon
       value: 
       objectReference: {fileID: 425956813}
+    - target: {fileID: 114657082276533514, guid: 731c7ae97847946df85dc00c176f7389,
+        type: 2}
+      propertyPath: posicion
+      value: 
+      objectReference: {fileID: 1655414253}
+    - target: {fileID: 114657082276533514, guid: 731c7ae97847946df85dc00c176f7389,
+        type: 2}
+      propertyPath: seguidor
+      value: 
+      objectReference: {fileID: 478424443}
+    - target: {fileID: 114910527032955286, guid: 731c7ae97847946df85dc00c176f7389,
+        type: 2}
+      propertyPath: posicion
+      value: 
+      objectReference: {fileID: 1655414253}
+    - target: {fileID: 114910527032955286, guid: 731c7ae97847946df85dc00c176f7389,
+        type: 2}
+      propertyPath: seguidor
+      value: 
+      objectReference: {fileID: 478424443}
+    - target: {fileID: 114830705720239922, guid: 731c7ae97847946df85dc00c176f7389,
+        type: 2}
+      propertyPath: initialState
+      value: 
+      objectReference: {fileID: 1948751253}
+    - target: {fileID: 114830705720239922, guid: 731c7ae97847946df85dc00c176f7389,
+        type: 2}
+      propertyPath: currentState
+      value: 
+      objectReference: {fileID: 1948751253}
     m_RemovedComponents:
     - {fileID: 114562738253095860, guid: 731c7ae97847946df85dc00c176f7389, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 731c7ae97847946df85dc00c176f7389, type: 2}
@@ -635,6 +665,11 @@ Prefab:
       propertyPath: stScorrer
       value: 
       objectReference: {fileID: 215728859}
+    - target: {fileID: 114052558945479942, guid: 3eb3f5e94e3f8425ebc1a13ac5085bbb,
+        type: 2}
+      propertyPath: posicion
+      value: 
+      objectReference: {fileID: 1655414253}
     m_RemovedComponents:
     - {fileID: 114562738253095860, guid: 3eb3f5e94e3f8425ebc1a13ac5085bbb, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 3eb3f5e94e3f8425ebc1a13ac5085bbb, type: 2}
@@ -1654,6 +1689,12 @@ Transform:
   m_Father: {fileID: 726144828}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1948751253 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114457109037661302, guid: 731c7ae97847946df85dc00c176f7389,
+    type: 2}
+  m_PrefabInternal: {fileID: 364043629}
+  m_Script: {fileID: 11500000, guid: 82b7755489e204248b40306131e85f04, type: 3}
 --- !u!1 &2067253909
 GameObject:
   m_ObjectHideFlags: 0

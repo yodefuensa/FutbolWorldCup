@@ -16,7 +16,6 @@ public class SBalonPies : State {
 
     void Start()
     {
-        Debug.Log("balon pies");
         balon = GameObject.FindObjectOfType<Balon>();
         ar = GetComponent<Animator>();
         cazado = false;
@@ -130,6 +129,7 @@ public class SBalonPies : State {
             {
                 Debug.Log(distancia.normalized);
                 balon.direccion = distancia.normalized;
+                balon.interceptado = false;
                 balon.golpeoV2b();
                 st.ChangeState(stScorrer, equipo, selector, flipY, 0,magnitud);
             }

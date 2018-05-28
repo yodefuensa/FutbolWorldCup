@@ -13,12 +13,14 @@ public class SFalta : State {
     Vector3 vectorDireccion;
 
 	void start (){                
-        balon = GameObject.FindObjectOfType<Balon>();
+        
+        //balon = GameObject.FindObjectOfType<Balon>();
         ar = GetComponent<Animator>();
         ar.SetBool ("falta", true);
     }
 
     void Update () {
+        balon = GameObject.FindObjectOfType<Balon>();
         if (reinicio==0){
             Vector3 distanciaBalon = balon.transform.position - transform.position;
             vectorDireccion = distanciaBalon.normalized;
@@ -58,7 +60,6 @@ public class SFalta : State {
             }
             else if (hit.tag=="balonPies")
             {
-                Debug.Log("toca");
                 selector = true;
                 balon.interceptado = true;
                 GameObject.FindGameObjectWithTag ("balonPies").GetComponent<SBalonPies>().cazado=true;

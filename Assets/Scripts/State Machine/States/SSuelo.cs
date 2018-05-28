@@ -6,9 +6,9 @@ public class SSuelo : State {
 
 	bool falta;
 	public State stScorrer;
+
 	// Use this for initialization
 	void Start () {
-		Debug.Log("suelo");
 		ar = GetComponent<Animator>();
         ar.SetBool ("suelo", true);
 		falta = true;

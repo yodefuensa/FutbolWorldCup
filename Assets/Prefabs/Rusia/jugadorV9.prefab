@@ -22,7 +22,6 @@ GameObject:
   - component: {fileID: 212206458109659976}
   - component: {fileID: 61386504676546746}
   - component: {fileID: 95854319468859898}
-  - component: {fileID: 114562738253095860}
   - component: {fileID: 114830705720239922}
   - component: {fileID: 114910527032955286}
   - component: {fileID: 114657082276533514}
@@ -144,27 +143,6 @@ MonoBehaviour:
   stParado: {fileID: 114657082276533514}
   stFalta: {fileID: 114995905961919334}
   stBalonPies: {fileID: 114052558945479942}
---- !u!114 &114562738253095860
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1358616183337232}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: efb5ea3e71de347239192e24723d16bb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  vel: 12
-  selector: 0
-  flipY: 0
-  reinicio: 0
-  seguidor: {fileID: 0}
-  equipo: 0
-  posicionInicial: {x: 0, y: 0, z: 0}
-  posicion: {fileID: 0}
-  magnitud: 0
-  st: {fileID: 114830705720239922}
 --- !u!114 &114657082276533514
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -197,8 +175,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 560b72e78a7a145ef94612216c8e19d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialState: {fileID: 114657082276533514}
-  currentState: {fileID: 114657082276533514}
+  initialState: {fileID: 114457109037661302}
+  currentState: {fileID: 114457109037661302}
 --- !u!114 &114910527032955286
 MonoBehaviour:
   m_ObjectHideFlags: 1
