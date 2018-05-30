@@ -4,15 +4,13 @@ using UnityEngine;
 
 public class Balon : MonoBehaviour
 { 
-	Collider2D[] hits;
 	Vector3 posicion = new Vector3(0, 0);
 	public bool ultimoTocado; 
 	//true tu equipo, false equipo rival para ultimo tocado
 	public bool interceptado = false;
 	public bool balonFuera;
 
-	public int fuerzaL = 4;
-	public bool tiempo = false;
+	public int fuerzaL = 15;
 	public Vector3 direccion = new Vector3(0,0);
 	// Use this for initialization
 
@@ -32,24 +30,6 @@ public class Balon : MonoBehaviour
 		transform.position = direccion * fuerza; 
 	}
 
-	public Collider2D[] GolpeoBalon()
-	{//palfixed, ver si algo TOCA balon
-		hits = Physics2D.OverlapCircleAll (transform.position, 0.8f);
-
-		foreach (Collider2D hit in hits) {
-            if (hit.name == "balon")
-            {//WTF 
-                Debug.Log("toca");
-            }
-
-		}
-		return hits;
-	}
-
-	public Vector3 getPosicion()
-	{
-		return transform.position;
-	}
 
 	public void setPosicion(Vector3 pos)
 	{
@@ -58,31 +38,20 @@ public class Balon : MonoBehaviour
 	}
 
 
-	public void golpeoV2 ()
-    {
-		if ((!interceptado) && (tiempo))
-        {
+	public void golpeoV2 (){
+		if (!interceptado ){
 			transform.position += direccion * Time.deltaTime * fuerzaL;
-			//interceptado = false;
-	    }
-		
-	}
-    public void golpeoV3(int fuerzaGolpeo, Vector3 dir){
-        if ((!interceptado) && (tiempo)){
-            transform.position += dir * Time.deltaTime * fuerzaGolpeo;
-        }
+			if (fuerzaL>0)
+				StartCoroutine(setBalonTiempoFalse());
+      	}
     }
-
-    public IEnumerator setBalonTiempoFalse()
-	{//para no tocar el balon al golpearlo
-		for (int n = 0; n < 50; n++)
-		{            
-			yield return new WaitForSeconds(.1f);
-		}
-		tiempo = false;
-
-	}
-
+	public IEnumerator setBalonTiempoFalse()
+  	{//parar balon     
+        yield return new WaitForSeconds(1f);
+        if (fuerzaL>0)
+            fuerzaL--;
+    }
+    
 
 
 

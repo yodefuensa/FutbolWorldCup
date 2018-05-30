@@ -10,7 +10,7 @@ public class JugadorV2 : MonoBehaviour {
 	public bool balonPies = false;
 	public bool selector = false;
 	public int vel = 12;
-	private int fuerzaGolpeo = 15;
+	private int fuerzaGolpeo = 30;
     //robo es para saber si podremos robar la pelota
     public bool robo;
     //cuando se pulse C bloqueamos el movimiento y le damos la direccion de la falta
@@ -141,12 +141,12 @@ public class JugadorV2 : MonoBehaviour {
                 balonPies = false;
                 balonGolpeado = true;
                 balon.interceptado = false;
-                balon.tiempo = true;
+                //balon.tiempo = true;
                 balon.fuerzaL = fuerzaGolpeo;
                 balon.direccion = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
                 balon.golpeoV2();
                 StartCoroutine(setBalonGolpeadoFalse());
-                StartCoroutine(balon.setBalonTiempoFalse());
+                //StartCoroutine(balon.setBalonTiempoFalse());
             }
         }
 
@@ -181,12 +181,12 @@ public class JugadorV2 : MonoBehaviour {
                 balonPies = false;
                 balonGolpeado = true;
                 balon.interceptado = false;
-                balon.tiempo = true;
+                //balon.tiempo = true;
                 balon.fuerzaL = fuerzaGolpeo;
                 balon.direccion = new Vector2(Input.GetAxisRaw("HorizontalP2"), Input.GetAxisRaw("VerticalP2"));
                 balon.golpeoV2();
                 StartCoroutine(setBalonGolpeadoFalse());
-                StartCoroutine(balon.setBalonTiempoFalse());
+                //StartCoroutine(balon.setBalonTiempoFalse());
             }
         }
 
@@ -294,7 +294,6 @@ public class JugadorV2 : MonoBehaviour {
 		}
         if (falta){
             ar.SetBool("suelo",true);
-            Debug.Log ("agh mi puta pierna");
         }
 	}
     
