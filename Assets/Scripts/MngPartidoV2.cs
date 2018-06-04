@@ -354,7 +354,7 @@ public class MngPartidoV2 : MonoBehaviour {
         if (visible)
         {
             if (!MngScenes.multijugador){
-                SceneManager.LoadScene("pruebas");
+                SceneManager.LoadScene("pruebasV2");
                 Time.timeScale = 1f;
             }
             if (MngScenes.multijugador){

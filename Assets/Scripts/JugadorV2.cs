@@ -16,7 +16,7 @@ public class JugadorV2 : MonoBehaviour {
     //cuando se pulse C bloqueamos el movimiento y le damos la direccion de la falta
     public bool tRobo;
     //zasca te han hecho falta te caes al suelo no te puedes mover durante X tiempo
-    public bool falta;
+    public bool suelo;
     //magnitud se usa en el manager partido, para saber que jugadores estaran mas cerca al salir la pelota
     public Vector3 dirFalta;
 	public float magnitud = 0;
@@ -33,17 +33,17 @@ public class JugadorV2 : MonoBehaviour {
 
     private void Awake(){
 		posicionInicial = new Vector2 (transform.position.x, transform.position.y);
-		falta = false;
+		suelo = false;
     }
 
     void Start () {
-        falta = false;
+        suelo = false;
         tRobo = false;
         ar = GetComponent<Animator>();
 	}
 
 	void Update () {
-        if (!falta)
+        if (!suelo)
         {
             movimiento();
             movimientoP2();
@@ -81,7 +81,7 @@ public class JugadorV2 : MonoBehaviour {
     public IEnumerator setFaltaFalse()
     {//si te hacen falta poner bloqueo
         yield return new WaitForSeconds(2f);
-        falta = false;
+        suelo = false;
         ar.SetBool("suelo",false);
     }
 
@@ -95,7 +95,7 @@ public class JugadorV2 : MonoBehaviour {
     private void hit(){
         Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, 1f);
         robo = false;
-        if (!falta)
+        if (!suelo)
         {
             foreach (Collider2D hit in hits){
                 if ((hit.name == "balon") && (!balon.interceptado) &&  (!balonGolpeado))
@@ -141,12 +141,10 @@ public class JugadorV2 : MonoBehaviour {
                 balonPies = false;
                 balonGolpeado = true;
                 balon.interceptado = false;
-                //balon.tiempo = true;
                 balon.fuerzaL = fuerzaGolpeo;
                 balon.direccion = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
                 balon.golpeoV2();
-                StartCoroutine(setBalonGolpeadoFalse());
-                //StartCoroutine(balon.setBalonTiempoFalse());
+                StartCoroutine(setBalonGolpeadoFalse());;
             }
         }
 
@@ -181,12 +179,11 @@ public class JugadorV2 : MonoBehaviour {
                 balonPies = false;
                 balonGolpeado = true;
                 balon.interceptado = false;
-                //balon.tiempo = true;
                 balon.fuerzaL = fuerzaGolpeo;
                 balon.direccion = new Vector2(Input.GetAxisRaw("HorizontalP2"), Input.GetAxisRaw("VerticalP2"));
                 balon.golpeoV2();
                 StartCoroutine(setBalonGolpeadoFalse());
-                //StartCoroutine(balon.setBalonTiempoFalse());
+
             }
         }
 
@@ -251,7 +248,7 @@ public class JugadorV2 : MonoBehaviour {
                 distancia = jugadorConPelota.transform.position - transform.position;  
                 if (distancia.magnitude < 2f){
                     equipoRival.jugadores[equipoRival.jugadorCercano()].balonPies = false;
-                    equipoRival.jugadores[equipoRival.jugadorCercano()].falta = true;                 
+                    equipoRival.jugadores[equipoRival.jugadorCercano()].suelo = true;                 
                     StartCoroutine(equipoRival.jugadores[equipoRival.jugadorCercano()].setFaltaFalse());
                     balon.interceptado = false;
                 }
@@ -292,16 +289,21 @@ public class JugadorV2 : MonoBehaviour {
 			}
 			lastPosition = transform.position.y;
 		}
-        if (falta){
+        if (suelo){
             ar.SetBool("suelo",true);
         }
 	}
     
 	private void marcar() {
-		if (selector){
+		if ((selector) && (!MngScenes.multijugador) && (equipo))
+        {
 			Vector3 posicionNuestra = new Vector3(transform.position.x, transform.position.y);
 			seguidor.setPosicion(posicionNuestra);
 		}
+        if ((selector) && (MngScenes.multijugador)){
+            Vector3 posicionNuestra = new Vector3(transform.position.x, transform.position.y);
+			seguidor.setPosicion(posicionNuestra);
+        }
 	}
 
 }

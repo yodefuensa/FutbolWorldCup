@@ -25,8 +25,8 @@ public class MngScenes : MonoBehaviour {
 
     private void OnGUI()
     {
-       // Cursor.lockState = CursorLockMode.Locked;
-        // Cursor.visible = false;
+        //Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.visible = false;
     }
 
 	public void salir(){
@@ -56,6 +56,7 @@ public class MngScenes : MonoBehaviour {
         }
 
     }
+    
     public void creditos() {
         SceneManager.LoadScene("creditos");
     }
