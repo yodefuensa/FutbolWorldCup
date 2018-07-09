@@ -29,6 +29,7 @@ public class MngPartidoV2 : MonoBehaviour {
 	private float time;
 	private float min;
 	public AudioClip goal, arbitro;
+    public static bool estaLloviendo; 
 
 
 
@@ -40,6 +41,7 @@ public class MngPartidoV2 : MonoBehaviour {
 		min = 0;
         visible = false;
 		mngAudio.instance.playSfxClip (arbitro);
+        estaLloviendo = false;
 
     }
 

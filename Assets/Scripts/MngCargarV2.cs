@@ -23,6 +23,7 @@ public class MngCargarV2 : MonoBehaviour {
     public GameObject rival;
 	public GameObject portero;
 	public GameObject porteroR;
+    public GameObject lloviendo;
 
 	private GameObject rival0;
 	private GameObject rival1;
@@ -85,9 +86,20 @@ public class MngCargarV2 : MonoBehaviour {
         
         
     }
+    private void llueve() {
+        int lluvia = Random.Range(0, 100);
+        if (lluvia < 25)
+            MngPartidoV2.estaLloviendo = true;
+        if (MngPartidoV2.estaLloviendo)
+            lloviendo.SetActive(true);
+        else
+            lloviendo.SetActive(false);
+    }
 
     private void Awake()
     {//antes de cargar la escena
+
+        llueve();
 
         MngScenes.multijugador = false;
         if (MngScenes.alineacion == "A") {

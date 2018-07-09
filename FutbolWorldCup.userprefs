@@ -1,23 +1,16 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/MngPartido.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\MngCargarV2.cs">
     <Files>
-      <File FileName="Assets/Scripts/mngOpciones.cs" Line="46" Column="49" />
-      <File FileName="Assets/Scripts/mngAudio.cs" Line="23" Column="5" />
-      <File FileName="Assets/Scripts/MngPartido.cs" Line="190" Column="39" />
-      <File FileName="Assets/Scripts/PorteroV2Rival.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/mngCargarMulti.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/MngCargar.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/MngScenes.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/PorteroV2.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Selector.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/ManagerPersonajes.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Balon.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/MngCamera.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Palo.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Jugador.cs" Line="12" Column="21" />
-      <File FileName="Assets/Scripts/Rival.cs" Line="11" Column="24" />
-      <File FileName="Assets/Scripts/MngRival.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\mngOpciones.cs" Line="46" Column="49" />
+      <File FileName="Assets\Scripts\mngAudio.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\MngScenes.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\PorteroV2.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Selector.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Balon.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\MngCamera.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Palo.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\MngCargarV2.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
